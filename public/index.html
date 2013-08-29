@@ -10,6 +10,7 @@
 
         <!-- //Load CSS  -->
         <link href="./assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="./assets/css/page.css" rel="stylesheet" type="text/css">
         <link href="./assets/css/countdown.min.css" rel="stylesheet" type="text/css">
 
         <!-- //Load JS  -->
@@ -44,12 +45,7 @@
 	   
     -->
     <body>
-
-        <!--
-        ==================================================
-        Navigation
-        ==================================================
-        -->
+        <!-- =======[Nav] ========= --> 
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">       
@@ -78,30 +74,70 @@
             </div>
         </div>
 
-        <!--
-        ==================================================
-        JumboTron
-        ==================================================
-        -->
+        <div id="wrap">
 
-        <div class="jumbotron">
-            <div class="container">
-                <div style="padding-top:50px"></div>
-                <div class="countdown-timer"></div>
+            <!-- =======[jumbotron] ========= -->    
+            <div class="jumbotron">
+                <div class="container">
+                    <div class="countdown-timer"></div>
+                    <div style="height: 370px"></div>
+                </div>
             </div>
+
+            <!-- =======[Social Media] ========= -->     
+            <div class="container">
+                <div class="row social-bar">
+                    <div class="span10 offset1 white-panel">
+                        <ul class="social-buttons inline">
+                            <li>
+                                <iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/follow_button.1375828408.html#_=1377809470479&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=FreshersTV&amp;show_count=true&amp;show_screen_name=true&amp;size=m" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 242px; height: 20px;"></iframe>
+                            </li>
+                            <li>
+                                <iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.1375828408.html#_=1377809470473&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fwww.freshers.tv&amp;size=m&amp;text=LA1TV%20Presents%20FreshersTV%202013&amp;url=http%3A%2F%2Fwww.freshers.tv" class="twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 110px; height: 20px;"></iframe>
+                            </li>
+                            <li>
+                                <div class="fb-like" data-href="https://www.facebook.com/FreshersTV" data-layout="button_count" data-show-faces="false" data-send="true"></div>
+                                <div id="fb-root"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- =======[Content] ========= -->  
+            <div class="container">
+
+            </div>
+
+            <div id="push"></div>
         </div>
 
-        <!--
-        ==================================================
-        Content
-        ==================================================
-        -->
+        <!-- =======[Footer] ========= -->  
+        <footer id="footer">
+            <div class="container">
+                <p class="muted credit">Designed and built by Luke Moscrop & Tom Jenkins</p>
+                <ul class="footer-links">
+                    <li>
+                        <a href="http://nasta.tv/">Nasta.tv</a>
+                    </li>
 
-        <!--
-        ==================================================
-        Footer
-        ==================================================
-        -->
+                    <li class="muted">·</li>
+
+                    <li>
+                        <a href="http://la1tv.lusu.co.uk/">LA1TV</a>
+                    </li>
+
+                    <li class="muted">·</li>
+
+                    <li>
+                        <a href="http://lusu.co.uk/">LUSU</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1375249336038219";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
 
     </body>
 </html>

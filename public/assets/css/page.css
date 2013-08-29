@@ -1,0 +1,113 @@
+/*
+ *
+ *  Any custom CSS thats exists outside the scope of 
+ *  BootSrap and other libaries used to build the site
+ *  
+ */
+
+html,body{
+    height: 100%
+}
+
+/*
+*   Due to nav-bar fixed we have to push content down by its height
+*/
+@media screen and (max-width: 768px) {
+    body { padding-top: 0px; }
+}
+
+/*
+*   Part of the social media bar on the pages  
+*/
+
+.social-bar {
+    position: relative;
+    margin-top: -50px;
+}
+
+.white-panel {
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #dadada;
+    padding: 5px;
+    margin-bottom: 40px;
+    color: #333;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
+}
+
+.social-buttons {
+    margin-left: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.social-buttons li {
+    display: inline-block;
+    padding: 5px 8px;
+    line-height: 1;
+}
+
+/*
+*   Mark out the contet so the footer can be flushed
+*   agsint the bottom of the page 
+*/
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -100px;
+}
+
+#push,
+#footer {
+    height: 100px;
+}
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+/*
+*   Footer 
+*/
+#footer {
+  clear:both;
+  margin:20px 0;
+  padding:30px 0;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+  background-color: #f5f5f5;
+} 
+
+
+.footer p {
+    margin-bottom: 0;
+    color: #777;
+}
+
+.footer-links {
+    margin: 10px 0;
+}
+
+.footer-links li:first-child {
+    padding-left: 0;
+}
+
+.footer-links li {
+    display: inline;
+    padding: 0 2px;
+}
