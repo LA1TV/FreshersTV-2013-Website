@@ -16,6 +16,12 @@ html,body{
     body { padding-top: 0px; }
 }
 
+.center {
+     float: none;
+     margin-left: auto;
+     margin-right: auto;
+}
+
 /*
 *   Part of the social media bar on the pages  
 */
@@ -54,7 +60,7 @@ html,body{
 }
 
 /*
-*   Mark out the contet so the footer can be flushed
+*   Mark out the content so the footer can be flushed
 *   agsint the bottom of the page 
 */
 
@@ -71,26 +77,25 @@ html,body{
     height: 100px;
 }
 
-      /* Lastly, apply responsive CSS fixes as necessary */
-      @media (max-width: 767px) {
-        #footer {
-          margin-left: -20px;
-          margin-right: -20px;
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-      }
+@media (max-width: 767px) {
+    #footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
 
 /*
 *   Footer 
 */
 #footer {
-  clear:both;
-  margin:20px 0;
-  padding:30px 0;
-  text-align: center;
-  border-top: 1px solid #e5e5e5;
-  background-color: #f5f5f5;
+    clear:both;
+    margin:20px 0;
+    padding:30px 0;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
 } 
 
 
