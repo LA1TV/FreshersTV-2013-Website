@@ -10,6 +10,16 @@ html,body{
 }
 
 /*
+ *  Reset bootstraps css in order for the countdown to work
+ *
+ */
+.countdown-timer * {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+ 
+/*
 *   Due to nav-bar fixed we have to push content down by its height
 */
 @media screen and (max-width: 768px) {
