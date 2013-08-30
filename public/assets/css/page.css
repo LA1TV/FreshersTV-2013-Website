@@ -9,25 +9,6 @@ html,body{
     height: 100%
 }
 
-.countdown-timer-container {
-	text-align: center;
-}
-
-.countdown-timer {
-	display: inline-block;
-	width: auto;
-}
-
-/*
- *  Reset bootstraps css in order for the countdown to work
- *
- */
-.countdown-timer * {
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-}
- 
 /*
 *   Due to nav-bar fixed we have to push content down by its height
 */
@@ -35,10 +16,35 @@ html,body{
     body { padding-top: 0px; }
 }
 
+/*
+* Bootsrap does not offer a center so this hack will work fine.    
+*/
 .center {
-     float: none;
-     margin-left: auto;
-     margin-right: auto;
+    margin: 0 auto !important;
+    float: none !important;
+}
+
+ /*
+ *  Reset bootstraps css in order for the countdown to work
+ *
+ */
+.countdown-timer * {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/*
+* Logo
+*/
+.logo {
+    width: 951px;
+    height: 169px;
+    background: url("./../../assets/img/fresherTVLogo_web.png") no-repeat;
+    display: block;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 /*
@@ -110,7 +116,7 @@ html,body{
 */
 #footer {
     clear:both;
-    margin: 0;
+    margin:20px 0;
     padding:30px 0;
     text-align: center;
     border-top: 1px solid #e5e5e5;
