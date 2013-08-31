@@ -4,61 +4,53 @@
  *  BootSrap and other libaries used to build the site
  *  
  */
-
-html,body{
-    height: 100%
+ 
+/* necessary for footer to work */
+body, html {
+	height: 100%;
 }
 
 /*
-*   Due to nav-bar fixed we have to push content down by its height
+* Main Header Logo
 */
-@media screen and (max-width: 768px) {
-    body { padding-top: 0px; }
-}
-
-/*
-* Bootsrap does not offer a center so this hack will work fine.    
-*/
-.center {
-    margin: 0 auto !important;
-    float: none !important;
-}
-
- /*
- *  Countdown timer
- */
-.countdown-timer-container {
+#main-logo-header .main-logo-container {
+	background-color: #ecf0f1;
+	background-image: url("../img/nuffield_banner.jpg");
+	background-repeat: no-repeat;
+	background-position: 20% 60%;
+	padding: 50px;
+	margin-bottom: 30px;
 	text-align: center;
 }
 
-.countdown-timer  {
-	display: inline-block;
-	width: auto;
+@media (max-width: 767px) {
+	#main-logo-header .main-logo-container {
+		padding: 40px;
+	}
 }
 
-/*
-* Logo
-*/
-.logo {
-    width: 951px;
-    height: 220px;
-    background: url("./../../assets/img/fresherTVLogo_web.png") no-repeat;
-    display: block;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
+@media (max-width: 650px) {
+	#main-logo-header .main-logo-container {
+		padding: 30px;
+	}
+}
+
+
+#main-logo-header .main-logo-container img {
+	max-width: 100%; /* make image automatically resize down */
+	max-height: 100%;
 }
 
 /*
 *   Part of the social media bar on the pages  
 */
 
-.social-bar {
+#social-bar {
     position: relative;
     margin-top: -50px;
 }
 
-.white-panel {
+#social-bar .white-panel {
     text-align: center;
     background-color: #fff;
     border: 1px solid #dadada;
@@ -73,14 +65,14 @@ html,body{
     box-shadow: 0 1px 2px rgba(0, 0, 0, .075);
 }
 
-.social-buttons {
+#social-bar .social-buttons {
     margin-left: 0;
     margin-bottom: 0;
     padding-left: 0;
     list-style: none;
 }
 
-.social-buttons li {
+#social-bar .social-buttons li {
     display: inline-block;
     padding: 5px 8px;
     line-height: 1;
@@ -99,18 +91,8 @@ html,body{
     margin: 0 auto -100px;
 }
 
-#push,
-#footer {
+#push, #footer {
     height: 100px;
-}
-
-@media (max-width: 767px) {
-    #footer {
-        margin-left: -20px;
-        margin-right: -20px;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
 }
 
 /*
@@ -125,21 +107,17 @@ html,body{
     background-color: #f5f5f5;
 } 
 
-
-.footer p {
+#footer p {
     margin-bottom: 0;
     color: #777;
 }
 
-.footer-links {
+#footer .footer-links {
     margin: 10px 0;
+	padding: 0;
 }
 
-.footer-links li:first-child {
-    padding-left: 0;
-}
-
-.footer-links li {
+#footer .footer-links li {
     display: inline;
     padding: 0 2px;
 }

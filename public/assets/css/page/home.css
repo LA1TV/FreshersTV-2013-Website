@@ -1,0 +1,20 @@
+#page-home .live-in-txt {
+	text-align: center;
+	font-size: 60px;
+}
+
+
+ /*
+ *  Countdown timer
+ */
+#page-home .countdown-timer-container {
+	text-align: center;
+}
+
+#page-home .countdown-timer-container {
+}
+
+#page-home .countdown-timer {
+	display: inline-block;
+	width: auto;
+}
