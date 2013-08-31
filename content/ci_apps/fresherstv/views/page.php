@@ -27,7 +27,9 @@ $pages = array(
 		
         <!-- Load JS  -->
         <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-        <script src="<?=base_url();?>assets/js/bootstrap.min.js" type="text/javascript"></script>   
+        <script src="<?=base_url();?>assets/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/embed-facebook.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/embed-twitter.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/flipclock-libs/prefixfree.min.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/flipclock.min.js" type="text/javascript"></script>
 		
@@ -99,7 +101,7 @@ $pages = array(
                                 <iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/follow_button.1375828408.html#_=1377809470479&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=FreshersTV&amp;show_count=true&amp;show_screen_name=true&amp;size=m" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 242px; height: 20px;"></iframe>
                             </li>
                             <li>
-                                <iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.1375828408.html#_=1377809470473&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fwww.freshers.tv&amp;size=m&amp;text=LA1TV%20Presents%20FreshersTV%202013&amp;url=http%3A%2F%2Fwww.freshers.tv" class="twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 110px; height: 20px;"></iframe>
+                                <iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.1375828408.html#_=1377809470473&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Ffreshers.tv&amp;size=m&amp;text=LA1TV%20Presents%20FreshersTV%202013&amp;url=http%3A%2F%2Ffreshers.tv" class="twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 110px; height: 20px;"></iframe>
                             </li>
                             <li>
                                 <div class="fb-like" data-href="https://www.facebook.com/FreshersTV" data-layout="button_count" data-show-faces="false" data-send="true"></div>
@@ -140,9 +142,5 @@ $pages = array(
                 </ul>
             </div>
         </footer>
-
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=1375249336038219";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
-
     </body>
 </html>
