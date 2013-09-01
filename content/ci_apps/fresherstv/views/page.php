@@ -1,4 +1,6 @@
 <?php
+$this->load->helper("security");
+
 $pages = array(
 	array("home", "Home"),
 	array("about", "About"),
@@ -72,7 +74,7 @@ $pages = array(
                 <div class="navbar-collapse collapse" id="navbar-main">
                     <ul class="nav navbar-nav">
 						<?php foreach($pages as $a): ?>
-                        <li class="<?php if($a[0] == $current_page){echo("active");}?>"><a href="<?=base_url();?><?=$a[0]?>"><?=$a[1]?></a></li>
+                        <li class="<?php if($a[0] == $current_page){echo("active");}?>"><a href="<?=base_url();?><?=htmlent($a[0])?>"><?=htmlent($a[1])?></a></li>
                         <?php endforeach; ?>
                     </ul>
 
@@ -112,7 +114,7 @@ $pages = array(
             </div>
 
             <!-- =======[Page Specific Content]======= -->
-			<div class="container" id="page-<?=$current_page?>">
+			<div class="container" id="page-<?=htmlent($current_page)?>">
 <?=$html?>
 			</div>
             <div id="push"></div>
