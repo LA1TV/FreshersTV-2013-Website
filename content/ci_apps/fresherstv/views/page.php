@@ -6,12 +6,17 @@ $pages = array(
 	array("about", "About"),
 	array("fresherstv2012", "Freshers TV 2012")
 );
+
+// fix for ie
+if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== FALSE)) {
+	header('X-UA-Compatible: IE=edge,chrome=1');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
         <title>LA1:TV Presents FreshersTV 2013</title>
@@ -92,7 +97,7 @@ $pages = array(
 			<div id="main-logo-header">
 				<div class="main-logo-container">
 					<h1 class="hidden">Freshers TV</h1>
-					<img src="<?=base_url();?>assets/img/fresherTVLogo_web.png" />
+					<img src="<?=base_url();?>assets/img/fresherTVLogo_web.png" alt="FreshersTV Logo" />
 				</div>
 			</div>
 
@@ -102,10 +107,10 @@ $pages = array(
                     <div class="span10 offset1 white-panel">
                         <ul class="social-buttons inline">
                             <li>
-                                <iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/follow_button.1375828408.html#_=1377809470479&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=FreshersTV&amp;show_count=true&amp;show_screen_name=true&amp;size=m" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 242px; height: 20px;"></iframe>
+                                <iframe src="http://platform.twitter.com/widgets/follow_button.1375828408.html#_=1377809470479&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=FreshersTV&amp;show_count=true&amp;show_screen_name=true&amp;size=m" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 242px; height: 20px; background: transparent; border-style: none; overflow: hidden;"></iframe>
                             </li>
                             <li>
-                                <iframe allowtransparency="true" frameborder="0" scrolling="no" src="http://platform.twitter.com/widgets/tweet_button.1375828408.html#_=1377809470473&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Ffreshers.tv&amp;size=m&amp;text=LA1TV%20Presents%20FreshersTV%202013&amp;url=http%3A%2F%2Ffreshers.tv" class="twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 110px; height: 20px;"></iframe>
+                                <iframe src="http://platform.twitter.com/widgets/tweet_button.1375828408.html#_=1377809470473&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Ffreshers.tv&amp;size=m&amp;text=LA1TV%20Presents%20FreshersTV%202013&amp;url=http%3A%2F%2Ffreshers.tv" class="twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 110px; height: 20px; background: transparent; border-style: none; overflow: hidden;"></iframe>
                             </li>
                             <li>
                                 <div class="fb-like" data-href="https://www.facebook.com/FreshersTV" data-layout="button_count" data-show-faces="false" data-send="true"></div>

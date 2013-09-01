@@ -42,7 +42,6 @@ $(document).ready(function() {
 	
 	function getSecondsToStart() {
 		var val = Math.ceil(startTime.getTime()/1000) - Math.ceil(Date.now()/1000);
-		console.log(val);
 		if (val < 0) {
 			val = 0;
 		}

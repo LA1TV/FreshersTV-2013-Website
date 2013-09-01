@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col-md-8">
 		<div class="scaled-iframe-container">
-			<img class="ratio" src="<?=base_url();?>assets/img/16x9.gif"/>
-			<iframe src="//www.youtube.com/embed/SBVkY2Gjda8" frameborder="0" allowfullscreen></iframe>
+			<img class="ratio" src="<?=base_url();?>assets/img/16x9.gif" alt=""/>
+			<iframe src="//www.youtube.com/embed/SBVkY2Gjda8" allowfullscreen style="border-style: none;"></iframe>
 		</div>
 	</div>
 	<div class="col-md-4">
