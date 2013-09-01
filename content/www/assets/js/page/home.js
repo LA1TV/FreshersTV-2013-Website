@@ -17,6 +17,8 @@ $(document).ready(function() {
 	$scaleContainer.width(elWidth);	
 	$scaleContainer.height(elHeight);
 	// make the counter stay at top left corner when resized. the width and height of the element won't scale
+	$scaleContainer.css('transform-origin', '0 0');
+	$scaleContainer.css('-ms-transform-origin', '0 0');
 	$scaleContainer.css('-webkit-transform-origin', '0 0');
 	
 	
@@ -26,6 +28,8 @@ $(document).ready(function() {
 			scale = 1;
 		}
 		// apply the scale to the scale container. container is used as it has no margin or padding
+		$scaleContainer.css('transform', 'scale('+scale+','+scale+')');
+		$scaleContainer.css('-ms-transform', 'scale('+scale+','+scale+')');
 		$scaleContainer.css('-webkit-transform', 'scale('+scale+','+scale+')');
 		// set the width and height of the secondary container to match what the scaleContainer should be. It won't actually be this because scale doesn't alter width and height.
 		// the secondary container has an overflow property set to hidden so the scale container is effectively cropped and as it has scalled with anchor at top left this works
