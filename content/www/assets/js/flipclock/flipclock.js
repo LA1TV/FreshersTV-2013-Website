@@ -685,6 +685,10 @@ var FlipClock;
 		 */
 		 		
 		play: function() {
+			// this disables the animation if it is a mobile device as it doesn't seem to work on them
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+				return;
+			}
 			this.$obj.addClass(this.factory.classes.play);
 		},
 		

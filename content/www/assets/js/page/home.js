@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var startTime = new Date(2013, 10, 00, 00, 00);
+	var startTime = new Date(2013, 10, 24, 00, 00);
 	var $el = $(".countdown-timer").first();
 	var countdown = $el.FlipClock(getSecondsToStart(), {
 		countdown: true,
