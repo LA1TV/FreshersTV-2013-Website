@@ -105,7 +105,6 @@ $pages = array(
                             </li>
                             <li>
                                 <div class="fb-like" data-href="https://www.facebook.com/FreshersTV" data-layout="button_count" data-show-faces="false" data-send="true"></div>
-                                <div id="fb-root"></div>
                             </li>
                         </ul>
                     </div>
@@ -142,5 +141,7 @@ $pages = array(
                 </ul>
             </div>
         </footer>
+		<div id="fb-root"></div>
     </body>
+	
 </html>
