@@ -32,8 +32,10 @@ $pages = array(
         <script src="<?=base_url();?>assets/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/embed-facebook.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/embed-twitter.js" type="text/javascript"></script>
-        <script src="<?=base_url();?>assets/js/flipclock-libs/prefixfree.min.js" type="text/javascript"></script>
-        <script src="<?=base_url();?>assets/js/flipclock.min.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/flipclock/libs/base.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/flipclock/libs/prefixfree.min.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/flipclock/flipclock.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/flipclock/faces/DailyCounter.js" type="text/javascript"></script>
 		
 		<!-- Load page specific JS -->
 		<?php foreach($js as $a):	?>

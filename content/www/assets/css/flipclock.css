@@ -1,3 +1,6 @@
+/* MODIFIED FROM ORIGINAL. It now uses spans instead of a's */
+
+
 /* Reset */
 .flip-clock-wrapper * {
     margin: 0;
@@ -6,16 +9,6 @@
     -moz-box-sizing: border-box;
     -o-box-sizing: border-box;
     box-sizing: border-box;
-}
-
-.flip-clock-wrapper a {
-    cursor: pointer;
-    text-decoration: none;
-    color: #ccc;
-}
-
-.flip-clock-wrapper a:hover {
-    color: #fff;
 }
 
 .flip-clock-wrapper ul {
@@ -89,7 +82,7 @@
     z-index: 2;
 }
 
-.flip-clock-wrapper ul li a {
+.flip-clock-wrapper ul li span {
     display: block;
     height: 100%;
     perspective: 200px;
@@ -97,7 +90,7 @@
     overflow: visible !important;
 }
 
-.flip-clock-wrapper ul li a div {
+.flip-clock-wrapper ul li span div {
     z-index: 1;
     position: absolute;
     left: 0;
@@ -106,19 +99,19 @@
     overflow: hidden;
 }
 
-.flip-clock-wrapper ul li a div .shadow {
+.flip-clock-wrapper ul li span div .shadow {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 2;
 }
 
-.flip-clock-wrapper ul li a div.up {
+.flip-clock-wrapper ul li span div.up {
     transform-origin: 50% 100%;
     top: 0;
 }
 
-.flip-clock-wrapper ul li a div.up:after {
+.flip-clock-wrapper ul li span div.up:after {
   content: "";
   position:absolute;
   top:44px;
@@ -129,12 +122,12 @@
   background-color: rgba(0,0,0,.4);
 }
 
-.flip-clock-wrapper ul li a div.down {
+.flip-clock-wrapper ul li span div.down {
     transform-origin: 50% 0%;
     bottom: 0;
 }
 
-.flip-clock-wrapper ul li a div div.inn {
+.flip-clock-wrapper ul li span div div.inn {
     position: absolute;
     left: 0;
     z-index: 1;
@@ -148,12 +141,12 @@
     font-size: 70px;
 }
 
-.flip-clock-wrapper ul li a div.up div.inn {
+.flip-clock-wrapper ul li span div.up div.inn {
     top: 0;
 
 }
 
-.flip-clock-wrapper ul li a div.down div.inn {
+.flip-clock-wrapper ul li span div.down div.inn {
     bottom: 0;
 }
 
