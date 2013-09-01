@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	var startTime = new Date(2013, 10, 24, 00, 00);
+	// ZERO INDEXING!
+	var startTime = new Date(2013, 09, 23, 00, 00);
 	var $el = $(".countdown-timer").first();
 	var countdown = $el.FlipClock(getSecondsToStart(), {
 		countdown: true,
@@ -41,6 +42,7 @@ $(document).ready(function() {
 	
 	function getSecondsToStart() {
 		var val = Math.ceil(startTime.getTime()/1000) - Math.ceil(Date.now()/1000);
+		console.log(val);
 		if (val < 0) {
 			val = 0;
 		}
