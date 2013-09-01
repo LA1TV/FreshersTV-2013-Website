@@ -41,6 +41,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
         <script src="<?=base_url();?>assets/js/flipclock/libs/prefixfree.min.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/flipclock/flipclock.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/flipclock/faces/DailyCounter.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/smart-dropdown.js" type="text/javascript"></script>
 		
 		<!-- Load page specific JS -->
 		<?php foreach($js as $a):	?>
@@ -75,7 +76,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a href="." class="navbar-brand">Freshers TV</a>
+                    <a href="<?=base_url();?>" class="navbar-brand">Freshers TV</a>
 
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-main">
@@ -86,7 +87,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
                     </ul>
 
                     <div class="navbar-form navbar-right">
-                        <a class="btn btn-success" href="#">Application Form &raquo;</a>
+                        <a class="btn btn-success" href="<?=base_url();?>apply">Application Form &raquo;</a>
                     </div>
 
                 </div>
@@ -97,7 +98,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
 			<div id="main-logo-header">
 				<div class="main-logo-container">
 					<h1 class="hidden">Freshers TV</h1>
-					<img src="<?=base_url();?>assets/img/fresherTVLogo_web.png" alt="FreshersTV Logo" />
+					<a href="<?=base_url();?>"><img src="<?=base_url();?>assets/img/fresherTVLogo_web.png" alt="FreshersTV Logo" /></a>
 				</div>
 			</div>
 
