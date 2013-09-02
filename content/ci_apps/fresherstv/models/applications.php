@@ -17,6 +17,7 @@ class Applications extends CI_Model {
 	
 	function add_application($data)
 	{
+		return; // TEMP
 		// data should be validated in controller before it gets here. should technically check everything here as well but can't be bothered
 		$this->db->insert($this->table, $data);
 	}
@@ -33,6 +34,17 @@ class Applications extends CI_Model {
 	}
 	
 	function get_hash($input) {
-		return hash('sha512', $salt.$input);
+		return hash('sha512', $this->hash_salt.$input);
+	}
+	
+	function generate_verification_code() {
+		$found = FALSE;
+		while(!$found) {
+			$code = $this->get_hash(rand());
+		//	$query = $this->db->get_where($this->table, array('email_verification_hash'=>$this->get_hash($code)));
+		//	$found = $query->num_rows === 0;
+			$found = TRUE; // TEMP
+		}
+		return $code;
 	}
 }

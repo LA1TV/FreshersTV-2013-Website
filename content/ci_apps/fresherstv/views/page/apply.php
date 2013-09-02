@@ -21,7 +21,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 	}
 }
 ?>
-<h2 class="live-in-txt">Application Form</h2>
+<h2>Application Form</h2>
 <?=form_open('apply/submit', array("class"=>"form-horizontal application-form", "role"=>"form", "novalidate"=>"", "enctype"=>"multipart/form-data"));?>
 	<input type="hidden" name="form_submitted" value="1">
 	<p>FreshersTV is the largest Student TV broadcast in the UK, with stations throughout the UK taking part in a three hour collaborative live broadcast showing the very best of Freshers Week content. This year the broadcast will be on <strong>Thursday 24th October starting at 6pm</strong>. Each station will have a <strong>5 minute slot</strong> to showcase the best of their Freshers Week content and any other content they have produced.</p>
@@ -55,30 +55,23 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 		</div>
 	</div>
 	<h3>Station Logo</h3>
-	<p>Please upload the highest quality version you have. If you have it as a photoshop (psd) or illustrator (ai) file this format is preferred.<br />
+	<p>Please upload the highest quality version(s) you have to a file sharing service like <a href="https://mega.co.nz/" target="_blank">https://mega.co.nz/</a> and provide the full url. If you have it as a photoshop (psd) or illustrator (ai) file this format is preferred.<br />
 	Please try and send us a version with an alpha channel.<br />
-	The file formats we accept are "psd", "ai", "jpeg", "jpg", "tiff", "bmp" and "png".</p>
+	The file formats we accept are "psd", "ai", "jpeg", "jpg", "tiff", "bmp" and "png".<br />
+	The file must remain accessible for at least 10 days after submitting the application and should not require a login in order for us to access it.</p>
 	<p>The secondary logo is for another version of your logo which is of a different aspect ratio or design. This is optional.</p>
 	<div class="form-group <?=get_error_class($form_errors, "main_logo");?>">
-		<label for="form-main-logo" class="col-lg-2 control-label">Main Station Logo</label>
+		<label for="form-main-logo" class="col-lg-2 control-label">Main Logo Url</label>
 		<div class="col-lg-10">
-<?php if ($form['show_main_logo_input']): ?>
-			<input type="file" class="form-control logo-file-input" name="main_logo" id="form-main-logo">
+			<input type="url" class="form-control" name="main_logo" id="form-main-logo" value="<?=htmlent($form['main_logo'])?>">
 			<?=get_error_msg($form_errors, "main_logo");?>
-<?php else: ?>
-			<input type="text" class="form-control" id="form-main-logo" readonly="readonly" value="[We have already received this logo.]">
-<?php endif; ?>
 		</div>
 	</div>
 	<div class="form-group <?=get_error_class($form_errors, "secondary_logo");?>">
-		<label for="form-secondary-logo" class="col-lg-2 control-label">Secondary Logo (optional)</label>
+		<label for="form-secondary-logo" class="col-lg-2 control-label">Secondary Logo Url (optional)</label>
 		<div class="col-lg-10">
-<?php if ($form['show_secondary_logo_input']): ?>
-			<input type="file" class="form-control logo-file-input" name="secondary_logo" id="form-secondary-logo">
+			<input type="url" class="form-control" name="secondary_logo" id="form-secondary-logo" value="<?=htmlent($form['secondary_logo'])?>">
 			<?=get_error_msg($form_errors, "secondary_logo");?>
-<?php else: ?>
-			<input type="text" class="form-control" id="form-secondary-logo" readonly="readonly" value="[We have already received this logo.]">
-<?php endif; ?>
 		</div>
 	</div>
 	<h3>Your Participation</h3>
