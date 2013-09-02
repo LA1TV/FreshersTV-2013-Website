@@ -39,7 +39,7 @@ $this->load->helper("security");
 	<div class="form-group">
 		<label for="form-main-logo" class="col-lg-2 control-label">Main Station Logo</label>
 		<div class="col-lg-10">
-			<input type="file" class="form-control logo-file-input" name="main_logo" class="logo-file-input" id="form-main-logo">
+			<input type="file" class="form-control logo-file-input" name="main_logo" id="form-main-logo">
 		</div>
 	</div>
 	<div class="form-group">
@@ -123,7 +123,7 @@ $this->load->helper("security");
 	<div class="form-group">
 		<div class="col-lg-offset-2 col-lg-10">
 			<label for="form-overlay-details">Will you be overlaying any graphics on your stream/VT? This includes any graphics in the VT render. If so please provide as much detail as possible below. We will get back to you if there are any issues.</label>
-			<textarea class="form-control" rows="3" id="form-overlay-details" name="overlay_details" style="resize: vertical;" value="<?=htmlent($form['overlay_details'])?>"></textarea>
+			<textarea class="form-control" rows="3" id="form-overlay-details" name="overlay_details" style="resize: vertical;"><?=htmlent($form['overlay_details'])?></textarea>
 		</div>
 	</div>
 	<h3>Login Details</h3>
