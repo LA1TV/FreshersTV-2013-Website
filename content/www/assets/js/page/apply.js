@@ -55,6 +55,10 @@ $(document).ready(function() {
 // handle form submission
 $(document).ready(function() {
 	$("#page-apply .application-form").submit(function() {
-		return confirm("Are you sure you are ready to submit your application?\n\nAfter this you will no longer be able to make any changes.");
+		if (confirm("Are you sure you are ready to submit your application?\n\nAfter this you will no longer be able to make any changes.")) {
+			pageNavigationEnabled = true;
+			return true;
+		}
+		return false;
 	});
 });
