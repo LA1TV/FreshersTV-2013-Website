@@ -6,8 +6,11 @@ class Apply extends CI_Controller {
 	{
 		$form = array(
 			"name"					=>	"",
+			"contact"				=>	"",
 			"email"					=>	"",
 			"email_confirmation"	=>	"",
+			"postcode"				=>	"",
+			"phone"					=>	"",
 			"main_logo"				=>	"",
 			"secondary_logo"		=>	"",
 			"email_confirmation"	=>	"",
@@ -34,8 +37,11 @@ class Apply extends CI_Controller {
 		
 		$form = array(
 			"name"					=>	$this->_get_post_str("name"),
+			"contact"				=>	$this->_get_post_str("contact"),
 			"email"					=>	$this->_get_post_str("email"),
 			"email_confirmation"	=>	$this->_get_post_str("email_confirmation"),
+			"postcode"				=>	$this->_get_post_str("postcode"),
+			"phone"					=>	$this->_get_post_str("phone"),
 			"main_logo"				=>	$this->_get_post_str("main_logo"),
 			"secondary_logo"		=>	$this->_get_post_str("secondary_logo"),
 			"participation_type"	=>	$this->_get_post_str("participation_type"),
@@ -55,7 +61,7 @@ class Apply extends CI_Controller {
 		$participation_time_ids = array("1800", "1815", "1830", "1845", "1900", "1915", "1930", "1945", "2000", "2015", "2030", "2045", "2100", "2115", "2130", "2145");
 		
 		// check that required fields filled in and not over limit
-		$fields_to_check = array("name", "email", "email_confirmation", "main_logo", "overlay_details", "password", "password_confirmation");
+		$fields_to_check = array("name", "contact", "email", "email_confirmation", "postcode", "phone", "main_logo", "overlay_details", "password", "password_confirmation");
 		if ($form['participation_type'] === "live") {
 			$fields_to_check = array_merge($fields_to_check, array("resolution", "bitrate"));
 		}
@@ -123,7 +129,10 @@ class Apply extends CI_Controller {
 			$email_verification_code = $this->applications->generate_verification_code();
 			$data = array(
 				"name"					=>	$form['name'],
+				"contact"				=>	$form['contact'],
 				"email"					=>	$form['email'],
+				"postcode"				=>	$form['postcode'],
+				"phone"					=>	$form['phone'],
 				"main_logo"				=>	$form['main_logo'],
 				"secondary_logo"		=>	strlen($form['secondary_logo']) !== 0 ? $form['secondary_logo'] : NULL,
 				"participation_type"	=>	$form['participation_type'] === "live" ? 0 : 1,
@@ -136,6 +145,9 @@ class Apply extends CI_Controller {
 				"email_verificatiion_hash"	=>	$this->applications->get_hash($email_verification_code),
 				"email_verified"		=>	FALSE
 			);
+			
+			//TODO: check that there isn't already an application that has been verified with this e-mail address.
+			
 			// write the application to the db
 			$this->applications->add_application($data);
 			
@@ -152,6 +164,21 @@ class Apply extends CI_Controller {
 			$html = $this->load->view('page/apply', array("form"=>$form, "form_errors"=>$form_errors), TRUE);
 			$this->load->view('page', array("current_page"=>"apply", "css"=>array(), "js"=>array("apply"), "html"=>$html), FALSE);
 		}
+	}
+	
+	function verifyemail() {
+	
+		$this->load->model("applications");
+		$code = $this->input->get("code");
+		if ($code === FALSE) {
+			$state = 2;
+		}
+		else {
+			$state = $this->applications->verify_email($code);
+		}
+		
+		$html = $this->load->view('page/email_verification', array("state"=>$state), TRUE);
+		$this->load->view('page', array("current_page"=>"email_verification", "css"=>array(), "js"=>array(), "html"=>$html, "no_index"=>TRUE), FALSE);
 	}
 	
 	private function _get_post_str($field)

@@ -47,4 +47,31 @@ class Applications extends CI_Model {
 		}
 		return $code;
 	}
+	
+	// returns 0 if email was verified, 1 if email was already verified or 2 if link invalid or link not allowed because another one already used
+	function verify_email($code) {
+		
+		//TEMP
+		return 2;
+	
+		// check if key exists
+		$query = $this->db->get_where($this->table, array('email_verification_hash'=>$this->get_hash($code)));
+		if ($query->num_rows() !== 1)
+		{
+			return 2;
+		}
+		$row = $query->row();
+		if ($row->verified) {
+			return 1;
+		}
+		// check if the email corresponding to the key is not already verified with a different key
+		$query2 = $this->db->get_where($this->table, array('email'=>$row->email, 'email_verified'=>TRUE));
+		if ($query2->num_rows() !== 0)
+		{
+			return 2;
+		}
+		// update db
+		$this->db->update($this->table, array('email_verified'=>TRUE), array("id"=>$row->id));
+		return 0;
+	}
 }

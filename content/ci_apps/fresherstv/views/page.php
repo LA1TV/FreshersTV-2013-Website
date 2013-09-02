@@ -1,4 +1,9 @@
 <?php
+
+if (!isset($no_index)) {
+	$no_index = FALSE;
+}
+
 $this->load->helper("security");
 
 $pages = array(
@@ -18,6 +23,10 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<?php if ($no_index):?>
+		<!-- Prevent search engines from indexing this page. -->
+		<meta name="robots" content="noindex">
+<?php endif; ?>
 
         <title>LA1:TV Presents FreshersTV 2013</title>
 
@@ -53,6 +62,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
             <script src="./assets/js/html5shiv.js"></script>
             <script src="./assets/js/respond.min.js"></script>
         <![endif]-->
+
     </head>
     <!--
 	    ___       ___       ___       ___       ___   

@@ -14,17 +14,24 @@ var pageNavigationEnabled = false;
 // show/hide relevent parts of form
 $(document).ready(function() {
 	var $el = $("#page-apply .application-form input[name='participation_type']");
-	var $elements = $("#page-apply .application-form .show-if-live");
+	var $liveElements = $("#page-apply .application-form .show-if-live");
+	var $vtElements = $("#page-apply .application-form .show-if-vt");
 	$el.change(function() {
 		update();
 	});
 	
 	function update() {
 		if ($el.filter(":checked").val() == "live") {
-			$elements.show();
+			$vtElements.hide();
+			$liveElements.show();
+		}
+		else if ($el.filter(":checked").val() == "vt") {
+			$liveElements.hide();
+			$vtElements.show();
 		}
 		else {
-			$elements.hide();
+			$liveElements.hide();
+			$vtElements.hide();
 		}
 	}
 	

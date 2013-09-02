@@ -40,6 +40,13 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 			<span class="help-block"><?=get_error_msg($form_errors, "name", TRUE);?>Please enter your name <em>exactly</em> how you want it to appear on the broadcast.</span>
 		</div>
 	</div>
+	<div class="form-group <?=get_error_class($form_errors, "contact");?>">
+		<label for="form-contact" class="col-lg-2 control-label">Lead Contact</label>
+		<div class="col-lg-10">
+			<input type="text" class="form-control" name="contact" id="form-contact" value="<?=htmlent($form['contact'])?>">
+			<?=get_error_msg($form_errors, "contact");?>
+		</div>
+	</div>
 	<div class="form-group <?=get_error_class($form_errors, "email");?>">
 		<label for="form-email" class="col-lg-2 control-label">E-mail Address</label>
 		<div class="col-lg-10">
@@ -52,6 +59,20 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 		<div class="col-lg-10">
 			<input type="email" class="form-control" name="email_confirmation" id="form-email-confirmation" value="<?=htmlent($form['email_confirmation'])?>">
 			<?=get_error_msg($form_errors, "email_confirmation");?>
+		</div>
+	</div>
+	<div class="form-group <?=get_error_class($form_errors, "postcode");?>">
+		<label for="form-postcode" class="col-lg-2 control-label">Postcode</label>
+		<div class="col-lg-10">
+			<input type="text" class="form-control" name="postcode" id="form-postcode" value="<?=htmlent($form['postcode'])?>">
+			<?=get_error_msg($form_errors, "postcode");?>
+		</div>
+	</div>
+	<div class="form-group <?=get_error_class($form_errors, "phone");?>">
+		<label for="form-phone" class="col-lg-2 control-label">Phone No</label>
+		<div class="col-lg-10">
+			<input type="text" class="form-control" name="phone" id="form-phone" value="<?=htmlent($form['phone'])?>">
+			<?=get_error_msg($form_errors, "phone");?>
 		</div>
 	</div>
 	<h3>Station Logo</h3>
@@ -86,6 +107,9 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 			</label>
 			<?=get_error_msg($form_errors, "participation_type");?>
 		</div>
+	</div>
+	<div class="show-if-vt">
+		<p>[INFORMATION ABOUT VT FORMAT HERE]</p>
 	</div>
 	<div class="show-if-live">
 		<p>We will try our best to put every stations' slot within their preferred time however this may not be possible. The ending time of the broadcast will depend on the number of stations taking part.</p>
@@ -154,7 +178,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 	<p>If you will be adding <em>any</em> graphic overlays during your broadcast please let us know. If any of this changes in the future please e-mail us.</p>
 	<div class="form-group <?=get_error_class($form_errors, "overlay_details");?>">
 		<div class="col-lg-offset-2 col-lg-10">
-			<label for="form-overlay-details">Will you be overlaying any graphics on your stream/VT (including any graphics in the VT render) and/or would like the ticker?</label>
+			<label for="form-overlay-details" class="control-label">Will you be overlaying any graphics on your stream/VT (including any graphics in the VT render) and/or would like the ticker?</label>
 			<textarea class="form-control" rows="3" id="form-overlay-details" name="overlay_details" style="resize: vertical;"><?=htmlent($form['overlay_details'])?></textarea>
 			<span class="help-block"><?=get_error_msg($form_errors, "overlay_details", TRUE);?>Please provide as much detail as possible. We will get back to you if there are any issues.</span>
 		</div>
