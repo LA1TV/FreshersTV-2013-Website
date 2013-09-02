@@ -34,7 +34,7 @@ $(document).ready(function() {
 
 // show/hide relevent parts of form
 $(document).ready(function() {
-	var $el = $("#page-apply .application-form input[name='participation-type']");
+	var $el = $("#page-apply .application-form input[name='participation_type']");
 	var $elements = $("#page-apply .application-form .show-if-live");
 	$el.change(function() {
 		update();

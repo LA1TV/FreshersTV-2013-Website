@@ -7,6 +7,14 @@ $(document).ready(function() {
 		clockFace: "DailyCounter"
 	});
 	
+	// make sure stays sync with clock
+	setInterval(function() {
+	var secondsToStart = getSecondsToStart();
+		if (countdown.getTime().time !== secondsToStart) {
+			countdown.setTime(secondsToStart);
+		}
+	}, 300000);
+	
 	var $container = $el.closest(".countdown-timer-container").first();
 	var $scaleContainer = $el.closest(".scale-container").first();
 	var $secondaryContainer = $el.closest(".secondary-container").first();
