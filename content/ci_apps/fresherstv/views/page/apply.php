@@ -1,12 +1,14 @@
 <?php
 $this->load->helper("form");
+$this->load->helper("security");
 ?>
 <h2 class="live-in-txt">Application Form</h2>
 <?=form_open('apply/submit', array("class"=>"form-horizontal application-form", "role"=>"form", "novalidate"=>""));?>
+	<input type="hidden" name="form_submitted" value="1">
 	<p>FreshersTV is the largest Student TV broadcast in the UK, with stations throughout the UK taking part in a three hour collaborative live broadcast showing the very best of Freshers Week content. This year the broadcast will be on <strong>Thursday 24th October starting at 6pm</strong>. Each station will have a <strong>5 minute slot</strong> to showcase the best of their Freshers Week content and any other content they have produced.</p>
 	<p>If you are taking part by submitting a VT please ensure it is <strong>between 4:30 and 5 minutes</strong> in length. Entries outside of these limits may be refused.</p>
 	<p>Please answer all the questions below to help us make sure that this years broadcast can accommodate as many stations as possible and show off your content in the best possible way. If you require any further information please email Chris Osborn at <a href="mailto:c.osborn@la1tv.co.uk" target="_blank">c.osborn@la1tv.co.uk</a> or Rachel Hughes at <a href="mailto:r.hughes@la1tv.co.uk" target="_blank">r.hughes@la1tv.co.uk</a>.</p>
-	<p>If you have any technical issues or enquiries please contact <a href="mailto:development@la1tv.co.uk" taget="_blank">development@la1tv.co.uk</a>.
+	<p>If you have any technical issues or enquiries please contact <a href="mailto:development@la1tv.co.uk" target="_blank">development@la1tv.co.uk</a>.
 	<p><strong>You can only submit this form once for your stations e-mail address.</strong></p>
 	<h3>Station Details</h3>
 	<div class="form-group">
@@ -26,7 +28,7 @@ $this->load->helper("form");
 	<div class="form-group">
 		<label for="form-email-confirmation" class="col-lg-2 control-label">Re-enter E-mail Address</label>
 		<div class="col-lg-10">
-			<input type="email" class="form-control" name="email_confirmation" id="form-email-confirmation" value="<?=htmlent($form['name_confirmation'])?>">
+			<input type="email" class="form-control" name="email_confirmation" id="form-email-confirmation" value="<?=htmlent($form['email_confirmation'])?>">
 		</div>
 	</div>
 	<h3>Logo</h3>
@@ -51,10 +53,10 @@ $this->load->helper("form");
 		<label class="col-lg-2 control-label">How will you be taking part?</label>
 		<div class="col-lg-10">
 			<label class="radio-inline">
-				<input type="radio" name="participation-type" value="live"> Live
+				<input type="radio" name="participation-type" value="live" <?php if($form['participation_type'] == "live"):echo('checked="checked"');endif;?>> Live
 			</label>
 			<label class="radio-inline">
-				<input type="radio" name="participation-type" value="vt"> VT
+				<input type="radio" name="participation-type" value="vt" <?php if($form['participation_type'] == "vt"):echo('checked="checked"');endif;?>> VT
 			</label>
 		</div>
 	</div>
@@ -63,24 +65,32 @@ $this->load->helper("form");
 		<div class="form-group">
 			<label class="col-lg-2 control-label">Your Preferred Time</label>
 			<div class="col-lg-10">
-				<select class="form-control smart-dropdown">
-					<option value="">Choose...</option>
-					<option value="1800">18:00 - 18:15</option>
-					<option value="1815">18:15 - 18:30</option>
-					<option value="1830">18:30 - 18:45</option>
-					<option value="1845">18:45 - 19:00</option>
-					<option value="1900">19:00 - 19:15</option>
-					<option value="1915">19:15 - 19:30</option>
-					<option value="1930">19:30 - 19:45</option>
-					<option value="1945">19:45 - 20:00</option>
-					<option value="2000">20:00 - 20:15</option>
-					<option value="2015">20:15 - 20:30</option>
-					<option value="2030">20:30 - 20:45</option>
-					<option value="2045">20:45 - 21:00</option>
-					<option value="2100">21:00 - 21:15</option>
-					<option value="2115">21:15 - 21:30</option>
-					<option value="2130">21:30 - 21:45</option>
-					<option value="2145">21:45 - 22:00</option>
+				<select class="form-control smart-dropdown" name="preferred_time">
+<?php
+	$values = array(
+		array("", "Choose..."),
+		array("1800", "18:00 - 18:15"),
+		array("1815", "18:15 - 18:30"),
+		array("1830", "18:30 - 18:45"),
+		array("1845", "18:45 - 19:00"),
+		array("1900", "19:00 - 19:15"),
+		array("1915", "19:15 - 19:30"),
+		array("1930", "19:30 - 19:45"),
+		array("1945", "19:45 - 20:00"),
+		array("2000", "20:00 - 20:15"),
+		array("2015", "20:15 - 20:30"),
+		array("2030", "20:30 - 20:45"),
+		array("2045", "20:45 - 21:00"),
+		array("2100", "21:00 - 21:15"),
+		array("2115", "21:15 - 21:30"),
+		array("2130", "21:30 - 21:45"),
+		array("2145", "21:45 - 22:00")
+	);
+	
+	foreach($values as $a):
+?>
+					<option value="<?=htmlent($a[0])?>" <?php if($form['preferred_time'] == $a[0]):echo('selected="selected"');endif;?>><?=htmlent($a[1])?></option>
+<?php endforeach; ?>
 				</select>
 			</div>
 		</div>
@@ -112,7 +122,7 @@ $this->load->helper("form");
 	<p>[Description here about our graphics and what is allowed and social media scroller.]
 	<div class="form-group">
 		<div class="col-lg-offset-2 col-lg-10">
-			<label for="form-overlay-details">Will you be overlaying any graphics on your stream/VT? If so please provide as much detail as possible below. We will get back to you if there are any issues.</label>
+			<label for="form-overlay-details">Will you be overlaying any graphics on your stream/VT? This includes any graphics in the VT render. If so please provide as much detail as possible below. We will get back to you if there are any issues.</label>
 			<textarea class="form-control" rows="3" id="form-overlay-details" name="overlay_details" style="resize: vertical;" value="<?=htmlent($form['overlay_details'])?>"></textarea>
 		</div>
 	</div>
