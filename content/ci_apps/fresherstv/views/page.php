@@ -9,7 +9,7 @@ $this->load->helper("security");
 $pages = array(
 	array("home", "Home"),
 	array("about", "About"),
-	array("fresherstv2012", "Freshers TV 2012")
+	array("fresherstv2012", "FreshersTV 2012")
 );
 
 // fix for ie
@@ -86,7 +86,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a href="<?=base_url();?>" class="navbar-brand">Freshers TV</a>
+                    <a href="<?=base_url();?>" class="navbar-brand">FreshersTV</a>
 
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-main">

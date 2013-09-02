@@ -25,10 +25,9 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 <?=form_open('apply/submit', array("class"=>"form-horizontal application-form", "role"=>"form", "novalidate"=>"", "enctype"=>"multipart/form-data"));?>
 	<input type="hidden" name="form_submitted" value="1">
 	<p>FreshersTV is the largest Student TV broadcast in the UK, with stations throughout the UK taking part in a three hour collaborative live broadcast showing the very best of Freshers Week content. This year the broadcast will be on <strong>Thursday 24th October starting at 6pm</strong>. Each station will have a <strong>5 minute slot</strong> to showcase the best of their Freshers Week content and any other content they have produced.</p>
-	<p>If you are taking part by submitting a VT please ensure it is <strong>between 4:30 and 5 minutes</strong> in length. Entries outside of these limits may be refused.</p>
 	<p>Please answer all the questions below to help us make sure that this years broadcast can accommodate as many stations as possible and show off your content in the best possible way. If you require any further information please email Chris Osborn at <a href="mailto:c.osborn@la1tv.co.uk" target="_blank">c.osborn@la1tv.co.uk</a> or Rachel Hughes at <a href="mailto:r.hughes@la1tv.co.uk" target="_blank">r.hughes@la1tv.co.uk</a>.</p>
 	<p>If you have any technical issues or enquiries please contact <a href="mailto:development@la1tv.co.uk" target="_blank">development@la1tv.co.uk</a>.
-	<p><strong>You can only submit this form once for your stations e-mail address.</strong></p>
+	<p><strong>You can only submit this form once for your stations e-mail address and your station must be affiliated with NaSTA.</strong></p>
 <?php if (count($form_errors) !== 0) : ?>
 	<div class="alert alert-danger">There <?php if(count($form_errors) === 1):echo("is");else:echo("are");endif;?> <?=count($form_errors)?> <?php if(count($form_errors) === 1):echo("error");else:echo("errors");endif;?> that need to be fixed before you can submit this form. <?php if(count($form_errors) === 1):echo("It has");else:echo("They have");endif;?> been highlighted.</div>
 <?php endif; ?>
@@ -109,7 +108,8 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 		</div>
 	</div>
 	<div class="show-if-vt">
-		<p>[INFORMATION ABOUT VT FORMAT HERE]</p>
+		<p>Please ensure that your VT is <em>between 4:30 and 5 minutes</em> in length. Entries outside of these limits may be refused.</p>
+		<p>[MORE INFORMATION ABOUT VT FORMAT HERE]</p>
 	</div>
 	<div class="show-if-live">
 		<p>We will try our best to put every stations' slot within their preferred time however this may not be possible. The ending time of the broadcast will depend on the number of stations taking part.</p>
