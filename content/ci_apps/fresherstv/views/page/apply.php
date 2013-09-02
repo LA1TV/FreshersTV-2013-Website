@@ -149,12 +149,14 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 		</div>
 	</div>
 	<h3>Graphic Overlays</h3>
-	<p>[Description here about our graphics and what is allowed and social media scroller.]
+	<p>We will have a FreshersTV bug ovelaid on the top left corner of the screen throghout the entire show and also lower thirds for each station which we will show during the first 30 seconds of each broadcast.</p>
+	<p>At several times during the show we will be showing facebook posts and tweets on a ticker at the bottom of the screen. We will not overlay this over your stations broadcast by default but if you would like this over your feed please tell us when you want it starting/stopping via the comms system during your section. Please note that it could take up to 30 seconds for the ticker to have completely animated out and we may choose not to show the ticker at all. If you are not streaming live then please let us know in the box below if you would like this over your VT.</p>
+	<p>If you will be adding <em>any</em> graphic overlays during your broadcast please let us know. If any of this changes in the future please e-mail us.</p>
 	<div class="form-group <?=get_error_class($form_errors, "overlay_details");?>">
 		<div class="col-lg-offset-2 col-lg-10">
-			<label for="form-overlay-details">Will you be overlaying any graphics on your stream/VT? This includes any graphics in the VT render. If so please provide as much detail as possible below. We will get back to you if there are any issues.</label>
+			<label for="form-overlay-details">Will you be overlaying any graphics on your stream/VT (including any graphics in the VT render) and/or would like the ticker?</label>
 			<textarea class="form-control" rows="3" id="form-overlay-details" name="overlay_details" style="resize: vertical;"><?=htmlent($form['overlay_details'])?></textarea>
-			<?=get_error_msg($form_errors, "overlay_details");?>
+			<span class="help-block"><?=get_error_msg($form_errors, "overlay_details", TRUE);?>Please provide as much detail as possible. We will get back to you if there are any issues.</span>
 		</div>
 	</div>
 	<h3>Login Details</h3>

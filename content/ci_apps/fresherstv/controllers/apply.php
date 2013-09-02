@@ -54,7 +54,7 @@ class Apply extends CI_Controller {
 		$participation_type_ids = array("live", "vt");
 		$participation_time_ids = array("1800", "1815", "1830", "1845", "1900", "1915", "1930", "1945", "2000", "2015", "2030", "2045", "2100", "2115", "2130", "2145");
 		
-		// check that required fields filled in
+		// check that required fields filled in and not over limit
 		$fields_to_check = array("name", "email", "email_confirmation", "main_logo", "overlay_details", "password", "password_confirmation");
 		if ($form['participation_type'] === "live") {
 			$fields_to_check = array_merge($fields_to_check, array("resolution", "bitrate"));
@@ -67,6 +67,9 @@ class Apply extends CI_Controller {
 				else {
 					$form_errors[$a] = "This field was required.";
 				}
+			}
+			else if (strlen($form[$a]) > 1000) {
+				$form_errors[$a] = "You are not allowed more than 1000 characters.";
 			}
 		}
 		
