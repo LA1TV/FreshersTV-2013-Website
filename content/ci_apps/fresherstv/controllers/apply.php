@@ -146,7 +146,8 @@ class Apply extends CI_Controller {
 				"email_verified"		=>	FALSE
 			);
 			
-			//TODO: check that there isn't already an application that has been verified with this e-mail address.
+			// at the moment even if an application has been sent and email verified the form will still be submitted successfully. When they try and validate the email it will fail
+			// might as well leave this so that the info still makes it into the database instead of just rejecting it
 			
 			// write the application to the db
 			$this->applications->add_application($data);
