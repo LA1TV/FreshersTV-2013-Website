@@ -26,7 +26,8 @@ class Apply extends CI_Controller {
 			"password_confirmation"	=>	""
 		);
 		
-		$html = $this->load->view('page/apply', array("form"=>$form, "form_errors"=>array()), TRUE);
+		$this->load->library("recaptcha");
+		$html = $this->load->view('page/apply', array("form"=>$form, "form_errors"=>array(), "recaptcha_lib"=>$this->recaptcha), TRUE);
 		$this->load->view('page', array("current_page"=>"apply", "css"=>array(), "js"=>array("apply"), "html"=>$html), FALSE);
 	}
 	
@@ -147,6 +148,12 @@ class Apply extends CI_Controller {
 			}
 		}
 		
+		// check captcha
+		$this->load->library("recaptcha");
+		if (!$this->recaptcha->is_response_valid()) {
+			$form_errors["captcha"] = "This was invalid.";
+		}
+		
 		if (count($form_errors) === 0) {
 			// everything valid. write to database and send verification e-mail
 			$this->load->model("applications");
@@ -188,7 +195,8 @@ class Apply extends CI_Controller {
 		}
 		else {
 			// there are problems. show the form again.
-			$html = $this->load->view('page/apply', array("form"=>$form, "form_errors"=>$form_errors), TRUE);
+			$this->load->library("recaptcha");
+			$html = $this->load->view('page/apply', array("form"=>$form, "form_errors"=>$form_errors, "recaptcha_lib"=>$this->recaptcha), TRUE);
 			$this->load->view('page', array("current_page"=>"apply", "css"=>array(), "js"=>array("apply"), "html"=>$html), FALSE);
 		}
 	}

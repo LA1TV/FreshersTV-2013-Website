@@ -157,6 +157,8 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 		<h3>Stream Details</h3>
 		<p>Please tell us the details of your stream to us.</p>
 		<p>Please note that the broadcast will be in 720p at around 2 mbps. Resolutions and bit rates that match this will produce the best viewing quality. Resolutions which are not 16:9 may appear distorted on the broadcast.</p>
+		<p>We are not responsible for any cropping or distortion if your stream does not follow these guidelines.</p>
+		<p>If you are unable to stream in 16:9 please provide as much information as possible in the "Extra Information" box and we will get back to you.</p>
 		<div class="form-group <?=get_error_class($form_errors, "resolution");?>">
 			<label for="form-resolution" class="col-lg-2 control-label">Resolution</label>
 			<div class="col-lg-10">
@@ -205,7 +207,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 		<li>Station CineBeat video.</li>
 	</ul>
 	<p>We would like to make these a little more individual to each station and more fun for the viewers. To do this we would like each station to create and send us a CineBeat video. These are short music videos create from clips recorded on an iPhone or iPad using a free app. We would like you to include the name of your station and the word FreshersTV in your video but everything else is up to you. This map will be launched a couple of days ahead of the broadcast to help publicise the event and let viewers know what time each station is on.</p>
-	<p>The CineBeat app can be found at "<a href="https://itunes.apple.com/gb/app/cinebeat-by-smule/id562793878" target="_bank">https://itunes.apple.com/gb/app/cinebeat-by-smule/id562793878</a>".</p>
+	<p>The CineBeat app can be found at "<a href="https://itunes.apple.com/gb/app/cinebeat-by-smule/id562793878" target="_blank">https://itunes.apple.com/gb/app/cinebeat-by-smule/id562793878</a>".</p>
 	<div class="form-group <?=get_error_class($form_errors, "cinebeat");?>">
 		<label for="form-cinebeat" class="col-lg-2 control-label">CineBeat Video Url</label>
 		<div class="col-lg-10">
@@ -235,6 +237,18 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 		<div class="col-lg-10">
 			<input type="password" class="form-control" name="password_confirmation" id="form-password-confirmation"/>
 			<?=get_error_msg($form_errors, "password_confirmation");?>
+		</div>
+	</div>
+	<h3>Security Check</h3>
+	<div class="form-group <?=get_error_class($form_errors, "captcha");?>">
+		<div class="col-lg-offset-2 col-lg-10">
+			<label for="form-captcha" class="control-label">Please enter the text in the captcha below to verify that you are a human.</label>
+			<div id="form-captcha">
+<?php
+	echo($recaptcha_lib->get_html());
+?>
+			</div>
+			<?=get_error_msg($form_errors, "captcha");?>
 		</div>
 	</div>
 	<div class="form-group">

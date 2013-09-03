@@ -141,7 +141,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
         <!-- =======[Footer]======= -->
         <footer id="footer">
             <div class="container">
-                <p class="muted credit">Designed and built by Luke Moscrop &amp; Tom Jenkinson</p>
+                <p class="muted credit">Designed and built by Luke Moscrop &amp; Tom Jenkinson.</p>
                 <ul class="footer-links">
                     <li>
                         <a href="http://nasta.tv/" target="_blank">Nasta.tv</a>
