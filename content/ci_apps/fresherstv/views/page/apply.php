@@ -61,10 +61,10 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 		</div>
 	</div>
 	<div class="form-group <?=get_error_class($form_errors, "postcode");?>">
-		<label for="form-postcode" class="col-lg-2 control-label">Postcode</label>
+		<label for="form-postcode" class="col-lg-2 control-label">Station Postcode</label>
 		<div class="col-lg-10">
 			<input type="text" class="form-control" name="postcode" id="form-postcode" value="<?=htmlent($form['postcode'])?>">
-			<?=get_error_msg($form_errors, "postcode");?>
+			<span class="help-block"><?=get_error_msg($form_errors, "postcode", TRUE);?>This will be used to locate your station on a map of all participating stations.</span>
 		</div>
 	</div>
 	<div class="form-group <?=get_error_class($form_errors, "phone");?>">
@@ -75,7 +75,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 		</div>
 	</div>
 	<h3>Station Logo</h3>
-	<p>Please upload the highest quality version(s) you have to a file sharing service like <a href="https://mega.co.nz/" target="_blank">https://mega.co.nz/</a> and provide the full url. If you have it as a photoshop (psd) or illustrator (ai) file this format is preferred.<br />
+	<p>Please upload the highest quality version(s) you have to a file sharing service like "<a href="https://mega.co.nz/" target="_blank">https://mega.co.nz/</a>" or "<a href="https://www.dropbox.com/" target="_blank">https://www.dropbox.com/</a>" and provide the full url. If you have it as a photoshop (psd) or illustrator (ai) file this format is preferred.<br />
 	Please try and send us a version with an alpha channel.<br />
 	The file formats we accept are "psd", "ai", "jpeg", "jpg", "tiff", "bmp" and "png".<br />
 	The file must remain accessible for at least 10 days after submitting the application and should not require a login in order for us to access it.</p>
@@ -109,8 +109,14 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 	</div>
 	<div class="show-if-vt">
 		<p>Please ensure that your VT is <em>between 4:30 and 5 minutes</em> in length. Entries outside of these limits may be refused.</p>
-		<p>[MORE INFORMATION ABOUT VT FORMAT HERE]</p>
 	</div>
+	<p>Your VT will need to be sent to us nearer the day (whether you are participating live or not) and these our the requirments:</p>
+	<ul>
+		<li>Must use the h.264 codec.</li>
+		<li>Must have a resolution of either 1920x1080, 1080x720 or 1024x576.</li>
+		<li>Must have a frame rate of either 25fps or 50fps.</li>
+		<li>Must be progressive, not interlaced.</li>
+	</ul>
 	<div class="show-if-live">
 		<p>We will try our best to put every stations' slot within their preferred time however this may not be possible. The ending time of the broadcast will depend on the number of stations taking part.</p>
 		<div class="form-group <?=get_error_class($form_errors, "participation_time");?>">
@@ -165,6 +171,13 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 				<?=get_error_msg($form_errors, "bitrate");?>
 			</div>
 		</div>
+		<div class="form-group <?=get_error_class($form_errors, "stream_url");?>">
+			<label for="form-stream-url" class="col-lg-2 control-label">RMTP Stream Url</label>
+			<div class="col-lg-10">
+				<input type="text" class="form-control" id="form-stream-url" name="stream_url" value="<?=htmlent($form['stream_url'])?>"/>
+				<span class="help-block"><?=get_error_msg($form_errors, "stream_url", TRUE);?>This is what we will connect to to access your stream. E.g. "rtmp://dtu-fmis.lancs.ac.uk/la1tv_live/_definst_" is ours. You can leave this blank if you do not have this information at this time.</span>
+			</div>
+		</div>
 		<div class="form-group <?=get_error_class($form_errors, "stream_extra");?>">
 			<label for="form-stream-extra" class="col-lg-2 control-label">Extra Information (optional)</label>
 			<div class="col-lg-10">
@@ -181,6 +194,23 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 			<label for="form-overlay-details" class="control-label">Will you be overlaying any graphics on your stream/VT (including any graphics in the VT render) and/or would like the ticker?</label>
 			<textarea class="form-control" rows="3" id="form-overlay-details" name="overlay_details" style="resize: vertical;"><?=htmlent($form['overlay_details'])?></textarea>
 			<span class="help-block"><?=get_error_msg($form_errors, "overlay_details", TRUE);?>Please provide as much detail as possible. We will get back to you if there are any issues.</span>
+		</div>
+	</div>
+	<h3>CineBeat Video</h3>
+	<p>We are creating an interactive map of all of the participating stations to show viewers where they are and what time they are on. There will be a pin for each station which will show the following information when clicked:</p>
+	<ul>
+		<li>Station name.</li>
+		<li>Station logo.</li>
+		<li>Broadcast time slot.</li>
+		<li>Station CineBeat video.</li>
+	</ul>
+	<p>We would like to make these a little more individual to each station and more fun for the viewers. To do this we would like each station to create and send us a CineBeat video. These are short music videos create from clips recorded on an iPhone or iPad using a free app. We would like you to include the name of your station and the word FreshersTV in your video but everything else is up to you. This map will be launched a couple of days ahead of the broadcast to help publicise the event and let viewers know what time each station is on.</p>
+	<p>The CineBeat app can be found at "<a href="https://itunes.apple.com/gb/app/cinebeat-by-smule/id562793878" target="_bank">https://itunes.apple.com/gb/app/cinebeat-by-smule/id562793878</a>".</p>
+	<div class="form-group <?=get_error_class($form_errors, "cinebeat");?>">
+		<label for="form-cinebeat" class="col-lg-2 control-label">CineBeat Video Url</label>
+		<div class="col-lg-10">
+			<input type="url" class="form-control" name="cinebeat" id="form-cinebeat" value="<?=htmlent($form['cinebeat'])?>">
+			<?=get_error_msg($form_errors, "cinebeat");?>
 		</div>
 	</div>
 	<h3>Login Details</h3>

@@ -18,8 +18,10 @@ class Apply extends CI_Controller {
 			"participation_time"		=>	"",
 			"resolution"			=>	"",
 			"bitrate"				=>	"",
+			"stream_url"			=>	"",
 			"stream_extra"			=>	"",
 			"overlay_details"		=>	"",
+			"cinebeat"				=>	"",
 			"password"				=>	"",
 			"password_confirmation"	=>	""
 		);
@@ -48,8 +50,10 @@ class Apply extends CI_Controller {
 			"participation_time"	=>	$this->_get_post_str("participation_time"),
 			"resolution"			=>	$this->_get_post_str("resolution"),
 			"bitrate"				=>	$this->_get_post_str("bitrate"),
+			"stream_url"			=>	$this->_get_post_str("stream_url"),
 			"stream_extra"			=>	$this->_get_post_str("stream_extra"),
 			"overlay_details"		=>	$this->_get_post_str("overlay_details"),
+			"cinebeat"				=>	$this->_get_post_str("cinebeat"),
 			"password"				=>	$this->_get_post_str("password"),
 			"password_confirmation"	=>	$this->_get_post_str("password_confirmation")
 		);
@@ -60,8 +64,8 @@ class Apply extends CI_Controller {
 		$participation_type_ids = array("live", "vt");
 		$participation_time_ids = array("1800", "1815", "1830", "1845", "1900", "1915", "1930", "1945", "2000", "2015", "2030", "2045", "2100", "2115", "2130", "2145");
 		
-		// check that required fields filled in and not over limit
-		$fields_to_check = array("name", "contact", "email", "email_confirmation", "postcode", "phone", "main_logo", "overlay_details", "password", "password_confirmation");
+		// check that required fields
+		$fields_to_check = array("name", "contact", "email", "email_confirmation", "postcode", "phone", "main_logo", "cinebeat", "password", "password_confirmation");
 		if ($form['participation_type'] === "live") {
 			$fields_to_check = array_merge($fields_to_check, array("resolution", "bitrate"));
 		}
@@ -74,7 +78,15 @@ class Apply extends CI_Controller {
 					$form_errors[$a] = "This field was required.";
 				}
 			}
-			else if (strlen($form[$a]) > 1000) {
+		}
+		
+		// check that fields not over character limit
+		$fields_to_check = array("name", "contact", "email", "email_confirmation", "postcode", "phone", "main_logo", "cinebeat", "secondary_logo", "overlay_details", "password", "password_confirmation");
+		if ($form['participation_type'] === "live") {
+			$fields_to_check = array_merge($fields_to_check, array("resolution", "bitrate", "stream_url", "stream_extra"));
+		}
+		foreach($fields_to_check as $a) {
+			if (strlen($form[$a]) > 1000) {
 				$form_errors[$a] = "You are not allowed more than 1000 characters.";
 			}
 		}
@@ -111,6 +123,18 @@ class Apply extends CI_Controller {
 			}
 		}
 		
+		if (!isset($form_errors['stream_url']) && $form['participation_type'] === "live" && strlen($form['stream_url']) > 0) {
+			if (!filter_var($form['stream_url'], FILTER_VALIDATE_URL)) {
+				$form_errors["stream_url"] = "This is not a valid url.";
+			}
+		}
+		
+		if (!isset($form_errors['cinebeat'])) {
+			if (!filter_var($form['cinebeat'], FILTER_VALIDATE_URL)) {
+				$form_errors["cinebeat"] = "This is not a valid url.";
+			}
+		}
+		
 		if (!isset($form_errors['password'])) {
 			if (strlen($form['password']) < 8 || !preg_match('#[0-9]#', $form['password']) || !preg_match('#[a-zA-Z]#', $form['password'])) {
 				$form_errors["password"] = "The password you entered did not meet the password requirments.";
@@ -139,8 +163,10 @@ class Apply extends CI_Controller {
 				"participation_time"	=>	$form['participation_type'] === "live" ? (int) $this->_get_post_str("participation_time") : NULL,
 				"resolution"			=>	$form['participation_type'] === "live" ? $form['resolution'] : NULL,
 				"bitrate"				=>	$form['participation_type'] === "live" ? $form['bitrate'] : NULL,
+				"stream_url"			=>	$form['participation_type'] === "live" ? strlen($form['stream_url']) !== 0 ? $form['stream_url'] : NULL : NULL,
 				"stream_extra"			=>	$form['participation_type'] === "live" ? strlen($form['stream_extra']) !== 0 ? $form['stream_extra'] : NULL : NULL,
 				"overlay_details"		=>	$form['overlay_details'],
+				"cinebeat"				=>	$form['cinebeat'],
 				"password"				=>	$this->applications->get_hash($form['password']),
 				"email_verificatiion_hash"	=>	$this->applications->get_hash($email_verification_code),
 				"email_verified"		=>	FALSE
