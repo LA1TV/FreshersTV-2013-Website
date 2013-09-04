@@ -5,7 +5,7 @@
 	// setup the youtube player
 	var setUpYoutube = function() {
 		$("#page-home .promo-vid-container .player-placeholder").tubeplayer({
-			initialVideo: "-pU0th9tDHg",
+			initialVideo: "WUV6TDgt-Ac",
 			shoRelated: false,
 			autoPlay: true,
 			playsinline: true, //iPad
