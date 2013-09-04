@@ -17,11 +17,6 @@
 		});
 	};
 
-
-
-
-
-
 	// end of promo animation
 	var setUpAnimation = function() {
 
