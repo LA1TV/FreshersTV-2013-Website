@@ -43,6 +43,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
 		
         <!-- Load JS  -->
         <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/embed-facebook.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/embed-twitter.js" type="text/javascript"></script>
@@ -50,6 +51,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
         <script src="<?=base_url();?>assets/js/flipclock/libs/prefixfree.min.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/flipclock/flipclock.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/flipclock/faces/DailyCounter.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/tube-player.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/smart-dropdown.js" type="text/javascript"></script>
 		
 		<!-- Load page specific JS -->

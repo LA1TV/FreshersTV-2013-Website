@@ -15,6 +15,13 @@
 	text-align: center;
 }
 
+/* this is necessary for animation to work as this means top margin on text is contained in div and does not overhang */
+#page-home .countdown-timer-outer-container {
+	display: inline-block;
+	width: 100%;
+	clear: both;
+}
+
 #page-home .countdown-timer-container .secondary-container {
 	display: block;
 	margin-left: auto;
