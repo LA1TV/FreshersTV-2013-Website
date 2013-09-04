@@ -33,6 +33,16 @@ class Applications extends CI_Model {
 		return ($row->email_verification_hash === $this->get_hash($code));
 	}
 	
+	function get_hashed_password($id) {
+		$query = $this->db->get_where($this->table, array('id'=>$id));
+		if ($query->num_rows() !== 1)
+		{
+			return FALSE;
+		}
+		$row = $query->row();
+		return $row->password;
+	}
+	
 	function get_hash($input) {
 		return hash('sha512', $this->hash_salt.$input);
 	}

@@ -176,7 +176,8 @@ class Apply extends CI_Controller {
 				"cinebeat"				=>	$form['cinebeat'],
 				"password"				=>	$this->applications->get_hash($form['password']),
 				"email_verificatiion_hash"	=>	$this->applications->get_hash($email_verification_code),
-				"email_verified"		=>	FALSE
+				"email_verified"		=>	FALSE,
+				"application_accepted"	=>	FALSE
 			);
 			
 			// at the moment even if an application has been sent and email verified the form will still be submitted successfully. When they try and validate the email it will fail
