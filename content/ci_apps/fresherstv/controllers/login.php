@@ -7,7 +7,7 @@ class Login extends CI_Controller {
 		if ($this->authentication->get_logged_in()) {
 			// already logged in
 			$html = $this->load->view('page/logged_in', array("already_logged_in"=>TRUE, "next_uri"=>FALSE), TRUE);
-			$this->load->view('page', array("current_page"=>"already_logged_in", "css"=>array(), "js"=>array(), "noindex"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "html"=>$html), FALSE);
+			$this->load->view('page', array("current_page"=>"logged_in", "css"=>array(), "js"=>array(), "noindex"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "html"=>$html), FALSE);
 		}
 		else {
 	
@@ -77,7 +77,7 @@ class Login extends CI_Controller {
 		else {
 			// login successful
 			$html = $this->load->view('page/logged_in', array("already_logged_in"=>FALSE, "next_uri"=>$next_uri === "" ? FALSE : $next_uri), TRUE);
-			$this->load->view('page', array("current_page"=>"already_logged_in", "css"=>array(), "js"=>array(), "noindex"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "html"=>$html), FALSE);
+			$this->load->view('page', array("current_page"=>"logged_in", "css"=>array(), "js"=>array(), "noindex"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "html"=>$html), FALSE);
 		}
 	}
 	
