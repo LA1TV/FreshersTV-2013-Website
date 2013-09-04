@@ -192,13 +192,13 @@ class Apply extends CI_Controller {
 			
 			// show the application received view
 			$html = $this->load->view('page/application_received', array("email"=>$data['email'], "from_email"=>$this->config->item('automated_email')), TRUE);
-			$this->load->view('page', array("current_page"=>"application_received", "css"=>array(), "js"=>array(), "noindex"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "html"=>$html), FALSE);
+			$this->load->view('page', array("current_page"=>"application_received", "css"=>array(), "js"=>array(), "no_index"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "html"=>$html), FALSE);
 		}
 		else {
 			// there are problems. show the form again.
 			$this->load->library("recaptcha");
 			$html = $this->load->view('page/apply', array("form"=>$form, "form_errors"=>$form_errors, "recaptcha_lib"=>$this->recaptcha), TRUE);
-			$this->load->view('page', array("current_page"=>"apply", "css"=>array(), "js"=>array("apply"), "noindex"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "html"=>$html), FALSE);
+			$this->load->view('page', array("current_page"=>"apply", "css"=>array(), "js"=>array("apply"), "no_index"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "html"=>$html), FALSE);
 		}
 	}
 	
@@ -214,7 +214,7 @@ class Apply extends CI_Controller {
 		}
 		
 		$html = $this->load->view('page/email_verification', array("state"=>$state), TRUE);
-		$this->load->view('page', array("current_page"=>"email_verification", "css"=>array(), "js"=>array(), "noindex"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "html"=>$html, "no_index"=>TRUE), FALSE);
+		$this->load->view('page', array("current_page"=>"email_verification", "css"=>array(), "js"=>array(), "no_index"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "html"=>$html, "no_index"=>TRUE), FALSE);
 	}
 	
 	private function _get_post_str($field)
