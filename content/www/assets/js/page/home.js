@@ -6,6 +6,7 @@
 	var setUpYoutube = function() {
 		$("#page-home .promo-vid-container .player-placeholder").tubeplayer({
 			initialVideo: "BcBcsa0nhyU",
+			allowFullScreen: false,
 			showRelated: false,
 			preferredQuality: "hd720",
 			autoPlay: true,
