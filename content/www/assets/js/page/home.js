@@ -6,10 +6,12 @@
 	var setUpYoutube = function() {
 		$("#page-home .promo-vid-container .player-placeholder").tubeplayer({
 			initialVideo: "WUV6TDgt-Ac",
+            preferredQuality: "hd720",
 			shoRelated: false,
 			autoPlay: true,
 			playsinline: true, //iPad
 			modestbranding: true,
+
 			color: "white",
 			onPlayerEnded: function() {
 				runAnimation();
