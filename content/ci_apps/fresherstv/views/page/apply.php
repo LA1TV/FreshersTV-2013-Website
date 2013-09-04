@@ -22,7 +22,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 }
 ?>
 <h2>Application Form</h2>
-<?=form_open('apply/submit', array("class"=>"form-horizontal application-form", "role"=>"form", "novalidate"=>"", "enctype"=>"multipart/form-data"));?>
+<?=form_open('apply/submit', array("class"=>"form-horizontal application-form", "role"=>"form", "novalidate"=>""));?>
 	<input type="hidden" name="form_submitted" value="1">
 	<p>FreshersTV is the largest Student TV broadcast in the UK, with stations throughout the UK taking part in a three hour collaborative live broadcast showing the very best of Freshers Week content. This year the broadcast will be on <strong>Thursday 24th October starting at 6pm</strong>. Each station will have a <strong>5 minute slot</strong> to showcase the best of their Freshers Week content and any other content they have produced.</p>
 	<p>Please answer all the questions below to help us make sure that this years broadcast can accommodate as many stations as possible and show off your content in the best possible way. If you require any further information please email Chris Osborn at <a href="mailto:c.osborn@la1tv.co.uk" target="_blank">c.osborn@la1tv.co.uk</a> or Rachel Hughes at <a href="mailto:r.hughes@la1tv.co.uk" target="_blank">r.hughes@la1tv.co.uk</a>.</p>
@@ -209,6 +209,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 	</ul>
 	<p>We would like to make these a little more individual to each station and more fun for the viewers. To do this we would like each station to create and send us a CineBeat video. These are short music videos create from clips recorded on an iPhone or iPad using a free app. We would like you to include the name of your station and the word FreshersTV in your video but everything else is up to you. This map will be launched a couple of days ahead of the broadcast to help publicise the event and let viewers know what time each station is on.</p>
 	<p>The CineBeat app can be found at "<a href="https://itunes.apple.com/gb/app/cinebeat-by-smule/id562793878" target="_blank">https://itunes.apple.com/gb/app/cinebeat-by-smule/id562793878</a>".</p>
+	<p>The easiest way to get the link after creating the video is by using the option to send it as an e-mail.</p>
 	<div class="form-group <?=get_error_class($form_errors, "cinebeat");?>">
 		<label for="form-cinebeat" class="col-lg-2 control-label">CineBeat Video Url</label>
 		<div class="col-lg-10">

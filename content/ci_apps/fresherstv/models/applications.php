@@ -47,6 +47,17 @@ class Applications extends CI_Model {
 		return hash('sha512', $this->hash_salt.$input);
 	}
 	
+	// gets the id of the ACCEPTED APPLICATION account with the email or false otherwise
+	function get_id_from_email($email) {
+		$query = $this->db->get_where($this->table, array('email'=>"email", "application_accepted"=>TRUE));
+		if ($query->num_rows() !== 1)
+		{
+			return FALSE;
+		}
+		$row = $query->row();
+		return (int) $row->id;
+	}
+	
 	function generate_verification_code() {
 		$found = FALSE;
 		while(!$found) {

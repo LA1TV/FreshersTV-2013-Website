@@ -16,7 +16,7 @@ class Incorrect_logins extends CI_Model {
 		$this->db->delete($this->table, array('time <'=>$cut_time));
 	}
 
-	function is_over_limit($assoc_id)
+	function is_over_limit()
 	{
 		$cut_time = time() - ($this->config->item('no_login_attempts_remember_time')*60);
 		$this->db->from($this->table);

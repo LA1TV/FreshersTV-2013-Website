@@ -8,11 +8,15 @@ class Authentication {
 		$this->update_session(); // this library auto loads so this will always run before anything else
 	}
 	
-	function authenticate($id, $pass)
+	function authenticate($email, $pass)
 	{
+		// TEMP
+		return;
 		$this->log_out(); // make sure logged out before trying to authenticate again
 		$this->CI->load->model("applications");
-		if ($this->CI->applications->get_hashed_password($id) === $this->CI->applications->get_hash($pass))
+		$id = $this->CI->applications->get_id_from_email($email);
+		
+		if ($id !== FALSE && $this->CI->applications->get_hashed_password($id) === $this->CI->applications->get_hash($pass))
 		{
 			// correct login
 			$this->update_incorrect_logins(TRUE);
@@ -36,10 +40,10 @@ class Authentication {
 		$this->CI->incorrect_logins->clean_up();
 	}
 	
-	function get_show_captcha($assoc_id)
+	function get_show_captcha()
 	{
 		$this->CI->load->model("incorrect_logins");
-		return $this->CI->incorrect_logins->is_over_limit($assoc_id);
+		return $this->CI->incorrect_logins->is_over_limit();
 	}
 	
 	function update_password($pass)
@@ -50,15 +54,18 @@ class Authentication {
 	
 	function update_session() //automatically called before anything else because in construct
 	{
+		// TEMP
+		return;
+		
 		$time = time();
 		$this->CI->load->model("applications");
-		if ($this->initialized() and $this->logged_in())
+		if ($this->get_initialized() and $this->get_logged_in())
 		{
 			if (!$this->CI->applications->exists($this->get_id()))
 			{
 				$this->log_out('You have been logged out automatically as you account has been deleted.');
 			}
-			else if ($this->get_pass() !== $this->CI->applications->get_hashed_password($this->get_id())
+			else if ($this->get_pass() !== $this->CI->applications->get_hashed_password($this->get_id()))
 			{
 				$this->log_out('You have been logged out automatically as your password has changed.');
 			}
@@ -97,8 +104,10 @@ class Authentication {
 		return $reason;
 	}
 	
-	function logged_in()
+	function get_logged_in()
 	{
+	// TEMP
+	return TRUE;
 		return $this->CI->session->userdata('my_logged_in');
 	}
 	
@@ -116,7 +125,7 @@ class Authentication {
 		return $this->CI->session->userdata('my_id');
 	}
 
-	function initialized()
+	function get_initialized()
 	{
 		return $this->CI->session->userdata('my_initialized');
 	}

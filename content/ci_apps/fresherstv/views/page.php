@@ -53,6 +53,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
         <script src="<?=base_url();?>assets/js/flipclock/faces/DailyCounter.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/tube-player.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/smart-dropdown.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/recaptcha-config.js" type="text/javascript"></script>
 		
 		<!-- Load page specific JS -->
 		<?php foreach($js as $a):	?>
@@ -99,7 +100,9 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
                     </ul>
 
                     <div class="navbar-form navbar-right">
-                        <a class="btn btn-success" href="<?=base_url();?>apply">Application Form &raquo;</a>
+                        <a class="btn btn-info" href="<?=base_url();?>apply">Application Form &raquo;</a>
+						<a class="btn btn-info" href="<?=base_url();?>submitvt">Submit VT &raquo;</a>
+                        <a class="btn btn-info" href="<?=base_url();?><?php if ($logged_in):echo("logout");else:echo("login");endif;?>"><?php if ($logged_in):echo("Log Out");else:echo("Log In");endif;?> &raquo;</a>
                     </div>
 
                 </div>
