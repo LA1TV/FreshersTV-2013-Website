@@ -30,7 +30,7 @@ class Authentication {
 		return;
 	}
 	
-	function update_incorrect_logins($assoc_id, $logged_in)
+	function update_incorrect_logins($logged_in)
 	{
 		$this->CI->load->model("incorrect_logins");
 		if (!$logged_in)
@@ -48,7 +48,7 @@ class Authentication {
 	
 	function update_password($pass)
 	{
-		$this->CI->session->set_userdata('my_pass', sha1($pass));
+		$this->CI->session->set_userdata('my_pass', $pass);
 		return;
 	}
 	

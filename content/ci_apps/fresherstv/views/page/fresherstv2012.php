@@ -2,7 +2,7 @@
 	<div class="col-md-8">
 		<div class="scaled-iframe-container">
 			<img class="ratio" src="<?=base_url();?>assets/img/16x9.gif" alt=""/>
-			<iframe src="//www.youtube.com/embed/SBVkY2Gjda8" allowfullscreen style="border-style: none;"></iframe>
+			<iframe src="//www.youtube.com/embed/SBVkY2Gjda8" allowfullscreen frameBorder="0" style="border-style: none;"></iframe>
 		</div>
 	</div>
 	<div class="col-md-4">
