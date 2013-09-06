@@ -120,6 +120,14 @@ class Passwordreset extends CI_Controller {
 				$data['form_errors']['password_confirmation'] = "This field was required.";
 			}
 			
+			if (!isset($data['form_errors']['password']) && strlen($entered_password) > 1000) {
+				$data['form_errors']['password'] = "You are not allowed more than 1000 characters.";
+			}
+			
+			if (!isset($data['form_errors']['password_confirmation']) && strlen($entered_password_confirmation) > 1000) {
+				$data['form_errors']['password_confirmation'] = "You are not allowed more than 1000 characters.";
+			}
+			
 			if (!isset($data['form_errors']['password'])) {
 				$this->load->model("applications");
 				if (!$this->applications->does_pass_meet_requirments($entered_password)) {

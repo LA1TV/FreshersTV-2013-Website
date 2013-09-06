@@ -78,7 +78,7 @@ class Submitvt extends CI_Controller {
 				
 				// send the notification email
 				$this->load->library("send_email");
-				$this->send_email->send_notification_email(array("to_address"=>$this->applications->get_email($application_id), "subject"=>"VT Received", "email_data"=>array("msg"=>"This is confirmation that we have received your VT.")));
+				$this->send_email->send_vt_received_email($this->applications->get_email($application_id));
 				
 				// show the vt received view
 				output_page("vt_received", array(), array(), $this->load->view('page/vt_received', array("already_received"=>FALSE), TRUE), TRUE);

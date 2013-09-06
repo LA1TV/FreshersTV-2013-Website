@@ -26,6 +26,28 @@ class Send_email {
 		return $this->send($data['to_address'], $title, $html);
 	}
 	
+	function send_vt_received_email($to)
+	{
+		return $this->send_notification_email(array(
+			"to_address"=>$to,
+			"subject"=>"VT Received",
+			"email_data"=>array(
+				"msg"=>"This is confirmation that we have received your VT."
+			)
+		);
+	}
+	
+	function send_password_changed_email($to)
+	{
+		return $this->send_notification_email(array(
+			"to_address"=>$to,
+			"subject"=>"Password Changed",
+			"email_data"=>array(
+				"msg"=>"Your password for your FreshersTV account has been changed."
+			)
+		);
+	}
+	
 	function send_notification_email($data)
 	{
 		$title = 'FreshersTV: '.$data['subject'];

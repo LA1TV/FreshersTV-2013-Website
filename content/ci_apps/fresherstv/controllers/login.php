@@ -11,15 +11,16 @@ class Login extends CI_Controller {
 		else {
 	
 			// for security reasons (eg xss) only use the next_uri value if it has been generated from the server.
-			if ($this->input->get("next_uri") === $this->session->userdata('my_next_uri')) {
-				$next_uri = $this->session->userdata('my_next_uri');
+			if (in_array($this->input->get("next_uri"), array($this->session->userdata('my_next_uri'), $this->session->userdata('my_next_uri_at_previous_attempt')), TRUE)) {
+				$next_uri = $this->input->get("next_uri");
 			}
 			else {
 				$next_uri = FALSE;
 			}
+			$this->session->set_userdata('my_next_uri_at_previous_attempt', $next_uri);
 			
 			$data = array(
-				"login_required_msg"	=> $next_uri !== FALSE ? "You are required to log in in order to access this page." : "",
+				"login_required_msg"	=> $next_uri !== FALSE ? "You are required to log in in order to access that page." : "",
 				"login_error_msg"		=> "",
 				"form"					=> array("email" => "", "next_uri"=>$next_uri),
 				"captcha_required"		=> $this->authentication->get_show_captcha(),
@@ -41,17 +42,17 @@ class Login extends CI_Controller {
 		$entered_pass = $this->_get_post_str("password");
 		
 		// for security reasons (eg xss) only use the next_uri value if it has been generated from the server.
-		
-		if ($this->input->post("next_uri") === $this->session->userdata('my_next_uri')) {
-			$next_uri = $this->session->userdata('my_next_uri');
+		if (in_array($this->input->post("next_uri"), array($this->session->userdata('my_next_uri'), $this->session->userdata('my_next_uri_at_previous_attempt')), TRUE)) {
+			$next_uri = $this->input->post("next_uri");
 		}
 		else {
 			$next_uri = FALSE;
 		}
+		$this->session->set_userdata('my_next_uri_at_previous_attempt', $next_uri);
 		
 		$data = array(
 			"login_required_msg"	=> "",
-			"login_error_msg"		=> "Something was incorrect. Please try again.",
+			"login_error_msg"		=> "Something was incorrect. Please try again. Are you sure your account has been activated yet?",
 			"form"					=> array("email"=>$entered_email, "next_uri"=>$next_uri),
 			"captcha_required"		=> $this->authentication->get_show_captcha()
 		);

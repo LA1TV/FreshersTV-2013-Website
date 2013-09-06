@@ -32,7 +32,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 <?php if (count($form_errors) !== 0) : ?>
 <div class="alert alert-danger">There <?php if(count($form_errors) === 1):echo("is");else:echo("are");endif;?> <?=count($form_errors)?> <?php if(count($form_errors) === 1):echo("error");else:echo("errors");endif;?> that need to be fixed before you can submit this form. <?php if(count($form_errors) === 1):echo("It has");else:echo("They have");endif;?> been highlighted.</div>
 <?php endif; ?>
-<?=form_open('submitvt/submit', array("class"=>"form-horizontal application-form", "role"=>"form", "novalidate"=>""));?>
+<?=form_open('submitvt/submit', array("class"=>"form-horizontal submit-vt-form", "role"=>"form", "novalidate"=>""));?>
 	<input type="hidden" name="form_submitted" value="1">
 	<p>Please upload your VT to a file sharing service like "<a href="https://mega.co.nz/" target="_blank">https://mega.co.nz/</a>" or "<a href="https://www.dropbox.com/" target="_blank">https://www.dropbox.com/</a>" and provide the full url.</p>
 	<div class="form-group <?=get_error_class($form_errors, "vt");?>">

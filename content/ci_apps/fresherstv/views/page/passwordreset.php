@@ -9,7 +9,7 @@ $this->load->helper("security");
 	<div class="alert alert-danger"><?=htmlent($error_msg);?></div>
 <?php endif; ?>
 
-<?=form_open('passwordreset/submit', array("class"=>"form-horizontal login-form", "role"=>"form", "novalidate"=>""));?>
+<?=form_open('passwordreset/submit', array("class"=>"form-horizontal password-reset-form", "role"=>"form", "novalidate"=>""));?>
 	<input type="hidden" name="form_submitted" value="1">
 	<div class="form-group">
 		<label for="form-email" class="col-lg-2 control-label">E-mail</label>
