@@ -43,7 +43,9 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
 		
         <!-- Load JS  -->
         <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-        <script src="<?=base_url();?>assets/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+		<script src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>	
+        <script src="<?=base_url();?>assets/js/jquery.tjenkinson.recaptcha.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/embed-facebook.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/embed-twitter.js" type="text/javascript"></script>
@@ -53,7 +55,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
         <script src="<?=base_url();?>assets/js/flipclock/faces/DailyCounter.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/tube-player.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/smart-dropdown.js" type="text/javascript"></script>
-        <script src="<?=base_url();?>assets/js/recaptcha-config.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/login-dialog.js" type="text/javascript"></script>
 		
 		<!-- Load page specific JS -->
 		<?php foreach($js as $a):	?>
@@ -77,6 +79,9 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
 	   \/__/     \/__/     \/__/     
 	   
     -->
+<<<<<<< HEAD
+    <body data-baseurl="<?=htmlent(base_url());?>">
+=======
     <body>
 
         <!-- =======[Login Dialog]======= --> 
@@ -108,6 +113,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
             </div>
         </div>
 
+>>>>>>> 43b33424f91d11e601cc139f9826801c6c9f6a62
         <!-- =======[Nav]======= --> 
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -132,7 +138,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
                     <div class="navbar-form navbar-right">
                         <a class="btn btn-info" href="<?=base_url();?>apply">Application Form &raquo;</a>
 						<a class="btn btn-info" href="<?=base_url();?>submitvt">Submit VT &raquo;</a>
-                        <a class="btn btn-info" href="<?=base_url();?><?php if ($logged_in):echo("logout");else:echo("login");endif;?>"><?php if ($logged_in):echo("Log Out");else:echo("Log In");endif;?> &raquo;</a>
+                        <a class="btn btn-info <?php if (!$logged_in):echo("show-login-dialog");endif;?> show-login-dialog" href="<?=base_url();?><?php if ($logged_in):echo("logout");else:echo("login");endif;?>"><?php if ($logged_in):echo("Log Out");else:echo("Log In");endif;?> &raquo;</a>
                     </div>
 
                 </div>
@@ -196,6 +202,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
                 </ul>
             </div>
         </footer>
+<?php $this->load->view("jsdialogs/login", array("recaptcha_lib"=>$recaptcha_lib)); ?>
 		<div id="fb-root"></div>
     </body>
 	

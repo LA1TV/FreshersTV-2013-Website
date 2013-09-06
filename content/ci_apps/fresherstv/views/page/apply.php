@@ -245,17 +245,15 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 	<div class="form-group <?=get_error_class($form_errors, "captcha");?>">
 		<div class="col-lg-offset-2 col-lg-10">
 			<label for="form-captcha" class="control-label">Please enter the text in the captcha below to verify that you are a human.</label>
-			<div id="form-captcha">
-<?php
-	echo($recaptcha_lib->get_html());
-?>
+			<div id="form-captcha" class="captcha-container">
+			<?=$recaptcha_lib->get_noscript_html(); ?>
 			</div>
 			<?=get_error_msg($form_errors, "captcha");?>
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-lg-offset-2 col-lg-10">
-			<button type="submit" class="btn btn-default">Submit Application</button>
+			<button type="submit" class="btn btn-primary">Submit Application</button>
 		</div>
 	</div>
 </form>

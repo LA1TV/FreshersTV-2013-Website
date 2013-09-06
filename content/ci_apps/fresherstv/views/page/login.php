@@ -2,7 +2,7 @@
 $this->load->helper("form");
 $this->load->helper("security");
 ?>
-<h2>Login</h2>
+<h2>Station Login</h2>
 <p>Please login below with the e-mail address and password you set up on the <a href="<?=base_url();?>apply">application form</a>.</p>
 <p>If you have any problems please send an e-mail to "<a href="mailto:development@la1tv.co.uk" target="_blank">development@la1tv.co.uk</a>" <strong>from the same e-mail address you put on the application form</strong>.</p>
 <?php if (strlen($login_required_msg) !== 0) : ?>
@@ -34,10 +34,8 @@ $this->load->helper("security");
 	<div class="form-group">
 		<div class="col-lg-offset-2 col-lg-10">
 			<label for="form-captcha" class="control-label">Please also enter the text in the captcha below to verify that you are a human.</label>
-			<div id="form-captcha">
-<?php
-	echo($recaptcha_lib->get_html());
-?>
+			<div id="form-captcha" class="captcha-container">
+<?=$recaptcha_lib->get_noscript_html(); ?>
 			</div>
 		</div>
 	</div>

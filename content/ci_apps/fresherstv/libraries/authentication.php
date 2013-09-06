@@ -42,6 +42,8 @@ class Authentication {
 	
 	function get_show_captcha()
 	{
+		// TEMP
+		return TRUE;
 		$this->CI->load->model("incorrect_logins");
 		return $this->CI->incorrect_logins->is_over_limit();
 	}

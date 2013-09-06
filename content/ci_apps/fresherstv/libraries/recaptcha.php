@@ -7,10 +7,9 @@ class Recaptcha {
 		$this->CI =& get_instance();
 	}
 	
-	function get_html() {
-		require_once(dirname(__FILE__) . '/../includes/recaptchalib.php');
+	function get_noscript_html() {
 		$publickey = "6Lfy8uYSAAAAAMbqcoZnriQEp2fpEyEZQrR16W1O";
-		return recaptcha_get_html($publickey);
+		return '<noscript><iframe src="http://www.google.com/recaptcha/api/noscript?k='.$publickey.'" height="300" width="500" frameborder="0"></iframe><br><textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea><input type="hidden" name="recaptcha_response_field" value="manual_challenge"></noscript>';
 	}
 	
 	function is_response_valid() {
