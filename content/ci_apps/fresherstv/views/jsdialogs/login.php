@@ -6,13 +6,14 @@ $this->load->helper("form");
 <div class="modal fade" id="login-dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">Station Login</h4>
+			</div>
+			<div class="modal-body">
 			<?=form_open('login/submit', array("role"=>"form", "novalidate"=>""));?>
 				<input type="hidden" name="form_submitted" value="1">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">Station Login</h4>
-				</div>
-				<div class="modal-body">
+					<p>Please login below with the e-mail address and password you set up on the <a href="<?=base_url();?>apply">application form</a>.</p>
 					<div class="form-group">
 						<label class="control-label" for="email">Email</label>
 						<input type="email" name="email" class="form-control input-xlarge">
