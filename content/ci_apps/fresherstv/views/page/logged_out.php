@@ -4,4 +4,4 @@
 <?php else: ?>
 <p>You were already logged out.</p>
 <?php endif; ?>
-<p><a class="btn btn-default" href="<?=base_url();?>login">Click Here To Log In Again</a></p>
+<p><a class="btn btn-default btn-sm" href="<?=base_url();?>login">Click Here To Log In Again</a></p>
