@@ -18,6 +18,7 @@ $this->load->helper("security");
 					<input type="hidden" name="next_uri" value="<?=htmlent($form['next_uri'])?>">
 				<?php endif; ?>
 					<p>Please login below with the e-mail address and password you set up on the <a href="<?=base_url();?>apply">application form</a>.</p>
+					<p>If you can't remember you password and need to reset it please <a href="<?=base_url();?>passwordreset">click here</a>.</p>
 					<div class="form-group">
 						<label class="control-label" for="email">Email</label>
 						<input type="email" name="email" class="form-control input-xlarge">

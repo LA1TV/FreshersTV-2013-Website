@@ -33,6 +33,20 @@ class Applications extends CI_Model {
 		return ($row->email_verification_hash === $this->get_hash($code));
 	}
 	
+	function get_activated($id) {
+		$query = $this->db->get_where($this->table, array('id'=>$id));
+		if ($query->num_rows() !== 1)
+		{
+			return FALSE;
+		}
+		$row = $query->row();
+		return $row->application_accepted;
+	}
+	
+	function set_application_accepted($id, $val=TRUE) {
+		$this->db->update($this->table, array('application_accepted'=>$val), array("id"=>$id));
+	}
+	
 	function get_hashed_password($id) {
 		$query = $this->db->get_where($this->table, array('id'=>$id));
 		if ($query->num_rows() !== 1)
@@ -109,5 +123,62 @@ class Applications extends CI_Model {
 		// update db
 		$this->db->update($this->table, array('email_verified'=>TRUE), array("id"=>$row->id));
 		return 0;
+	}
+	
+	function create_password_reset_code($id) {
+	
+		$found = FALSE;
+		while(!$found) {
+			$code = $this->get_hash(rand());
+		//	$query = $this->db->get_where($this->table, array('password_reset_hash'=>$this->get_hash($code)));
+		//	$found = $query->num_rows === 0;
+			$found = TRUE; // TEMP
+		}
+	
+		// write the hashed version of the code in the db
+		$this->db->update($this->table, array('password_reset_hash'=>$this->get_hash($code)), array("id"=>$id));
+		$this->db->update($this->table, array('password_reset_hash_creation_time'=>time()), array("id"=>$id));
+		return $code;
+	}
+	
+	// returns 0 if code correct, 1 if code expired or 2 if incorrect code
+	function verify_password_reset_code($code) {
+		
+		// check if key exists
+		$query = $this->db->get_where($this->table, array('password_reset_hash'=>$this->get_hash($code)));
+		if ($query->num_rows() !== 1)
+		{
+			return 2;
+		}
+		$row = $query->row();
+		$creation_time = (int) $row->password_reset_hash_creation_time;
+		if ($creation_time < time()-(60*60)) { // more than an hour old
+			return 1;
+		}
+		return 0;
+	}
+	
+	function get_id_from_password_reset_code($code) {
+		$query = $this->db->get_where($this->table, array('password_reset_hash'=>$this->get_hash($code)));
+		if ($query->num_rows() !== 1)
+		{
+			return FALSE;
+		}
+		$row = $query->row();
+		return $row->id;
+	}
+	
+	// clear password reset code for id
+	function remove_password_reset_code($id) {
+		$this->db->update($this->table, array('password_reset_hash'=>NULL, 'password_reset_hash_creation_time'=>NULL), array("id"=>$id));
+	}
+	
+	// pass in the unhashed password
+	function set_password($id, $new_pass) {
+		$this->db->update($this->table, array('password'=>$this->get_hash($new_pass)), array("id"=>$id));
+	}
+	
+	function does_pass_meet_requirments($pass) {
+		return !(strlen($pass) < 8 || !preg_match('#[0-9]#', $pass) || !preg_match('#[a-zA-Z]#', $pass));
 	}
 }

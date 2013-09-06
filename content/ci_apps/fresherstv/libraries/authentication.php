@@ -16,7 +16,7 @@ class Authentication {
 		$this->CI->load->model("applications");
 		$id = $this->CI->applications->get_id_from_email($email);
 		
-		if ($id !== FALSE && $this->CI->applications->get_hashed_password($id) === $this->CI->applications->get_hash($pass))
+		if ($id !== FALSE && $this->CI->applications->get_activated($id) && $this->CI->applications->get_hashed_password($id) === $this->CI->applications->get_hash($pass))
 		{
 			// correct login
 			$this->update_incorrect_logins(TRUE);

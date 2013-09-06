@@ -33,7 +33,7 @@ class Login extends CI_Controller {
 	
 	public function submit()
 	{
-		if ($this->input->post("form_submitted") !== "1") {
+		if ($this->authentication->get_logged_in() || $this->input->post("form_submitted") !== "1") {
 			redirect(base_url()."login");
 		}
 		

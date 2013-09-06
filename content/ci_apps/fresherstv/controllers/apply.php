@@ -136,7 +136,8 @@ class Apply extends CI_Controller {
 		}
 		
 		if (!isset($form_errors['password'])) {
-			if (strlen($form['password']) < 8 || !preg_match('#[0-9]#', $form['password']) || !preg_match('#[a-zA-Z]#', $form['password'])) {
+			$this->load->model("applications");
+			if (!$this->applications->does_pass_meet_requirments($form['password']))) {
 				$form_errors["password"] = "The password you entered did not meet the password requirments.";
 			}
 		}

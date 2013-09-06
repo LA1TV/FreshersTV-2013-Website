@@ -8,7 +8,7 @@ class Send_email {
 	}
 	
 	
-	function send_pass_reset($data)
+	function send_pass_reset_email($data)
 	{
 		$title = 'FreshersTV Password Reset Request';
 		
