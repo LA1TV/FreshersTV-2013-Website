@@ -25,6 +25,15 @@ class Send_email {
 		$html = $this->CI->load->view('emails/page', array('title'=>$title, 'html'=>$body_html), TRUE);
 		return $this->send($data['to_address'], $title, $html);
 	}
+	
+	function send_notification_email($data)
+	{
+		$title = 'FreshersTV: '.$data['subject'];
+		
+		$body_html = $this->CI->load->view('emails/notification_email', $data['email_data'], TRUE);
+		$html = $this->CI->load->view('emails/page', array('title'=>$title, 'html'=>$body_html), TRUE);
+		return $this->send($data['to_address'], $title, $html);
+	}
 		
 	
 	function send($to, $subject, $html)

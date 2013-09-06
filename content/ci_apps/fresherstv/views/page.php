@@ -103,7 +103,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
 					<div class="action-buttons navbar-right">
 						<a class="btn btn-info navbar-btn" href="<?=base_url();?>apply">Application Form &raquo;</a>
 						<a class="btn btn-info navbar-btn" href="<?=base_url();?>submitvt">Submit VT &raquo;</a>
-						<a class="btn btn-info navbar-btn <?php if (!$logged_in):echo("show-login-dialog");endif;?> show-login-dialog" href="<?=base_url();?><?php if ($logged_in):echo("logout");else:echo("login");endif;?>"><?php if ($logged_in):echo("Log Out");else:echo("Log In");endif;?> &raquo;</a>
+						<a class="btn btn-info navbar-btn <?php if (!$logged_in):echo("show-login-dialog");endif;?>" href="<?=base_url();?><?php if ($logged_in):echo("logout");else:echo("login");endif;?>"><?php if ($logged_in):echo("Log Out");else:echo("Log In");endif;?> &raquo;</a>
 					</div>
                 </div>
             </div>

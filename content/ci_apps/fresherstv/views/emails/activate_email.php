@@ -5,5 +5,3 @@
 <p><strong>Verification link:</strong> <a href="<?=htmlent($link)?>"><?=htmlent($link)?></a></p>
 <p>If you didn't sign up for for FreshersTV please ignore this e-mail and don't click on the link.</p>
 <p>Thanks.</p>
-<hr>
-<small>This is an automated e-mail. Please do not reply to this address.</small>

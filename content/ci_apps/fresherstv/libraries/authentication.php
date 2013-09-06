@@ -109,7 +109,7 @@ class Authentication {
 	function get_logged_in()
 	{
 	// TEMP
-	return TRUE;
+	return FALSE;
 		return $this->CI->session->userdata('my_logged_in');
 	}
 	
@@ -122,6 +122,7 @@ class Authentication {
 	{
 		return $this->CI->session->userdata('my_ip');
 	}
+	
 	function get_id()
 	{
 		return $this->CI->session->userdata('my_id');

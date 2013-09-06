@@ -79,5 +79,7 @@ td		{font-family: Arial, Helvetica, sans-serif;
 
 <body bgcolor="#FFFFFF">
 <?=$html;?>
+<hr>
+<small>This is an automated e-mail. Please do not reply to this address. If you have a problem please contact us at "<a href="mailto:development@la1tv.co.uk">development@la1tv.co.uk</a>".</small>
 </body>
 </html>

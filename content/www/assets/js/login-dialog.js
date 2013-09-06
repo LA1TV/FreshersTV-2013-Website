@@ -1,5 +1,11 @@
 // setup the login dialog.
 $(document).ready(function() {
+
+	// don't show on mobile devices
+	if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		return;
+	}
+
 	var baseUrl = $("body").attr("data-baseurl");
 	var $dialog = $("#login-dialog").first();
 	var $captchaContainer = $dialog.find(".actual-captcha-container").first();
