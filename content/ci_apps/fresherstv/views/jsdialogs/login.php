@@ -20,6 +20,7 @@ $this->load->helper("form");
 					<div class="form-group">
 						<label class="control-label" for="password">Password</label>
 						<input type="password" name="password" class="form-control input-xlarge">
+						<span class="help-block">Your password is case-sensitive.</span>
 					</div>
 					<div class="form-group captcha-container">
 						<label for="form-captcha" class="control-label">Please also enter the text in the captcha below to verify that you are a human.</label>

@@ -2,7 +2,7 @@
 $(document).ready(function() {
 	var baseUrl = $("body").attr("data-baseurl");
 	var $dialog = $("#login-dialog").first();
-	var $captchaContainer = $dialog.find(".captcha-container").first();
+	var $captchaContainer = $dialog.find(".actual-captcha-container").first();
 	var loading = false;
 	
 	// setup
