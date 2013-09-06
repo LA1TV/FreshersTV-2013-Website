@@ -4,6 +4,6 @@ class Fresherstv2012 extends CI_Controller {
 
 	public function index()
 	{
-		output_page("fresherstv2012", array(), array(), $this->load->view('page/fresherstv2012', array(), TRUE));
+		output_page("fresherstv2012", array(), array(), $this->load->view('page/freshers_tv_2012', array(), TRUE));
 	}
 }

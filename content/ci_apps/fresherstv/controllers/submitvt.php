@@ -6,20 +6,20 @@ class Submitvt extends CI_Controller {
 	{
 		if (!$this->authentication->get_logged_in()) {
 			// not logged in
-			output_page("vt_login_required", array(), array(), $this->load->view('page/vt_login_required', array(), TRUE), TRUE);
+			output_page("vtloginrequired", array(), array(), $this->load->view('page/vt_login_required', array(), TRUE), TRUE);
 		}
 		else {
 			$this->load->model("applications");
 			$application_id = $this->authentication->get_id();
 			if ($this->applications->get_vt_received($application_id)) {
 				// already have VT
-				output_page("vt_received", array(), array(), $this->load->view('page/vt_received', array("already_received"=>TRUE), TRUE), TRUE);
+				output_page("vtreceived", array(), array(), $this->load->view('page/vt_received', array("already_received"=>TRUE), TRUE), TRUE);
 			}
 			else {
 				$form = array(
 					"vt"	=>	""
 				);
-				output_page("submitvt", array(), array(), $this->load->view('page/submitvt', array("form"=>$form, "form_errors"=>array()), TRUE));
+				output_page("submitvt", array(), array(), $this->load->view('page/submit_vt', array("form"=>$form, "form_errors"=>array()), TRUE));
 			}
 		}
 	}
@@ -35,7 +35,7 @@ class Submitvt extends CI_Controller {
 		$application_id = $this->authentication->get_id();
 		if ($this->applications->get_vt_received($application_id)) {
 			// already have VT
-			output_page("vt_received", array(), array(), $this->load->view('page/vt_received', array("already_received"=>TRUE), TRUE), TRUE);
+			output_page("vtreceived", array(), array(), $this->load->view('page/vt_received', array("already_received"=>TRUE), TRUE), TRUE);
 		}
 		else {
 			
@@ -85,7 +85,7 @@ class Submitvt extends CI_Controller {
 			}
 			else {
 				// there are problems. show the form again.
-				output_page("submitvt", array(), array(), $this->load->view('page/submitvt', array("form"=>$form, "form_errors"=>$form_errors), TRUE), TRUE);
+				output_page("submitvt", array(), array(), $this->load->view('page/submit_vt', array("form"=>$form, "form_errors"=>$form_errors), TRUE), TRUE);
 			}
 		}
 	}

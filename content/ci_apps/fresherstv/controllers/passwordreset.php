@@ -18,7 +18,7 @@ class Passwordreset extends CI_Controller {
 			
 			$this->load->library("recaptcha");
 			$data['recaptcha_lib'] = $this->recaptcha;
-			output_page("passwordreset", array(), array("passwordreset"), $this->load->view('page/passwordreset', $data, TRUE));
+			output_page("passwordreset", array(), array("passwordreset"), $this->load->view('page/password_reset', $data, TRUE));
 		}
 	}
 	
@@ -51,13 +51,13 @@ class Passwordreset extends CI_Controller {
 			$this->load->library("send_email");
 			$this->send_email->send_pass_reset_email(array("to_address"=>$entered_email, "email_data"=>array("link"=> base_url()."passwordreset/change?code=".$code)));
 			// show the reset link sent view
-			output_page("passwordresetsent", array(), array(), $this->load->view('page/passwordresetsent', array("email"=>$data['email'], "from_email"=>$this->config->item('automated_email')), TRUE), TRUE);
+			output_page("passwordresetsent", array(), array(), $this->load->view('page/password_reset_sent', array("email"=>$data['email'], "from_email"=>$this->config->item('automated_email')), TRUE), TRUE);
 		}
 		else {
 			// failed
 			$this->load->library("recaptcha");
 			$data['recaptcha_lib'] = $this->recaptcha;
-			output_page("passwordreset", array(), array("passwordreset"), $this->load->view('page/passwordreset', $data, TRUE), TRUE);
+			output_page("passwordreset", array(), array("passwordreset"), $this->load->view('page/password_reset', $data, TRUE), TRUE);
 		}
 	}
 	
@@ -80,7 +80,7 @@ class Passwordreset extends CI_Controller {
 		if ($state === 0) {
 			$data['form_errors'] = array();
 		}
-		output_page("passwordresetchange", array(), array(), $this->load->view('page/passwordresetchange', $data, TRUE), TRUE);
+		output_page("passwordresetchange", array(), array(), $this->load->view('page/password_reset_change', $data, TRUE), TRUE);
 	
 	
 	}
@@ -100,7 +100,7 @@ class Passwordreset extends CI_Controller {
 			$data = array(
 				"state"	=>	$state
 			);
-			output_page("passwordresetchange", array(), array(), $this->load->view('page/passwordresetchange', $data, TRUE), TRUE);
+			output_page("passwordresetchange", array(), array(), $this->load->view('page/password_reset_change', $data, TRUE), TRUE);
 		}
 		else {
 			// user is still allowed to change password, do form validation
@@ -152,7 +152,7 @@ class Passwordreset extends CI_Controller {
 				// set the new password
 				$this->load->model("applications");
 				$this->applications->set_password($application_id, $entered_password);
-				output_page("password_changed", array(), array(), $this->load->view('page/password_changed', array(), TRUE), TRUE);
+				output_page("passwordchanged", array(), array(), $this->load->view('page/password_changed', array(), TRUE), TRUE);
 			}
 		}
 	

@@ -137,7 +137,7 @@ class Apply extends CI_Controller {
 		
 		if (!isset($form_errors['password'])) {
 			$this->load->model("applications");
-			if (!$this->applications->does_pass_meet_requirments($form['password']))) {
+			if (!$this->applications->does_pass_meet_requirments($form['password'])) {
 				$form_errors["password"] = "The password you entered did not meet the password requirments.";
 			}
 		}
