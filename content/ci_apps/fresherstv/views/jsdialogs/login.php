@@ -1,5 +1,6 @@
 <?php
 $this->load->helper("form");
+$this->load->helper("security");
 ?>
 <!-- =======[Login Dialog]======= --> 
 <div>
@@ -13,6 +14,9 @@ $this->load->helper("form");
 			<div class="modal-body">
 			<?=form_open('login/submit', array("role"=>"form", "novalidate"=>""));?>
 				<input type="hidden" name="form_submitted" value="1">
+				<?php if ($form['next_uri'] !== FALSE): ?>
+					<input type="hidden" name="next_uri" value="<?=htmlent($form['next_uri'])?>">
+				<?php endif; ?>
 					<p>Please login below with the e-mail address and password you set up on the <a href="<?=base_url();?>apply">application form</a>.</p>
 					<div class="form-group">
 						<label class="control-label" for="email">Email</label>

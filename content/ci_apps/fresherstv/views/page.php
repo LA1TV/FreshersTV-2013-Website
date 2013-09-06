@@ -166,7 +166,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
                 </ul>
             </div>
         </footer>
-<?php $this->load->view("jsdialogs/login", array("recaptcha_lib"=>$recaptcha_lib)); ?>
+<?=$login_dialog_html?>
 		<div id="fb-root"></div>
     </body>
 	

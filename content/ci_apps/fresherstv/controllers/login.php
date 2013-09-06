@@ -41,11 +41,12 @@ class Login extends CI_Controller {
 		$entered_pass = $this->_get_post_str("password");
 		
 		// for security reasons (eg xss) only use the next_uri value if it has been generated from the server.
+		
 		if ($this->input->post("next_uri") === $this->session->userdata('my_next_uri')) {
 			$next_uri = $this->session->userdata('my_next_uri');
 		}
 		else {
-			$next_uri = "";
+			$next_uri = FALSE;
 		}
 		
 		$data = array(
@@ -72,7 +73,7 @@ class Login extends CI_Controller {
 		}
 		else {
 			// login successful
-			output_page("logged_in", array(), array(), $this->load->view('page/logged_in', array("already_logged_in"=>FALSE, "next_uri"=>$next_uri === "" ? FALSE : $next_uri), TRUE), TRUE);
+			output_page("logged_in", array(), array(), $this->load->view('page/logged_in', array("already_logged_in"=>FALSE, "next_uri"=>$next_uri), TRUE), TRUE);
 		}
 	}
 	
