@@ -5,5 +5,5 @@
 <p>You were already logged in.</p>
 <?php endif; ?>
 <?php if ($next_uri !== FALSE): ?>
-<p><a class="btn btn-primary" href="<?=base_url().$next_uri?>">Click Here To Continue To The Page You Requested</a></p>
+<p><a class="btn btn-primary btn-sm" href="<?=base_url().$next_uri?>">Click Here To Continue To The Page You Requested</a></p>
 <?php endif; ?>
