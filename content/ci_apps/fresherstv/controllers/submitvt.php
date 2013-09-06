@@ -28,7 +28,7 @@ class Submitvt extends CI_Controller {
 	{
 		// redirect back if not logged in or form not submitted
 		if (!$this->authentication->get_logged_in() || $this->input->post("form_submitted") !== "1") {
-			redirect(base_url()."apply");
+			redirect(base_url()."submitvt");
 		}
 		
 		$this->load->model("applications");
