@@ -79,41 +79,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
 	   \/__/     \/__/     \/__/     
 	   
     -->
-<<<<<<< HEAD
     <body data-baseurl="<?=htmlent(base_url());?>">
-=======
-    <body>
-
-        <!-- =======[Login Dialog]======= --> 
-        <div class="modal fade in" id="login-form-content">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Station Login</h4>
-                        </div>
-
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label class="col-lg-2 control-label" for="email">Email</label>
-                                <input type="text" name="email" class="form-control input-xlarge">
-
-					            <label class="col-lg-2 control-label" for="password">Password</label>
-					            <input type="password" name="password" class="form-control input-xlarge">
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                          <a href="#" data-dismiss="modal" class="btn btn-warning">Cancel</a>
-                          <input class="btn btn-success" type="submit" value="Login" id="submit">
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
->>>>>>> 43b33424f91d11e601cc139f9826801c6c9f6a62
         <!-- =======[Nav]======= --> 
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">

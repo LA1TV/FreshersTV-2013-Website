@@ -29,8 +29,8 @@ $this->load->helper("form");
 					</div>
 				</div>
 				<div class="modal-footer">
-				  <button type="button" class="btn btn-warning cancel-button">Cancel</button>
-				  <input class="btn btn-success" type="submit" value="Login">
+				  <button type="button" class="btn btn-default cancel-button">Cancel</button>
+				  <input class="btn btn-primary" type="submit" value="Login">
 				</div>
 			</form>
 		</div>
