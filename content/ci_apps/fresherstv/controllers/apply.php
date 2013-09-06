@@ -27,8 +27,7 @@ class Apply extends CI_Controller {
 		);
 		
 		$this->load->library("recaptcha");
-		$html = $this->load->view('page/apply', array("form"=>$form, "form_errors"=>array(), "recaptcha_lib"=>$this->recaptcha), TRUE);
-		$this->load->view('page', array("current_page"=>"apply", "css"=>array(), "js"=>array("apply"), "logged_in"=>$this->authentication->get_logged_in(), "recaptcha_lib"=>$this->recaptcha, "html"=>$html), FALSE);
+		output_page("apply", array(), array("apply"), $this->load->view('page/apply', array("form"=>$form, "form_errors"=>array(), "recaptcha_lib"=>$this->recaptcha), TRUE));
 	}
 	
 	public function submit()
@@ -191,14 +190,11 @@ class Apply extends CI_Controller {
 			$this->send_email->send_activate_email(array("to_address"=>$data['email'], "email_data"=>array("link"=> base_url()."apply/verifyemail?code=".$email_verification_code)));
 			
 			// show the application received view
-			$html = $this->load->view('page/application_received', array("email"=>$data['email'], "from_email"=>$this->config->item('automated_email')), TRUE);
-			$this->load->view('page', array("current_page"=>"application_received", "css"=>array(), "js"=>array(), "no_index"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "recaptcha_lib"=>$this->recaptcha, "html"=>$html), FALSE);
+			output_page("application_received", array(), array(), $this->load->view('page/application_received', array("email"=>$data['email'], "from_email"=>$this->config->item('automated_email')), TRUE), TRUE);
 		}
 		else {
 			// there are problems. show the form again.
-			$this->load->library("recaptcha");
-			$html = $this->load->view('page/apply', array("form"=>$form, "form_errors"=>$form_errors, "recaptcha_lib"=>$this->recaptcha), TRUE);
-			$this->load->view('page', array("current_page"=>"apply", "css"=>array(), "js"=>array("apply"), "no_index"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "recaptcha_lib"=>$this->recaptcha, "html"=>$html), FALSE);
+			output_page("apply", array(), array("apply"), $this->load->view('page/apply', array("form"=>$form, "form_errors"=>$form_errors, "recaptcha_lib"=>$this->recaptcha), TRUE), TRUE);
 		}
 	}
 	
@@ -213,8 +209,7 @@ class Apply extends CI_Controller {
 			$state = $this->applications->verify_email($code);
 		}
 		
-		$html = $this->load->view('page/email_verification', array("state"=>$state), TRUE);
-		$this->load->view('page', array("current_page"=>"email_verification", "css"=>array(), "js"=>array(), "no_index"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "recaptcha_lib"=>$this->recaptcha, "html"=>$html, "no_index"=>TRUE), FALSE);
+		output_page("email_verification", array(), array(), $this->load->view('page/email_verification', array("state"=>$state), TRUE), TRUE);
 	}
 	
 	private function _get_post_str($field)

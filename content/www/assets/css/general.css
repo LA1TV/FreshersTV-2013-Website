@@ -11,6 +11,19 @@ body, html {
 }
 
 /*
+* Nav bar
+*/
+
+#main-navbar .action-buttons {
+	display: inline-block;
+}
+
+/* recaptcha fix */
+iframe[src="about:blank"] {
+	display: none;
+}
+
+/*
 * Main Header Logo
 */
 #main-logo-header .main-logo-container {

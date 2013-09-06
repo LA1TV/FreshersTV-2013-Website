@@ -81,11 +81,11 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
     -->
     <body data-baseurl="<?=htmlent(base_url());?>">
         <!-- =======[Nav]======= --> 
-        <div class="navbar navbar-default navbar-fixed-top">
+        <nav id="main-navbar" class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">       
 
-                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-links">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -94,22 +94,20 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
                     <a href="<?=base_url();?>" class="navbar-brand">FreshersTV</a>
 
                 </div>
-                <div class="navbar-collapse collapse" id="navbar-main">
+                <div class="navbar-collapse collapse" id="navbar-links">
                     <ul class="nav navbar-nav">
 						<?php foreach($pages as $a): ?>
                         <li class="<?php if($a[0] == $current_page){echo("active");}?>"><a href="<?=base_url();?><?=htmlent($a[0])?>"><?=htmlent($a[1])?></a></li>
                         <?php endforeach; ?>
                     </ul>
-
-                    <div class="navbar-form navbar-right">
-                        <a class="btn btn-info" href="<?=base_url();?>apply">Application Form &raquo;</a>
-						<a class="btn btn-info" href="<?=base_url();?>submitvt">Submit VT &raquo;</a>
-                        <a class="btn btn-info <?php if (!$logged_in):echo("show-login-dialog");endif;?> show-login-dialog" href="<?=base_url();?><?php if ($logged_in):echo("logout");else:echo("login");endif;?>"><?php if ($logged_in):echo("Log Out");else:echo("Log In");endif;?> &raquo;</a>
-                    </div>
-
+					<div class="action-buttons navbar-right">
+						<a class="btn btn-info navbar-btn" href="<?=base_url();?>apply">Application Form &raquo;</a>
+						<a class="btn btn-info navbar-btn" href="<?=base_url();?>submitvt">Submit VT &raquo;</a>
+						<a class="btn btn-info navbar-btn <?php if (!$logged_in):echo("show-login-dialog");endif;?> show-login-dialog" href="<?=base_url();?><?php if ($logged_in):echo("logout");else:echo("login");endif;?>"><?php if ($logged_in):echo("Log Out");else:echo("Log In");endif;?> &raquo;</a>
+					</div>
                 </div>
             </div>
-        </div>
+        </nav>
         <div id="wrap">
 			<!-- =======[Main Logo Header]======= -->
 			<div id="main-logo-header">

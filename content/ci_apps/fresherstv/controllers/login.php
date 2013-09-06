@@ -6,8 +6,7 @@ class Login extends CI_Controller {
 	{
 		if ($this->authentication->get_logged_in()) {
 			// already logged in
-			$html = $this->load->view('page/logged_in', array("already_logged_in"=>TRUE, "next_uri"=>FALSE), TRUE);
-			$this->load->view('page', array("current_page"=>"logged_in", "css"=>array(), "js"=>array(), "no_index"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "recaptcha_lib"=>$this->recaptcha, "html"=>$html), FALSE);
+			output_page("logged_in", array(), array(), $this->load->view('page/logged_in', array("already_logged_in"=>TRUE, "next_uri"=>FALSE), TRUE));
 		}
 		else {
 	
@@ -28,8 +27,7 @@ class Login extends CI_Controller {
 			
 			$this->load->library("recaptcha");
 			$data['recaptcha_lib'] = $this->recaptcha;
-			$html = $this->load->view('page/login', $data, TRUE);
-			$this->load->view('page', array("current_page"=>"login", "css"=>array(), "js"=>array("login"), "logged_in"=>$this->authentication->get_logged_in(), "recaptcha_lib"=>$this->recaptcha, "html"=>$html), FALSE);
+			output_page("login", array(), array("login"), $this->load->view('page/login', $data, TRUE));
 		}
 	}
 	
@@ -70,14 +68,11 @@ class Login extends CI_Controller {
 			// failed login
 			$this->load->library("recaptcha");
 			$data['recaptcha_lib'] = $this->recaptcha;
-			
-			$html = $this->load->view('page/login', $data, TRUE);
-			$this->load->view('page', array("current_page"=>"login", "css"=>array(), "js"=>array("login"), "no_index"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "recaptcha_lib"=>$this->recaptcha, "html"=>$html), FALSE);
+			output_page("login", array(), array("login"), $this->load->view('page/login', $data, TRUE), TRUE);
 		}
 		else {
 			// login successful
-			$html = $this->load->view('page/logged_in', array("already_logged_in"=>FALSE, "next_uri"=>$next_uri === "" ? FALSE : $next_uri), TRUE);
-			$this->load->view('page', array("current_page"=>"logged_in", "css"=>array(), "js"=>array(), "no_index"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "recaptcha_lib"=>$this->recaptcha, "html"=>$html), FALSE);
+			output_page("logged_in", array(), array(), $this->load->view('page/logged_in', array("already_logged_in"=>FALSE, "next_uri"=>$next_uri === "" ? FALSE : $next_uri), TRUE), TRUE);
 		}
 	}
 	

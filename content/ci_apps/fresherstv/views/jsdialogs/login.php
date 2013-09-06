@@ -8,7 +8,7 @@ $this->load->helper("form");
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Station Login</h4>
+				<h2 class="modal-title">Station Login</h2>
 			</div>
 			<div class="modal-body">
 			<?=form_open('login/submit', array("role"=>"form", "novalidate"=>""));?>

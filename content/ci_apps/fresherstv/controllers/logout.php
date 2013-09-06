@@ -14,7 +14,6 @@ class Logout extends CI_Controller {
 			$this->authentication->log_out();
 		}
 		
-		$html = $this->load->view('page/logged_out', array("already_logged_out"=>$already_logged_out), TRUE);
-		$this->load->view('page', array("current_page"=>"logged_out", "css"=>array(), "js"=>array(), "no_index"=>TRUE, "logged_in"=>$this->authentication->get_logged_in(), "recaptcha_lib"=>$this->recaptcha, "html"=>$html), FALSE);
+		output_page("logged_out", array(), array(), $this->load->view('page/logged_out', array("already_logged_out"=>$already_logged_out), TRUE), TRUE);
 	}
 }
