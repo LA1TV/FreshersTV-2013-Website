@@ -49,7 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
+$db['default']['username'] = 'dbuser';
 $db['default']['password'] = 'O3qQiDXNEePcRFkv35F4kRsN';
 $db['default']['database'] = 'fresherstv';
 $db['default']['dbdriver'] = 'mysqli';

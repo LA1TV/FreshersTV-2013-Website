@@ -10,8 +10,6 @@ class Authentication {
 	
 	function authenticate($email, $pass)
 	{
-		// TEMP
-		return;
 		$this->log_out(); // make sure logged out before trying to authenticate again
 		$this->CI->load->model("applications");
 		$id = $this->CI->applications->get_id_from_email($email);
@@ -42,8 +40,6 @@ class Authentication {
 	
 	function get_show_captcha()
 	{
-		// TEMP
-		return TRUE;
 		$this->CI->load->model("incorrect_logins");
 		return $this->CI->incorrect_logins->is_over_limit();
 	}
@@ -56,9 +52,6 @@ class Authentication {
 	
 	function update_session() //automatically called before anything else because in construct
 	{
-		// TEMP
-		return;
-		
 		$time = time();
 		$this->CI->load->model("applications");
 		if ($this->get_initialized() and $this->get_logged_in())
@@ -108,8 +101,6 @@ class Authentication {
 	
 	function get_logged_in()
 	{
-	// TEMP
-	return FALSE;
 		return $this->CI->session->userdata('my_logged_in');
 	}
 	

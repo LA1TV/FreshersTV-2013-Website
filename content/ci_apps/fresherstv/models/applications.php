@@ -17,7 +17,6 @@ class Applications extends CI_Model {
 	
 	function add_application($data)
 	{
-		return; // TEMP
 		// data should be validated in controller before it gets here. should technically check everything here as well but can't be bothered
 		$this->db->insert($this->table, $data);
 	}
@@ -66,9 +65,6 @@ class Applications extends CI_Model {
 	}
 	
 	function get_vt_received($id) {
-		// TEMP
-		return TRUE;
-		
 		$row = $this->get_row($id);
 		if ($row === FALSE) {
 			return FALSE;
@@ -91,18 +87,14 @@ class Applications extends CI_Model {
 		$found = FALSE;
 		while(!$found) {
 			$code = $this->get_hash(rand());
-		//	$query = $this->db->get_where($this->table, array('email_verification_hash'=>$this->get_hash($code)));
-		//	$found = $query->num_rows === 0;
-			$found = TRUE; // TEMP
+			$query = $this->db->get_where($this->table, array('email_verification_hash'=>$this->get_hash($code)));
+			$found = $query->num_rows === 0;
 		}
 		return $code;
 	}
 	
 	// returns 0 if email was verified, 1 if email was already verified or 2 if link invalid or link not allowed because another one already used
 	function verify_email($code) {
-		
-		//TEMP
-		return 2;
 	
 		// check if key exists
 		$query = $this->db->get_where($this->table, array('email_verification_hash'=>$this->get_hash($code)));
@@ -130,9 +122,8 @@ class Applications extends CI_Model {
 		$found = FALSE;
 		while(!$found) {
 			$code = $this->get_hash(rand());
-		//	$query = $this->db->get_where($this->table, array('password_reset_hash'=>$this->get_hash($code)));
-		//	$found = $query->num_rows === 0;
-			$found = TRUE; // TEMP
+			$query = $this->db->get_where($this->table, array('password_reset_hash'=>$this->get_hash($code)));
+			$found = $query->num_rows === 0;
 		}
 	
 		// write the hashed version of the code in the db
