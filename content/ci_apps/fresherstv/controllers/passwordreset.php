@@ -31,7 +31,7 @@ class Passwordreset extends CI_Controller {
 		$entered_email = $this->_get_post_str("email");
 		
 		$data = array(
-			"error_msg"		=> "Something was incorrect. Please try again. Are you sure you have created an account?",
+			"error_msg"		=> "Something was incorrect. Please try again. Are you sure you have created an account and it has been activated?",
 			"form"			=> array("email"=>$entered_email),
 		);
 		
