@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://192.168.21.21/freshers/www';
+$config['base_url']	= 'http://85.25.138.4';
 
 /*
 |--------------------------------------------------------------------------
