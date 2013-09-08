@@ -27,6 +27,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
 		<!-- Prevent search engines from indexing this page. -->
 		<meta name="robots" content="noindex">
 <?php endif; ?>
+		<meta name="description" content="FreshersTV is an annual collaborative broadcast run by the National Association of Student Television (NaSTA) and a host station. This year the host station is LA1:TV from Lancaster University.">
 
         <title>LA1:TV Presents FreshersTV 2013</title>
 
@@ -53,9 +54,9 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
         <script src="<?=base_url();?>assets/js/flipclock/libs/prefixfree.min.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/flipclock/flipclock.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/flipclock/faces/DailyCounter.js" type="text/javascript"></script>
-        <script src="<?=base_url();?>assets/js/tube-player.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/smart-dropdown.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/login-dialog.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/require-js.js" type="text/javascript"></script>
 		
 		<!-- Load page specific JS -->
 		<?php foreach($js as $a):	?>

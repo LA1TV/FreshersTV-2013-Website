@@ -10,6 +10,10 @@ body, html {
 	height: 100%;
 }
 
+.require-js {
+	display: none; /* if js is enabled the script will show these */
+}
+
 /*
 * Nav bar
 */
@@ -61,6 +65,7 @@ iframe[src="about:blank"] {
 #social-bar {
     position: relative;
     margin-top: -50px;
+	overflow: hidden;
 }
 
 #social-bar .white-panel {

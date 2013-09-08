@@ -10,10 +10,13 @@
 	</div>
 	<div class="countdown-timer-outer-container">
 		<div class="countdown-timer-container">
-			<h1 class="live-in-txt">Live In</h1>
-			<div class="secondary-container">
-				<div class="scale-container">
-					<div class="countdown-timer"></div>
+		<noscript><p>Please enable javascript in order to see the countdown.</p></noscript>
+			<div class="require-js">
+				<h1 class="live-in-txt">Live In</h1>
+				<div class="secondary-container">
+					<div class="scale-container">
+						<div class="countdown-timer"></div>
+					</div>
 				</div>
 			</div>
 		</div>

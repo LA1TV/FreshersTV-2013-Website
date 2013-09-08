@@ -3,7 +3,6 @@ $this->load->helper("form");
 $this->load->helper("security");
 ?>
 <!-- =======[Login Dialog]======= --> 
-<div>
 <div class="modal fade" id="login-dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -42,5 +41,4 @@ $this->load->helper("security");
 			</form>
 		</div>
 	</div>
-</div>
 </div>
