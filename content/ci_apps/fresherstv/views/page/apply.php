@@ -111,7 +111,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 	<div class="show-if-vt">
 		<p>Please ensure that your VT is <em>between 4:30 and 5 minutes</em> in length. Entries outside of these limits may be refused.</p>
 	</div>
-	<p>Your VT will need to be sent to us nearer the day via a different form (whether you are participating live or not) and these our the requirments:</p>
+	<p>If you are not going to participate live, or you are participating live but would like to submit a VT as a backup, the VT must fit the following requirements:</p>
 	<ul>
 		<li>Must use the h.264 codec.</li>
 		<li>Must have a resolution of either 1920x1080, 1080x720 or 1024x576.</li>
