@@ -8,7 +8,8 @@ $(document).ready(function() {
 
 	var baseUrl = $("body").attr("data-baseurl");
 	var $dialog = $("#login-dialog").first();
-	var $captchaContainer = $dialog.find(".actual-captcha-container").first();
+	var $captchaContainer = $dialog.find(".captcha-container").first();
+	var $actualCaptchaContainer = $dialog.find(".actual-captcha-container").first();
 	var loading = false;
 	
 	// setup
@@ -19,7 +20,7 @@ $(document).ready(function() {
 		remote: false
 	});
 	
-	$captchaContainer.recaptcha({
+	$actualCaptchaContainer.recaptcha({
 		publicKey: "6Lfy8uYSAAAAAMbqcoZnriQEp2fpEyEZQrR16W1O",
 		placeholderClasses: ["btn", "btn-default", "btn-xs"]
 	});
