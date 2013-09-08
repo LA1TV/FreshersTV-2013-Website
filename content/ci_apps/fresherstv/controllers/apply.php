@@ -189,7 +189,7 @@ class Apply extends CI_Controller {
 			
 			// send the verification email
 			$this->load->library("send_email");
-	//		$this->send_email->send_activate_email(array("to_address"=>$data['email'], "email_data"=>array("link"=> base_url()."apply/verifyemail?code=".$email_verification_code)));
+			$this->send_email->send_activate_email(array("to_address"=>$data['email'], "email_data"=>array("link"=> base_url()."apply/verifyemail?code=".$email_verification_code)));
 			
 			// show the application received view
 			output_page("application_received", array(), array(), $this->load->view('page/application_received', array("email"=>$data['email'], "from_email"=>$this->config->item('automated_email')), TRUE), TRUE);
@@ -210,6 +210,13 @@ class Apply extends CI_Controller {
 		else {
 			$state = $this->applications->verify_email($code);
 		}
+		
+		if ($state === 0) {
+			$application_id = $this->applications->get_id_from_verification_code($code);
+			$this->load->library("send_email");
+			$email = $this->applications->get_email($application_id);
+			$this->send_email->send_email_verified_email($email);
+		}	
 		
 		output_page("email_verification", array(), array(), $this->load->view('page/email_verification', array("state"=>$state), TRUE), TRUE);
 	}

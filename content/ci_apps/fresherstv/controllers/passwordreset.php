@@ -39,19 +39,17 @@ class Passwordreset extends CI_Controller {
 		
 		$this->load->library("recaptcha");
 		$this->load->model("applications");
-		
-		if((!$this->authentication->get_show_captcha() || $this->recaptcha->is_response_valid()) && strlen($entered_email) !== 0 && $this->applications->get_id_from_email($entered_email) !== FALSE) {
+		if($this->recaptcha->is_response_valid() && strlen($entered_email) !== 0 && $this->applications->get_id_from_email($entered_email) !== FALSE) {
 			// success
 			$application_id = $this->applications->get_id_from_email($entered_email);
 			// create a password reset code
 			$code = $this->applications->create_password_reset_code($application_id);
 			
-			
 			// send the password reset email
 			$this->load->library("send_email");
 			$this->send_email->send_pass_reset_email(array("to_address"=>$entered_email, "email_data"=>array("link"=> base_url()."passwordreset/change?code=".$code)));
 			// show the reset link sent view
-			output_page("passwordresetsent", array(), array(), $this->load->view('page/password_reset_sent', array("email"=>$data['email'], "from_email"=>$this->config->item('automated_email')), TRUE), TRUE);
+			output_page("passwordresetsent", array(), array(), $this->load->view('page/password_reset_sent', array("email"=>$entered_email, "from_email"=>$this->config->item('automated_email')), TRUE), TRUE);
 		}
 		else {
 			// failed
@@ -137,13 +135,13 @@ class Passwordreset extends CI_Controller {
 			
 			if (!isset($data['form_errors']['password']) && !isset($data['form_errors']['password_confirmation'])) {
 				if ($entered_password !== $entered_password_confirmation) {
-					$$data['form_errors']["password_confirmation"] = "The passwords you entered didn't match.";
+					$data['form_errors']["password_confirmation"] = "The passwords you entered didn't match.";
 				}
 			}
 			
 			if (count($data['form_errors']) !== 0) {
 				// invalid form response
-				output_page("passwordresetchange", array(), array(), $this->load->view('page/passwordresetchange', $data, TRUE), TRUE);
+				output_page("passwordresetchange", array(), array(), $this->load->view('page/password_reset_change', $data, TRUE), TRUE);
 			}
 			else {
 				// form valid. change password 
@@ -164,7 +162,7 @@ class Passwordreset extends CI_Controller {
 		if ($code === FALSE) {
 			if ($this->session->userdata("my_resetting_password_id") !== FALSE) {
 				// they have already clicked a link and it was valid.
-				if ($this->session->set_userdata('my_resetting_password_time') < time() - (60*5)) {
+				if ($this->session->userdata('my_resetting_password_time') < time() - (60*5)) {
 					// their time to change the pasword has expired.
 					$state = 1;
 					$this->session->unset_userdata("my_resetting_password_id");

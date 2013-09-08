@@ -8,7 +8,7 @@
 <?php if ($state === 0 || $state === 1): ?>
 <p>Your e-mail address has been verified and your application is now complete.</p>
 <p>Your application will now be reviewed and you will receive a further e-mail notifying you when your account has been activiated.</p>
-<p>After your account has been activated you will then be able to submit your VT.</p>
+<p>After your account has been activated you will then be able to login and submit your VT.</p>
 <p>Thanks!</p>
 <?php else: ?>
 <p>The e-mail address could not be verified. Either the link is invalid or you have already submitted an application form.</p>

@@ -4,6 +4,7 @@ $this->load->helper("security");
 ?>
 <h2>Password Reset</h2>
 <p>Please enter the e-mail address that you set up on the <a href="<?=base_url();?>apply">application form</a> and we will send you a password reset link.</p>
+<p>Your application must have been accepted before you will be able to reset your password.</p>
 <p>If you have any problems please send an e-mail to "<a href="mailto:development@la1tv.co.uk" target="_blank">development@la1tv.co.uk</a>" <strong>from the same e-mail address you put on the application form</strong>.</p>
 <?php if (strlen($error_msg) !== 0) : ?>
 	<div class="alert alert-danger"><?=htmlent($error_msg);?></div>

@@ -85,7 +85,10 @@ class Changepassword extends CI_Controller {
 			// everything valid.
 			$this->load->model("applications");
 			$this->applications->set_password($this->authentication->get_id(), $form['password']);
+			// update password in session so that don't get logged out
+			$this->authentication->update_password($this->applications->get_hash($form['password']));
 			// send notification email
+			$this->load->library("send_email");
 			$this->send_email->send_password_changed_email($this->applications->get_email($this->authentication->get_id()));
 			output_page("password_changed", array(), array(), $this->load->view('page/password_changed', array(), TRUE), TRUE);
 		}

@@ -21,6 +21,11 @@ class Applications extends CI_Model {
 		$this->db->insert($this->table, $data);
 	}
 	
+	function exists($id) {
+		$query = $this->db->get_where($this->table, array('id'=>$id));
+		return $query->num_rows() === 1;
+	}
+	
 	function is_correct_email_verification_code($id, $code) {
 		// should really only select the required field but can't be bothered
 		$query = $this->db->get_where($this->table, array('id'=>$id));
@@ -39,7 +44,17 @@ class Applications extends CI_Model {
 			return FALSE;
 		}
 		$row = $query->row();
-		return $row->application_accepted;
+		return $row->application_accepted ? TRUE : FALSE;
+	}
+	
+	function get_email($id) {
+		$query = $this->db->get_where($this->table, array('id'=>$id));
+		if ($query->num_rows() !== 1)
+		{
+			return FALSE;
+		}
+		$row = $query->row();
+		return $row->email;
 	}
 	
 	function set_application_accepted($id, $val=TRUE) {
@@ -57,7 +72,7 @@ class Applications extends CI_Model {
 	}
 	
 	function get_hash($input) {
-		return hash('sha512', $this->hash_salt.$input);
+		return sha1(hash('sha512', $this->hash_salt.$input));
 	}
 	
 	function update_vt($id, $url) {
@@ -74,7 +89,7 @@ class Applications extends CI_Model {
 	
 	// gets the id of the ACCEPTED APPLICATION account with the email or false otherwise
 	function get_id_from_email($email) {
-		$query = $this->db->get_where($this->table, array('email'=>"email", "application_accepted"=>TRUE));
+		$query = $this->db->get_where($this->table, array('email'=>$email, "application_accepted"=>TRUE));
 		if ($query->num_rows() !== 1)
 		{
 			return FALSE;
@@ -103,7 +118,7 @@ class Applications extends CI_Model {
 			return 2;
 		}
 		$row = $query->row();
-		if ($row->verified) {
+		if ($row->email_verified) {
 			return 1;
 		}
 		// check if the email corresponding to the key is not already verified with a different key
@@ -115,6 +130,16 @@ class Applications extends CI_Model {
 		// update db
 		$this->db->update($this->table, array('email_verified'=>TRUE), array("id"=>$row->id));
 		return 0;
+	}
+	
+	function get_id_from_verification_code($code) {
+		$query = $this->db->get_where($this->table, array('email_verification_hash'=>$this->get_hash($code)));
+		if ($query->num_rows() !== 1)
+		{
+			return FALSE;
+		}
+		$row = $query->row();
+		return $row->id;
 	}
 	
 	function create_password_reset_code($id) {
@@ -170,6 +195,6 @@ class Applications extends CI_Model {
 	}
 	
 	function does_pass_meet_requirments($pass) {
-		return !(strlen($pass) < 8 || !preg_match('#[0-9]#', $pass) || !preg_match('#[a-zA-Z]#', $pass));
+		return !(strlen($pass) < 8 || !preg_match('#[0-9]#', $pass) || !preg_match('#[a-z]#', $pass) || !preg_match('#[A-Z]#', $pass));
 	}
 }

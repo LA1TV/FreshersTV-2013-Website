@@ -34,7 +34,7 @@ class Send_email {
 			"email_data"=>array(
 				"msg"=>"This is confirmation that we have received your VT."
 			)
-		);
+		));
 	}
 	
 	function send_password_changed_email($to)
@@ -45,7 +45,18 @@ class Send_email {
 			"email_data"=>array(
 				"msg"=>"Your password for your FreshersTV account has been changed."
 			)
-		);
+		));
+	}
+	
+	function send_email_verified_email($to)
+	{
+		return $this->send_notification_email(array(
+			"to_address"=>$to,
+			"subject"=>"E-mail Address Verified",
+			"email_data"=>array(
+				"msg"=>"Your e-mail address has been verified. This will become your login when your application has been accepted. You will be notified when this happens."
+			)
+		));
 	}
 	
 	function send_notification_email($data)

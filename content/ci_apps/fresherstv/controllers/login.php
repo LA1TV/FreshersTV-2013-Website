@@ -74,6 +74,10 @@ class Login extends CI_Controller {
 		}
 		else {
 			// login successful
+			if ($next_uri == "login") {
+				// cancel the next uri if it is the login page
+				$next_uri = FALSE;
+			}
 			output_page("logged_in", array(), array(), $this->load->view('page/logged_in', array("already_logged_in"=>FALSE, "next_uri"=>$next_uri), TRUE), TRUE);
 		}
 	}
