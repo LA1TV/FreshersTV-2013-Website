@@ -4,7 +4,7 @@ class Incorrect_logins extends CI_Model {
 
 	var $table = 'login_invalid_attempts';
 	
-	function add_failed_attempt($assoc_id)
+	function add_failed_attempt()
 	{
 		$this->db->insert($this->table, array('time'=>time()));
 	}
