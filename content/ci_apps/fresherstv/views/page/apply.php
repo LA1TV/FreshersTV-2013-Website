@@ -57,7 +57,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 	<div class="form-group <?=get_error_class($form_errors, "email_confirmation");?>">
 		<label for="form-email-confirmation" class="col-lg-2 control-label">Re-enter E-mail Address</label>
 		<div class="col-lg-10">
-			<input type="email" class="form-control" name="email_confirmation" id="form-email-confirmation" value="<?=htmlent($form['email_confirmation'])?>">
+			<input type="email" class="form-control" name="email_confirmation" id="form-email-confirmation" autocomplete="off" value="<?=htmlent($form['email_confirmation'])?>">
 			<?=get_error_msg($form_errors, "email_confirmation");?>
 		</div>
 	</div>

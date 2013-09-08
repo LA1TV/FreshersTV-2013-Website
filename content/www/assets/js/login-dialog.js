@@ -32,7 +32,7 @@ $(document).ready(function() {
 	
 	function showCaptcha(val) {
 		if (val) {
-			$captchaContainer.recaptcha("showCaptcha", true);
+			$actualCaptchaContainer.recaptcha("showCaptcha", true);
 			$captchaContainer.show();
 		}
 		else {

@@ -172,11 +172,11 @@ class Apply extends CI_Controller {
 				"bitrate"				=>	$form['participation_type'] === "live" ? $form['bitrate'] : NULL,
 				"stream_url"			=>	$form['participation_type'] === "live" ? strlen($form['stream_url']) !== 0 ? $form['stream_url'] : NULL : NULL,
 				"stream_extra"			=>	$form['participation_type'] === "live" ? strlen($form['stream_extra']) !== 0 ? $form['stream_extra'] : NULL : NULL,
-				"overlay_details"		=>	$form['overlay_details'],
+				"overlay_details"		=>	strlen($form['overlay_details']) !== 0 ? $form['overlay_details'] : NULL,
 				"cinebeat"				=>	$form['cinebeat'],
 				"vt"					=>	NULL,
 				"password"				=>	$this->applications->get_hash($form['password']),
-				"email_verificatiion_hash"	=>	$this->applications->get_hash($email_verification_code),
+				"email_verification_hash"	=>	$this->applications->get_hash($email_verification_code),
 				"email_verified"		=>	FALSE,
 				"application_accepted"	=>	FALSE
 			);
