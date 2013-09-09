@@ -4,9 +4,29 @@
 }
 
 #page-home .promo-vid-container {
-	text-align: center;
+	text-align: left;
+	position: relative;
 }
 
+#page-home .application-button-outer-container {
+	text-align: center;
+	display: block;
+}
+
+#page-home .application-button-container {
+	text-align: center;
+	display: none;
+	width: 100%;
+	clear: both;
+}
+
+#page-home .application-button-container .apply-now-btn {
+	margin-bottom: 10px;
+}
+
+#page-home .application-button-animation-padding {
+	height: 0;
+}
 
  /*
  *  Countdown timer

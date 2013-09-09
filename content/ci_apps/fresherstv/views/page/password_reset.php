@@ -20,8 +20,8 @@ $this->load->helper("security");
 	</div>
 	<div class="form-group">
 		<div class="col-lg-offset-2 col-lg-10">
-			<label for="form-captcha" class="control-label">Please also enter the text in the captcha below to verify that you are a human.</label>
-			<div id="form-captcha" class="captcha-container">
+			<label class="control-label">Please also enter the text in the captcha below to verify that you are a human.</label>
+			<div class="captcha-container">
 <?=$recaptcha_lib->get_noscript_html(); ?>
 			</div>
 		</div>

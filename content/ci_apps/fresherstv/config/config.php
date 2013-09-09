@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://85.25.138.4';
+$config['base_url']	= 'http://freshers.tv';
 
 /*
 |--------------------------------------------------------------------------

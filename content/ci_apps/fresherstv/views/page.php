@@ -48,6 +48,8 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
         <script src="<?=base_url();?>assets/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>	
         <script src="<?=base_url();?>assets/js/jquery.tjenkinson.recaptcha.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="<?=base_url();?>assets/js/jwplayer/jwplayer.js" type="text/javascript"></script>
+		<script src="<?=base_url();?>assets/js/jwplayer/license.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/embed-facebook.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/embed-twitter.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/flipclock/libs/base.js" type="text/javascript"></script>

@@ -244,8 +244,8 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 	<h3>Security Check</h3>
 	<div class="form-group <?=get_error_class($form_errors, "captcha");?>">
 		<div class="col-lg-offset-2 col-lg-10">
-			<label for="form-captcha" class="control-label">Please enter the text in the captcha below to verify that you are a human.</label>
-			<div id="form-captcha" class="captcha-container">
+			<label class="control-label">Please enter the text in the captcha below to verify that you are a human.</label>
+			<div class="captcha-container">
 			<?=$recaptcha_lib->get_noscript_html(); ?>
 			</div>
 			<?=get_error_msg($form_errors, "captcha");?>
