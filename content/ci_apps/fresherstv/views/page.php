@@ -59,6 +59,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
         <script src="<?=base_url();?>assets/js/smart-dropdown.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/login-dialog.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/require-js.js" type="text/javascript"></script>
+        <script src="<?=base_url();?>assets/js/google-analytics.js" type="text/javascript"></script>
 		
 		<!-- Load page specific JS -->
 		<?php foreach($js as $a):	?>

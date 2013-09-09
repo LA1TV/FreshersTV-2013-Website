@@ -7,3 +7,5 @@ $RECYCLE.BIN/
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
+
+*.mp4
