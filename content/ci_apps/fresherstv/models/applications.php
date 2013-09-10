@@ -47,6 +47,16 @@ class Applications extends CI_Model {
 		return $row->application_accepted ? TRUE : FALSE;
 	}
 	
+	function get_verified($id) {
+		$query = $this->db->get_where($this->table, array('id'=>$id));
+		if ($query->num_rows() !== 1)
+		{
+			return FALSE;
+		}
+		$row = $query->row();
+		return $row->email_verified ? TRUE : FALSE;
+	}
+	
 	function get_email($id) {
 		$query = $this->db->get_where($this->table, array('id'=>$id));
 		if ($query->num_rows() !== 1)
@@ -58,6 +68,11 @@ class Applications extends CI_Model {
 	}
 	
 	function set_application_accepted($id, $val=TRUE) {
+		if ($val) {
+			// if any others have been accepted with the same email unaccept them
+			$row = $this->get_row($id);
+			$this->db->update($this->table, array("application_accepted"=>FALSE), array('email'=>$row->email, 'application_accepted'=>TRUE));
+		}
 		$this->db->update($this->table, array('application_accepted'=>$val), array("id"=>$id));
 	}
 	
@@ -196,5 +211,23 @@ class Applications extends CI_Model {
 	
 	function does_pass_meet_requirments($pass) {
 		return !(strlen($pass) < 8 || !preg_match('#[0-9]#', $pass) || !preg_match('#[a-z]#', $pass) || !preg_match('#[A-Z]#', $pass));
+	}
+	
+	function get_all() {
+		$this->db->from($this->table);
+		$this->db->order_by("application_accepted", "asc");
+		$this->db->order_by("email_verified", "desc");
+		$this->db->order_by("name", "asc");
+		$this->db->order_by("contact", "asc");
+		$this->db->order_by("email", "asc");
+		$this->db->order_by("postcode", "asc");
+		$this->db->order_by("participation_type", "asc");
+		$query = $this->db->get();
+		$rows = array();
+		foreach ($query->result() as $row)
+		{
+			$rows[] = $row;
+		}
+		return $rows;
 	}
 }

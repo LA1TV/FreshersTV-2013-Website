@@ -19,7 +19,7 @@ class Submitvt extends CI_Controller {
 				$form = array(
 					"vt"	=>	""
 				);
-				output_page("submitvt", array(), array(), $this->load->view('page/submit_vt', array("form"=>$form, "form_errors"=>array()), TRUE));
+				output_page("submitvt", array(), array("submitvt"), $this->load->view('page/submit_vt', array("form"=>$form, "form_errors"=>array()), TRUE));
 			}
 		}
 	}
@@ -74,7 +74,7 @@ class Submitvt extends CI_Controller {
 				// everything valid. write to database and send verification e-mail
 				$this->load->model("applications");
 				$application_id = $this->authentication->get_id();
-				$this->applications->update_vt($applicaton_id, $form['vt']);
+				$this->applications->update_vt($application_id, $form['vt']);
 				
 				// send the notification email
 				$this->load->library("send_email");
@@ -85,7 +85,7 @@ class Submitvt extends CI_Controller {
 			}
 			else {
 				// there are problems. show the form again.
-				output_page("submitvt", array(), array(), $this->load->view('page/submit_vt', array("form"=>$form, "form_errors"=>$form_errors), TRUE), TRUE);
+				output_page("submitvt", array(), array("submitvt"), $this->load->view('page/submit_vt', array("form"=>$form, "form_errors"=>$form_errors), TRUE), TRUE);
 			}
 		}
 	}

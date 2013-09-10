@@ -178,7 +178,8 @@ class Apply extends CI_Controller {
 				"password"				=>	$this->applications->get_hash($form['password']),
 				"email_verification_hash"	=>	$this->applications->get_hash($email_verification_code),
 				"email_verified"		=>	FALSE,
-				"application_accepted"	=>	FALSE
+				"application_accepted"	=>	FALSE,
+				"time_created"			=>	time()
 			);
 			
 			// at the moment even if an application has been sent and email verified the form will still be submitted successfully. When they try and validate the email it will fail
@@ -190,6 +191,9 @@ class Apply extends CI_Controller {
 			// send the verification email
 			$this->load->library("send_email");
 			$this->send_email->send_activate_email(array("to_address"=>$data['email'], "email_data"=>array("link"=> base_url()."apply/verifyemail?code=".$email_verification_code)));
+			if ($this->config->item('admin_notification_email_address') !== FALSE) {
+				$this->send_email->send_notification_email(array("to_address"=>$this->config->item('admin_notification_email_address'), "email_data"=>array("msg"=>"There is a new application waiting to be activted.")));
+			}
 			
 			// show the application received view
 			output_page("application_received", array(), array(), $this->load->view('page/application_received', array("email"=>$data['email'], "from_email"=>$this->config->item('automated_email')), TRUE), TRUE);

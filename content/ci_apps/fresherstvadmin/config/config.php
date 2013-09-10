@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://freshers.tv';
+$config['base_url']	= 'http://85.25.138.4/admin';
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'VgJa6nBQjkI9uUXWhIRigxKKs0yAMVwl8M8gtdQOYOropHbOgYneTJXVuo6oTcW';
+$config['encryption_key'] = 'VgJa6nBQjkI9uUXWhIRigxKKs0yAMawl8M8gtdQOYOropHbOgYneTJXVuo6oTcW';
 
 /*
 |--------------------------------------------------------------------------
@@ -244,12 +244,12 @@ $config['encryption_key'] = 'VgJa6nBQjkI9uUXWhIRigxKKs0yAMVwl8M8gtdQOYOropHbOgYn
 | 'sess_time_to_update'		= how many seconds between CI refreshing Session Information
 |
 */
-$config['sess_cookie_name']		= 'fresherstv_session';
+$config['sess_cookie_name']		= 'fresherstvadmin_session';
 $config['sess_expiration']		= 7200;
 $config['sess_expire_on_close']	= FALSE;
 $config['sess_encrypt_cookie']	= TRUE;
 $config['sess_use_database']	= TRUE;
-$config['sess_table_name']		= 'fresherstv_sessions';
+$config['sess_table_name']		= 'fresherstvadmin_sessions';
 $config['sess_match_ip']		= FALSE;
 $config['sess_match_useragent']	= TRUE;
 $config['sess_time_to_update']	= 300;
@@ -266,8 +266,8 @@ $config['sess_time_to_update']	= 300;
 |
 */
 $config['cookie_prefix']	= "fresherstv";
-$config['cookie_domain']	= ".freshers.tv";
-$config['cookie_path']		= "/";
+$config['cookie_domain']	= "";
+$config['cookie_path']		= "/admin";
 $config['cookie_secure']	= FALSE;
 
 /*
@@ -294,8 +294,8 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_expire' = The number in seconds the token should expire.
 */
 $config['csrf_protection'] = TRUE;
-$config['csrf_token_name'] = 'fresherstv_csrf_token';
-$config['csrf_cookie_name'] = 'fresherstv_csrf_cookie';
+$config['csrf_token_name'] = 'fresherstvadmin_csrf_token';
+$config['csrf_cookie_name'] = 'fresherstvadmin_csrf_cookie';
 $config['csrf_expire'] = 7200;
 
 /*
@@ -315,7 +315,7 @@ $config['csrf_expire'] = 7200;
 | by the output class.  Do not 'echo' any values with compression enabled.
 |
 */
-$config['compress_output'] = TRUE;
+$config['compress_output'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------

@@ -1,0 +1,75 @@
+/*
+ *
+ *  Any custom CSS thats exists outside the scope of 
+ *  BootSrap and other libaries used to build the site
+ *  
+ */
+ 
+/* necessary for footer to work */
+body, html {
+	height: 100%;
+}
+
+body {
+	padding-top: 70px;
+}
+
+/*
+* Nav bar
+*/
+
+#main-navbar .action-buttons {
+	display: inline-block;
+}
+
+/* recaptcha fix */
+iframe[src="about:blank"] {
+	display: none;
+}
+
+
+/*
+*   Mark out the content so the footer can be flushed
+*   agsint the bottom of the page 
+*/
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -100px;
+	padding-bottom: 20px;
+}
+
+#push, #footer {
+    height: 100px;
+}
+
+/*
+*   Footer 
+*/
+#footer {
+    clear:both;
+    margin: 0; /* this cannot have a margin */
+    padding: 25px 0 0 0;
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
+	overflow: auto;
+} 
+
+#footer p {
+    margin-bottom: 0;
+    color: #777;
+}
+
+#footer .footer-links {
+    margin: 10px 0 0 0;
+	padding: 0;
+}
+
+#footer .footer-links li {
+    display: inline;
+    padding: 0 2px;
+}

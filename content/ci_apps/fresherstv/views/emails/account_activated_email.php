@@ -1,0 +1,1 @@
+<p>Your application has been accepted and you can now log in to the control panel at <a href="<?=base_url()?>login"><?=base_url()?>login</a> with the e-mail address and password you set up during the application process.</p>

@@ -92,7 +92,7 @@ class Authentication {
 		$this->CI->session->set_userdata('my_logout_reason', $reason);
 	}
 	
-	function log_out_reason()
+	function get_log_out_reason()
 	{
 		$reason = $this->CI->session->userdata('my_logout_reason');
 		$this->CI->session->unset_userdata('my_logout_reason');

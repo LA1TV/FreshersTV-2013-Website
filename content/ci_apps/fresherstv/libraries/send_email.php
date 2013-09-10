@@ -10,7 +10,7 @@ class Send_email {
 	
 	function send_pass_reset_email($data)
 	{
-		$title = 'FreshersTV Password Reset Request';
+		$title = 'FreshersTV: Password Reset Request';
 		
 		$body_html = $this->CI->load->view('emails/pass_reset', $data['email_data'], TRUE);
 		$html = $this->CI->load->view('emails/page', array('title'=>$title, 'html'=>$body_html), TRUE);
@@ -19,7 +19,7 @@ class Send_email {
 	
 	function send_activate_email($data)
 	{
-		$title = 'FreshersTV E-mail Verification Required';
+		$title = 'FreshersTV: E-mail Verification Required';
 		
 		$body_html = $this->CI->load->view('emails/activate_email', $data['email_data'], TRUE);
 		$html = $this->CI->load->view('emails/page', array('title'=>$title, 'html'=>$body_html), TRUE);
@@ -30,7 +30,7 @@ class Send_email {
 	{
 		return $this->send_notification_email(array(
 			"to_address"=>$to,
-			"subject"=>"VT Received",
+			"subject"=>"FreshersTV: VT Received",
 			"email_data"=>array(
 				"msg"=>"This is confirmation that we have received your VT."
 			)
@@ -41,7 +41,7 @@ class Send_email {
 	{
 		return $this->send_notification_email(array(
 			"to_address"=>$to,
-			"subject"=>"Password Changed",
+			"subject"=>"FreshersTV: Password Changed",
 			"email_data"=>array(
 				"msg"=>"Your password for your FreshersTV account has been changed."
 			)
@@ -52,11 +52,20 @@ class Send_email {
 	{
 		return $this->send_notification_email(array(
 			"to_address"=>$to,
-			"subject"=>"E-mail Address Verified",
+			"subject"=>"FreshersTV: E-mail Address Verified",
 			"email_data"=>array(
 				"msg"=>"Your e-mail address has been verified. This will become your login when your application has been accepted. You will be notified when this happens."
 			)
 		));
+	}
+	
+	function send_account_activated_email($to)
+	{
+		$title = 'FreshersTV: Application Accepted and Account Activated';
+		
+		$body_html = $this->CI->load->view('emails/account_activated_email', array(), TRUE);
+		$html = $this->CI->load->view('emails/page', array('title'=>$title, 'html'=>$body_html), TRUE);
+		return $this->send($to, $title, $html);
 	}
 	
 	function send_notification_email($data)
