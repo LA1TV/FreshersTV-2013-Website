@@ -3,7 +3,7 @@ Options +FollowSymLinks
 <IfModule mod_rewrite.c>
     RewriteEngine On
 	RewriteBase /admin/
-	
+
     # Removes trailing slashes (prevents SEO duplicate content issues)
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.+)/$ $1 [L,R=301]
@@ -16,8 +16,3 @@ Options +FollowSymLinks
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule . index.php
 </IfModule>
-
-AuthName "Secure Area"
-AuthType Basic
-AuthUserFile /var/www/main/content/www/admin/.htpasswd
-require valid-user

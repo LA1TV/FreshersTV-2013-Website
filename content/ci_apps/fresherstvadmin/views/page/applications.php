@@ -2,7 +2,10 @@
 $this->load->helper("security");
 ?>
 <h1>Applications</h1>
-<p>Here are all of the current applications.</p>
+<p>Here are all of the received applications.</p>
+<?php if (count($table_rows) === 0): ?>
+<p><em>There are currently no applications.</em></p>
+<?php else: ?>
 <table class="table table-bordered table-hover">
 	<thead>
 		<tr>
@@ -31,3 +34,4 @@ $this->load->helper("security");
 <?php endforeach; ?>
 	</tbody>
 </table>
+<? endif; ?>

@@ -6,7 +6,7 @@ class Login extends CI_Controller {
 	{
 		if ($this->admin_authentication->get_logged_in()) {
 			// already logged in
-			output_page("logged_in", array(), array(), $this->load->view('page/logged_in', array("already_logged_in"=>TRUE)));
+			output_page("logged_in", array(), array(), $this->load->view('page/logged_in', array("already_logged_in"=>TRUE), TRUE));
 		}
 		else {
 	
@@ -48,7 +48,7 @@ class Login extends CI_Controller {
 			// failed login
 			$this->load->library("recaptcha");
 			$data['recaptcha_lib'] = $this->recaptcha;
-			output_page("login", array(), array("login"), $this->load->view('page/login', $data, TRUE));
+			output_page("login", array(), array("login"), $this->load->view('page/login', $data, TRUE), TRUE);
 		}
 		else {
 			// login successful

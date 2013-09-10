@@ -20,8 +20,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<!-- Prevent search engines from indexing this page. -->
 		<meta name="robots" content="noindex">
-		<meta name="description" content="FreshersTV is an annual collaborative broadcast run by the National Association of Student Television (NaSTA) and a host station. This year the host station is LA1:TV from Lancaster University.">
-
+		
         <title>FreshersTV Administration</title>
 
         <!-- Load CSS  -->

@@ -2,7 +2,7 @@
 
 class Admin_authentication {
 	
-	private $password = "a9d8116a14511cdf4481ebd159075e9fa67a64e2";
+	private $password = "41d823d8b7bd451fba7446e0d087eb198994e7e1";
 	private $cookie_expire_time = 1; // days (of no activity because updates when logged in)
 	
 	function __construct()
@@ -37,23 +37,23 @@ class Admin_authentication {
 		$current_time = time();
 		$cookie_content = $salt . ":" . $this->get_pass() . ":" . $current_time;
 		$cookie_content = $current_time . "-" . hash('sha256', $cookie_content);
-		setcookie('admin_autologin', $cookie_content, $current_time+(60*60*24*$this->cookie_expire_time), '', 'freshers.tv', FALSE, TRUE);
+		$this->CI->input->set_cookie('admin_autologin', $cookie_content, 60*60*24*$this->cookie_expire_time);
 	}
 	
 	// log in from cookie
 	function do_cookie_login()
 	{
-		if (!isset($_COOKIE["admin_autologin"]))
+		if ($this->CI->input->cookie("admin_autologin") === FALSE)
 		{
 			return;
 		}
-		if($_COOKIE["admin_autologin"] == '')
+		if($this->CI->input->cookie("admin_autologin") == '')
 		{
 			$this->clear_login_cookie();
 			return;
 		}
 		
-		$cookie_contents = explode('-', $_COOKIE["admin_autologin"]);
+		$cookie_contents = explode('-', $this->CI->input->cookie("admin_autologin"));
 		if (!isset($cookie_contents[0]) or !isset($cookie_contents[1]))
 		{
 			$this->clear_login_cookie();
@@ -78,9 +78,9 @@ class Admin_authentication {
 	}
 	
 	function clear_login_cookie() {
-		if(isset($_COOKIE["admin_autologin"]))
+		if ($this->CI->input->cookie("admin_autologin") !== FALSE)
 		{
-			setcookie('admin_autologin','', time(), '', 'freshers.tv', FALSE, TRUE);
+			$this->CI->input->set_cookie('admin_autologin');
 		}
 	}
 	
