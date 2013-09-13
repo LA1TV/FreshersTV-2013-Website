@@ -117,6 +117,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 		<li>Must have a resolution of either 1920x1080, 1080x720 or 1024x576.</li>
 		<li>Must have a frame rate of either 25fps or 50fps.</li>
 		<li>Must be progressive, not interlaced.</li>
+		<li>Must use square pixels.</li>
 	</ul>
 	<div class="show-if-live">
 		<p>We will try our best to put every stations' slot within their preferred time however this may not be possible. The ending time of the broadcast will depend on the number of stations taking part.</p>
