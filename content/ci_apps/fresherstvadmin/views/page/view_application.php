@@ -16,6 +16,16 @@ $this->load->helper("form");
 <?php endforeach; ?>
 	</tbody>
 </table>
+<?php if ($show_send_verification_button): ?>
+<p>
+	<?=form_open($this->uri->uri_string()."?".$_SERVER['QUERY_STRING'], array("class"=>"form-horizontal accept-application-form", "role"=>"form", "novalidate"=>""));?>
+		<input type="hidden" name="form_submitted" value="1">
+		<input type="hidden" name="action" value="resend-verification">
+		<input type="hidden" name="id" value="<?=$id?>">
+		<button type="submit" class="btn btn-sm btn-default">Re-send Verification E-mail</button>
+	</form>
+</p>
+<?php endif; ?>
 <?php if ($show_accept_button): ?>
 <p>
 	<?=form_open($this->uri->uri_string()."?".$_SERVER['QUERY_STRING'], array("class"=>"form-horizontal accept-application-form", "role"=>"form", "novalidate"=>""));?>

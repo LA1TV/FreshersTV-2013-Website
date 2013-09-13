@@ -28,7 +28,11 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
 		<meta name="robots" content="noindex">
 <?php endif; ?>
 		<meta name="description" content="FreshersTV is an annual collaborative broadcast run by the National Association of Student Television (NaSTA) and a host station. This year the host station is LA1:TV from Lancaster University.">
-
+		<meta property="og:url" content="http://freshers.tv/" />
+		<meta property="og:title" content="FreshersTV 2013" />
+		<meta property="og:description" content="FreshersTV is an annual collaborative broadcast run by the National Association of Student Television (NaSTA) and a host station. This year the host station is LA1:TV from Lancaster University." />
+		<meta property="og:image" content="<?=base_url();?>assets/img/fresherTVLogo_fb.png" />
+		
         <title>LA1:TV Presents FreshersTV 2013</title>
 
         <!-- Load CSS  -->

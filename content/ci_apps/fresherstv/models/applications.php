@@ -123,6 +123,10 @@ class Applications extends CI_Model {
 		return $code;
 	}
 	
+	function update_email_verification_hash($id, $val) {
+		$this->db->update($this->table, array('email_verification_hash'=>$this->get_hash($val)), array("id"=>$id));
+	}
+	
 	// returns 0 if email was verified, 1 if email was already verified or 2 if link invalid or link not allowed because another one already used
 	function verify_email($code) {
 	

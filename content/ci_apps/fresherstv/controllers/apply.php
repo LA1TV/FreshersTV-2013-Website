@@ -191,9 +191,6 @@ class Apply extends CI_Controller {
 			// send the verification email
 			$this->load->library("send_email");
 			$this->send_email->send_activate_email(array("to_address"=>$data['email'], "email_data"=>array("link"=> base_url()."apply/verifyemail?code=".$email_verification_code)));
-			if ($this->config->item('admin_notification_email_address') !== FALSE) {
-				$this->send_email->send_notification_email(array("to_address"=>$this->config->item('admin_notification_email_address'), "email_data"=>array("msg"=>"There is a new application waiting to be activted.")));
-			}
 			
 			// show the application received view
 			output_page("application_received", array(), array(), $this->load->view('page/application_received', array("email"=>$data['email'], "from_email"=>$this->config->item('automated_email')), TRUE), TRUE);
@@ -220,6 +217,9 @@ class Apply extends CI_Controller {
 			$this->load->library("send_email");
 			$email = $this->applications->get_email($application_id);
 			$this->send_email->send_email_verified_email($email);
+			if ($this->config->item('admin_notification_email_address') !== FALSE) {
+				$this->send_email->send_notification_email(array("to_address"=>$this->config->item('admin_notification_email_address'), "subject"=> "Application Received", "email_data"=>array("msg"=>"There is a new application waiting to be activated.")));
+			}
 		}	
 		
 		output_page("email_verification", array(), array(), $this->load->view('page/email_verification', array("state"=>$state), TRUE), TRUE);

@@ -45,15 +45,28 @@ class Viewapplications extends CI_Controller {
 		}
 		
 		$info_txt = FALSE;
-		if ($this->input->post("form_submitted") == "1" && $this->input->post("action") == "accept") {
-			$accept_id = $this->input->post("id");
-			if ($accept_id !== FALSE && $this->applications->exists($accept_id) && $this->applications->get_verified($accept_id) && !$this->applications->get_activated($accept_id)) {
-				$this->applications->set_application_accepted($accept_id);
-				$this->load->library("send_email");
-				$this->send_email->send_account_activated_email($this->applications->get_email($accept_id));
-				$info_txt = "Application accepted. The station will be notified by e-mail and they will now be able to log in.";
+		if ($this->input->post("form_submitted") == "1") {
+			if ($this->input->post("action") == "accept") {
+				$accept_id = $this->input->post("id");
+				if ($accept_id !== FALSE && $this->applications->exists($accept_id) && $this->applications->get_verified($accept_id) && !$this->applications->get_activated($accept_id)) {
+					$this->applications->set_application_accepted($accept_id);
+					$this->load->library("send_email");
+					$this->send_email->send_account_activated_email($this->applications->get_email($accept_id));
+					$info_txt = "Application accepted. The station will be notified by e-mail and they will now be able to log in.";
+				}	
 			}
-		
+			else if ($this->input->post("action") == "resend-verification") {
+				$post_id = $this->input->post("id");
+				if ($post_id !== FALSE && $this->applications->exists($post_id) && !$this->applications->get_verified($post_id) && !$this->applications->get_activated($post_id)) {
+					$this->load->library("send_email");
+					$this->load->model("applications");
+					$email_verification_code = $this->applications->generate_verification_code();
+					$this->applications->update_email_verification_hash($post_id, $email_verification_code);
+					$data = $this->applications->get_row($post_id);
+					$this->send_email->send_activate_email(array("to_address"=>$data->email, "email_data"=>array("link"=> "http://freshers.tv/apply/verifyemail?code=".$email_verification_code)));
+					$info_txt = "The verification email has been re-sent.";
+				}	
+			}
 		}
 		
 		$table_rows = array();
@@ -114,6 +127,7 @@ class Viewapplications extends CI_Controller {
 			"table_rows"	=>	$table_rows,
 			"info_txt"		=>	$info_txt,
 			"show_accept_button"	=>	$this->applications->get_verified($id) && !$this->applications->get_activated($id),
+			"show_send_verification_button"	=>	!$this->applications->get_verified($id) && !$this->applications->get_activated($id),
 			"id"			=>	$id
 		);
 		
