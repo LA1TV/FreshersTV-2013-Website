@@ -53,9 +53,9 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 <?php elseif ($state === 1): ?>
 <h2>Link Expired</h2>
 <p>That password reset link has expired. Please submit another password reset request by <a href="<?=base_url();?>passwordreset">clicking here</a>.</p>
-<p>If you have any problems please send an e-mail to "<a href="mailto:development@la1tv.co.uk" target="_blank">development@la1tv.co.uk</a>" <strong>from the same e-mail address you put on the application form</strong>.</p>
+<p>If you have any problems please send an e-mail to "<a href="mailto:development@la1tv.co.uk">development@la1tv.co.uk</a>" <strong>from the same e-mail address you put on the application form</strong>.</p>
 <?php else: ?>
 <h2>Link Invalid</h2>
 <p>That password reset link was invalid.</p>
-<p>If you have any problems please send an e-mail to "<a href="mailto:development@la1tv.co.uk" target="_blank">development@la1tv.co.uk</a>" <strong>from the same e-mail address you put on the application form</strong>.</p>
+<p>If you have any problems please send an e-mail to "<a href="mailto:development@la1tv.co.uk">development@la1tv.co.uk</a>" <strong>from the same e-mail address you put on the application form</strong>.</p>
 <?php endif; ?>

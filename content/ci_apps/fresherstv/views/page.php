@@ -9,7 +9,8 @@ $this->load->helper("security");
 $pages = array(
 	array("home", "Home"),
 	array("about", "About"),
-	array("fresherstv2012", "FreshersTV 2012")
+	array("fresherstv2012", "FreshersTV 2012"),
+	array("contact", "Contact")
 );
 
 // fix for ie

@@ -12,5 +12,5 @@
 <p>Thanks!</p>
 <?php else: ?>
 <p>The e-mail address could not be verified. Either the link is invalid or you have already submitted an application form.</p>
-<p>If you have any problems please send an e-mail to "<a href="mailto:development@la1tv.co.uk" target="_blank">development@la1tv.co.uk</a>" <strong>from the same e-mail address you put on the application form</strong>.</p>
+<p>If you have any problems please send an e-mail to "<a href="mailto:development@la1tv.co.uk">development@la1tv.co.uk</a>" <strong>from the same e-mail address you put on the application form</strong>.</p>
 <?php endif; ?>

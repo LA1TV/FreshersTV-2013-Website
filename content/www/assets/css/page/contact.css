@@ -1,0 +1,9 @@
+@media (min-width: 768px) {
+	#page-contact .contact-dl dt {
+		width: 330px;
+	}
+
+	#page-contact .contact-dl dd {
+		margin-left: 350px;
+	}
+}

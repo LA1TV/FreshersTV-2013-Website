@@ -5,7 +5,7 @@ $this->load->helper("security");
 <h2>Station Login</h2>
 <p>Please login below with the e-mail address and password you set up on the <a href="<?=base_url();?>apply">application form</a>.</p>
 <p>If you can't remember you password and need to reset it please <a href="<?=base_url();?>passwordreset">click here</a>.</p>
-<p>If you have any problems please send an e-mail to "<a href="mailto:development@la1tv.co.uk" target="_blank">development@la1tv.co.uk</a>" <strong>from the same e-mail address you put on the application form</strong>.</p>
+<p>If you have any problems please send an e-mail to "<a href="mailto:development@la1tv.co.uk">development@la1tv.co.uk</a>" <strong>from the same e-mail address you put on the application form</strong>.</p>
 <?php if (strlen($login_required_msg) !== 0) : ?>
 	<div class="alert alert-info"><?=htmlent($login_required_msg);?></div>
 <?php endif; ?>
