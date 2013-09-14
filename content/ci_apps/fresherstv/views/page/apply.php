@@ -26,6 +26,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 <p>Please answer all the questions below to help us make sure that this years broadcast can accommodate as many stations as possible and show off your content in the best possible way. If you require any further information please email Chris Osborn at <a href="mailto:c.osborn@la1tv.co.uk">c.osborn@la1tv.co.uk</a> or Rachel Hughes at <a href="mailto:r.hughes@la1tv.co.uk">r.hughes@la1tv.co.uk</a>.</p>
 <p>If you have any technical issues or enquiries please contact <a href="mailto:development@la1tv.co.uk">development@la1tv.co.uk</a>.
 <p><strong>You can only submit this form once for your stations e-mail address and your station must be affiliated with NaSTA.</strong></p>
+<p><strong>Applications close on Sunday 13th October.</strong></p>
 <p>By providing this information you agree that NaSTA may contact you or your station regarding future NaSTA events and other services.</p>
 <?php if (count($form_errors) !== 0) : ?>
 <div class="alert alert-danger">There <?php if(count($form_errors) === 1):echo("is");else:echo("are");endif;?> <?=count($form_errors)?> <?php if(count($form_errors) === 1):echo("error");else:echo("errors");endif;?> that need to be fixed before you can submit this form. <?php if(count($form_errors) === 1):echo("It has");else:echo("They have");endif;?> been highlighted.</div>
