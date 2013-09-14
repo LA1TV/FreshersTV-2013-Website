@@ -9,6 +9,7 @@ $this->load->helper("security");
 $pages = array(
 	array("home", "Home"),
 	array("about", "About"),
+	array("http://blog.freshers.tv", "Blog", TRUE),
 	array("fresherstv2012", "FreshersTV 2012"),
 	array("contact", "Contact")
 );
@@ -107,8 +108,10 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-links">
                     <ul class="nav navbar-nav">
-						<?php foreach($pages as $a): ?>
-                        <li class="<?php if($a[0] == $current_page){echo("active");}?>"><a href="<?=base_url();?><?=htmlent($a[0])?>"><?=htmlent($a[1])?></a></li>
+						<?php foreach($pages as $a):
+							$addr = $a[2] ? $a[0] : base_url() . htmlent($a[0]);
+						?>
+                        <li class="<?php if($a[2] !== TRUE && $a[0] == $current_page){echo("active");}?>"><a href="<?=$addr?>"><?=htmlent($a[1])?></a></li>
                         <?php endforeach; ?>
                     </ul>
 					<div class="action-buttons navbar-right">
