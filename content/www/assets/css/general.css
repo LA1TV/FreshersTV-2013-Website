@@ -139,6 +139,7 @@ iframe[src="about:blank"] {
 #footer {
     clear:both;
     margin: 0; /* this cannot have a margin */
+	margin-top: -1px; /* compensate for border */
     padding: 25px 0 0 0;
     text-align: center;
     border-top: 1px solid #e5e5e5;
