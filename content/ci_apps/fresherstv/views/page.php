@@ -93,7 +93,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
     -->
     <body data-baseurl="<?=htmlent(base_url());?>">
         <!-- =======[Nav]======= --> 
-        <nav id="main-navbar" class="navbar navbar-default navbar-fixed-top">
+        <div id="main-navbar" class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">       
 
@@ -106,7 +106,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
                     <a href="<?=base_url();?>" class="navbar-brand">FreshersTV</a>
 
                 </div>
-                <div class="navbar-collapse collapse" id="navbar-links">
+                <nav class="navbar-collapse collapse" id="navbar-links">
                     <ul class="nav navbar-nav">
 						<?php foreach($pages as $a):
 							$addr = $a[2] ? $a[0] : base_url() . htmlent($a[0]);
@@ -123,9 +123,9 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
 						<a class="btn btn-info navbar-btn" href="<?=base_url();?>account">Account &raquo;</a>
 <?php endif; ?>
 					</div>
-                </div>
+                </nav>
             </div>
-        </nav>
+        </div>
         <div id="wrap">
 			<!-- =======[Main Logo Header]======= -->
 			<div id="main-logo-header">
