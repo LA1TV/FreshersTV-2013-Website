@@ -158,7 +158,8 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 	</div>
 	<div class="show-if-live">
 		<h3>Stream Details</h3>
-		<p>Please tell us the details of your stream to us.</p>
+		<p>Please tell us the details of your stream.</p>
+		<p>We will receive your stream from your RMTP server. If you do not have an RMTP server please leave the "RMTP Server Url" box blank and let us know in the "Extra Information" box.</p>
 		<p>Please note that the broadcast will be in 720p at around 2 mbps. Resolutions and bit rates that match this will produce the best viewing quality. Resolutions which are not 16:9 may appear distorted on the broadcast.</p>
 		<p>We are not responsible for any cropping or distortion if your stream does not follow these guidelines.</p>
 		<p>If you are unable to stream in 16:9 please provide as much information as possible in the "Extra Information" box and we will get back to you.</p>
@@ -177,7 +178,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 			</div>
 		</div>
 		<div class="form-group <?=get_error_class($form_errors, "stream_url");?>">
-			<label for="form-stream-url" class="col-lg-2 control-label">RMTP Stream Url</label>
+			<label for="form-stream-url" class="col-lg-2 control-label">RMTP Server Url</label>
 			<div class="col-lg-10">
 				<input type="text" class="form-control" id="form-stream-url" name="stream_url" value="<?=htmlent($form['stream_url'])?>"/>
 				<span class="help-block"><?=get_error_msg($form_errors, "stream_url", TRUE);?>This is what we will connect to to access your stream. E.g. "rtmp://dtu-fmis.lancs.ac.uk/la1tv_live/_definst_" is ours. You can leave this blank if you do not have this information at this time.</span>
