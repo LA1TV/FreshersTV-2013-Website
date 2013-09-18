@@ -218,7 +218,13 @@ class Apply extends CI_Controller {
 			$email = $this->applications->get_email($application_id);
 			$this->send_email->send_email_verified_email($email);
 			if ($this->config->item('admin_notification_email_address') !== FALSE) {
-				$this->send_email->send_notification_email(array("to_address"=>$this->config->item('admin_notification_email_address'), "subject"=> "Application Received", "email_data"=>array("msg"=>"There is a new application waiting to be activated.")));
+				foreach(explode(";", $this->config->item('admin_notification_email_address')) as $email) {
+					$email = trim($email);
+					if ($email == "") {
+						continue;
+					}
+					$this->send_email->send_notification_email(array("to_address"=>$email, "subject"=> "Application Received", "email_data"=>array("msg"=>"There is a new application waiting to be activated.")));
+				}
 			}
 		}	
 		
