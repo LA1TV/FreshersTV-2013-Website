@@ -213,6 +213,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 	<p>We would like to make these a little more individual to each station and more fun for the viewers. To do this we would like each station to create and send us a CineBeat video. These are short music videos create from clips recorded on an iPhone or iPad using a free app. We would like you to include the name of your station and the word FreshersTV in your video but everything else is up to you. This map will be launched a couple of days ahead of the broadcast to help publicise the event and let viewers know what time each station is on.</p>
 	<p>The CineBeat app can be found at "<a href="https://itunes.apple.com/gb/app/cinebeat-by-smule/id562793878" target="_blank">https://itunes.apple.com/gb/app/cinebeat-by-smule/id562793878</a>".</p>
 	<p>The easiest way to get the link after creating the video is by using the option to send it as an e-mail.</p>
+	<p>If would like to submit this video at a later date before the deadline then you may leave this box blank. Please send an e-mail from the address you put on this form with the link when you have it to <a href="mailto:development@la1tv.co.uk">development@la1tv.co.uk</a>.</p>
 	<div class="form-group <?=get_error_class($form_errors, "cinebeat");?>">
 		<label for="form-cinebeat" class="col-lg-2 control-label">CineBeat Video Url</label>
 		<div class="col-lg-10">

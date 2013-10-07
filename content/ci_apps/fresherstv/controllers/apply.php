@@ -65,7 +65,7 @@ class Apply extends CI_Controller {
 		$participation_time_ids = array("1800", "1815", "1830", "1845", "1900", "1915", "1930", "1945", "2000", "2015", "2030", "2045", "2100", "2115", "2130", "2145");
 		
 		// check that required fields
-		$fields_to_check = array("name", "contact", "email", "email_confirmation", "postcode", "phone", "main_logo", "cinebeat", "password", "password_confirmation");
+		$fields_to_check = array("name", "contact", "email", "email_confirmation", "postcode", "phone", "main_logo", "password", "password_confirmation");
 		if ($form['participation_type'] === "live") {
 			$fields_to_check = array_merge($fields_to_check, array("resolution", "bitrate"));
 		}
@@ -129,7 +129,7 @@ class Apply extends CI_Controller {
 			}
 		}
 		
-		if (!isset($form_errors['cinebeat'])) {
+		if (!isset($form_errors['cinebeat']) && strlen($form['cinebeat']) > 0) {
 			if (!filter_var($form['cinebeat'], FILTER_VALIDATE_URL)) {
 				$form_errors["cinebeat"] = "This is not a valid url.";
 			}
@@ -173,7 +173,7 @@ class Apply extends CI_Controller {
 				"stream_url"			=>	$form['participation_type'] === "live" ? strlen($form['stream_url']) !== 0 ? $form['stream_url'] : NULL : NULL,
 				"stream_extra"			=>	$form['participation_type'] === "live" ? strlen($form['stream_extra']) !== 0 ? $form['stream_extra'] : NULL : NULL,
 				"overlay_details"		=>	strlen($form['overlay_details']) !== 0 ? $form['overlay_details'] : NULL,
-				"cinebeat"				=>	$form['cinebeat'],
+				"cinebeat"				=>	strlen($form['cinebeat']) !== 0 ? $form['cinebeat'] : NULL,
 				"vt"					=>	NULL,
 				"password"				=>	$this->applications->get_hash($form['password']),
 				"email_verification_hash"	=>	$this->applications->get_hash($email_verification_code),
