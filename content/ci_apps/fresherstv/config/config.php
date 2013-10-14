@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://freshers.tv';
+$config['base_url']	= 'http://freshers.tv/';
 
 /*
 |--------------------------------------------------------------------------

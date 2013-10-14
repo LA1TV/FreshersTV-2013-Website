@@ -27,7 +27,7 @@ class Apply extends CI_Controller {
 		);
 		
 		$this->load->library("recaptcha");
-		output_page("apply", array(), array("apply"), $this->load->view('page/apply', array("form"=>$form, "form_errors"=>array(), "recaptcha_lib"=>$this->recaptcha), TRUE));
+		output_page("apply", array(), array("apply"), $this->load->view('page/apply', array("form"=>$form, "form_errors"=>array(), "show_application"=>$this->input->get("override") !== FALSE || $this->config->item('applications_open'), "recaptcha_lib"=>$this->recaptcha), TRUE), $this->input->get("override") !== FALSE);
 	}
 	
 	public function submit()
@@ -197,7 +197,7 @@ class Apply extends CI_Controller {
 		}
 		else {
 			// there are problems. show the form again.
-			output_page("apply", array(), array("apply"), $this->load->view('page/apply', array("form"=>$form, "form_errors"=>$form_errors, "recaptcha_lib"=>$this->recaptcha), TRUE), TRUE);
+			output_page("apply", array(), array("apply"), $this->load->view('page/apply', array("form"=>$form, "form_errors"=>$form_errors, "recaptcha_lib"=>$this->recaptcha, "show_application"=> TRUE), TRUE), TRUE);
 		}
 	}
 	

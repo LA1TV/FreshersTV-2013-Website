@@ -21,7 +21,9 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 	}
 }
 ?>
+<div data-applicationvisible="<?=$show_application?"1":"0"?>" class="data-placeholder"></div>
 <h2>Application Form</h2>
+<?php if ($show_application): ?>
 <p>FreshersTV is the largest Student TV broadcast in the UK, with stations throughout the UK taking part in a three hour collaborative live broadcast showing the very best of Freshers Week content. This year the broadcast will be on <strong>Thursday 24th October starting at 6pm</strong>. Each station will have a <strong>5 minute slot</strong> to showcase the best of their Freshers Week content and any other content they have produced.</p>
 <p>Please answer all the questions below to help us make sure that this years broadcast can accommodate as many stations as possible and show off your content in the best possible way. If you require any further information please email Chris Osborn at <a href="mailto:c.osborn@la1tv.co.uk">c.osborn@la1tv.co.uk</a> or Rachel Hughes at <a href="mailto:r.hughes@la1tv.co.uk">r.hughes@la1tv.co.uk</a>.</p>
 <p>If you have any technical issues or enquiries please contact <a href="mailto:development@la1tv.co.uk">development@la1tv.co.uk</a>.
@@ -261,3 +263,6 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 		</div>
 	</div>
 </form>
+<?php else: ?>
+<p>Sorry, applications are now closed!</p>
+<?php endif; ?>

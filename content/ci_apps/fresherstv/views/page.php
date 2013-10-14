@@ -115,7 +115,9 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
                         <?php endforeach; ?>
                     </ul>
 					<div class="action-buttons navbar-right">
+					<?php if ($show_apply): ?>
 						<a class="btn btn-info navbar-btn" href="<?=base_url();?>apply">Application Form &raquo;</a>
+					<?php endif; ?>
 						<a class="btn btn-info navbar-btn" href="<?=base_url();?>submitvt">Submit VT &raquo;</a>
 <?php if (!$logged_in): ?>
 						<a class="btn btn-info navbar-btn show-login-dialog" href="<?=base_url();?>login">Log In &raquo;</a>

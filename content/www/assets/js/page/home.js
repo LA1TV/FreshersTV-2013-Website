@@ -158,6 +158,7 @@
 			};
 			
 			runApplyAnimation = function() {
+			
 				if (applyAnimationRan) {
 					// only run once
 					return;

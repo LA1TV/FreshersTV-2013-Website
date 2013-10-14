@@ -13,9 +13,14 @@
 	<div class="application-button-animation-padding"></div>
 	<div class="application-button-outer-container">
 		<div class="application-button-container">
+			<?php if ($show_animated_apply_button): ?>
 			<a href="<?=base_url()?>apply" class="btn btn-lg btn-block btn-info apply-now-btn">Apply Now!</a>
+			<?php else: ?>
+			<button disabled="disabled" class="btn btn-lg btn-block apply-now-btn">Applications are now closed!</button>
+			<?php endif;?>
 		</div>
 	</div>
+	
 	<div class="promo-vid-container require-js">
 		<div class="player-placeholder" id="jwplayer-1"></div>
 	</div>
