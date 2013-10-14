@@ -1,0 +1,1 @@
+This folder should contain non cropped versions of the logos which have a max width of 300px and height of 200px. The larger out of the w and h becomes that corresponding value.

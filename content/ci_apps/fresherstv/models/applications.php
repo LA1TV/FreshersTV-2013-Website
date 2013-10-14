@@ -234,4 +234,36 @@ class Applications extends CI_Model {
 		}
 		return $rows;
 	}
+	
+	// return the array (which can be converted to json) of all the data for the map
+	function get_map_data() {
+		$data = array();
+		$this->db->from($this->table);
+		$this->db->where("ready", TRUE);
+		$this->db->order_by("name");
+		$this->db->order_by("live_time");
+		$query = $this->db->get();
+		foreach ($query->result() as $row) {
+			if ($row->lat === NULL || $row->lng === NULL || $row->logo_name === NULL || $row->live_time === NULL) {
+				continue;
+			}
+			$image_details = getimagesize(FCPATH . $application_folder . 'assets/img/station_logos/full_scaled/' . $row->logo_name);
+			$logo_width = intval(strval($image_details[0]), 10);
+			$logo_height = intval(strval($image_details[1]), 10);
+			$timestamp = (int) $row->live_time;
+			
+			$data[] = array(
+				"lat"=>(float) $row->lat,
+				"lng"=>(float) $row->lng,
+				"logo_name"=> $row->logo_name,
+				"full_logo_w"=> $logo_width,
+				"full_logo_h"=> $logo_height,
+				"live_time"=> $timestamp,
+				"live_time_txt"=> date("H:i", $timestamp),
+				"participation_type"=>(int) $row->participation_type,
+				"name"=> $row->name
+			);
+		}
+		return $data;
+	}
 }

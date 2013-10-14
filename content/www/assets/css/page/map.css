@@ -1,0 +1,22 @@
+#page-map .map-canvas {
+	width: 100%;
+	height: 500px;
+	background-color: rgb(240, 240, 240);
+}
+
+#page-map .choose-station-select {
+	width: 300px;
+}
+
+#page-map .map-canvas {
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+#page-map .info-window {
+	text-align: center;
+}
+
+#page-map .live-row, #page-map .live-row span, #page-map .participation-row, #page-map .participation-row span {
+	font-size: 30px;
+}
