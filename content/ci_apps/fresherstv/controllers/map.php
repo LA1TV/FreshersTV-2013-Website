@@ -10,6 +10,6 @@ class Map extends CI_Controller {
 		}
 		$map_data = $this->applications->get_map_data();
 		$map_data_json = json_encode($map_data);
-		output_page("map", array("map"), array("map"), $this->load->view('page/map', array("map_data_json"=>$map_data_json), TRUE));
+		output_page("map", array("map"), array("map"), $this->load->view('page/map', array("map_data_json"=>$map_data_json, "map_data"=>$map_data), TRUE), TRUE); // REMOVE LAST TRUE
 	}
 }

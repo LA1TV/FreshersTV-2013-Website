@@ -1,3 +1,7 @@
+// handle map
+
+var loadMapInfoWindow;
+
 $(document).ready(function() {
 
 	var logosBaseUrl = $("body").attr("data-baseurl")+"assets/img/station_logos/";
@@ -9,6 +13,24 @@ $(document).ready(function() {
     var markersData = jQuery.parseJSON($mapContainer.attr("data-markers"));
     
     var bounds = new google.maps.LatLngBounds();
+	
+	var pinColor = "0033CC";
+    var bluePinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0,0),
+        new google.maps.Point(10, 34));
+		
+	var pinColor = "CC0052";
+    var pinkPinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0,0),
+        new google.maps.Point(10, 34));
+		
+    var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+        new google.maps.Size(40, 37),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(12, 35));
+	
     var markers = [];
     $selectEl.append($("<option />").html("Choose...").val(""));
     for(var i=0; i<markersData.length; i++) {
@@ -17,16 +39,18 @@ $(document).ready(function() {
         var marker = new google.maps.Marker({
             position: location,
             title: data.name,
+			icon: !data.host ? pinkPinImage : bluePinImage,
+			shadow: pinShadow,
             draggable: false,
             customData: {
-                index: i
+                id: data.id
             }
         });
         google.maps.event.addListener(marker, 'click', onMarkerClicked);
         bounds.extend(location);
         markers.push(marker);
         
-        $selectEl.append($("<option />").html(data.name).val(i));
+        $selectEl.append($("<option />").html(data.name).val(data.id));
     }
     $selectEl.val("");
     
@@ -50,6 +74,38 @@ $(document).ready(function() {
     var infoWindow = new google.maps.InfoWindow({
         content: $infoWindowEl[0]
     });
+	
+	var loadInfoWindow = loadMapInfoWindow = function(id) {
+        map.getStreetView().setVisible(false);
+        infoWindow.close();
+        var markerData;
+		var markerIndex;
+		for (var i=0; i<markers.length; i++) {
+			if (markers[i].customData.id === id) {
+				markerData = markersData[i];
+				markerIndex = i;
+				break;
+			}
+		}
+        var marker = markers[markerIndex];
+        infoWindow.setOptions({
+            title: markerData.name
+        });
+		
+        $infoWindowEl.find(".logo").attr("src", "").width(markerData.full_logo_w).height(markerData.full_logo_h).attr("src", logosBaseUrl+"full_scaled/"+markerData.logo_name);
+	    if (!markerData.host) {
+			$infoWindowEl.find(".show-if-host").hide();
+			$infoWindowEl.find(".hide-if-host").show();
+			$infoWindowEl.find(".start-time").html(markerData.live_time_txt);
+			$infoWindowEl.find(".participation-msg").html(markerData.participation_type === 0 ? "Participating LIVE!" : "Participating Via VT");
+		}
+		else {
+			$infoWindowEl.find(".hide-if-host").hide();
+			$infoWindowEl.find(".show-if-host").show();
+		}
+		infoWindow.open(map, marker);
+        $selectEl.val(id);
+    };
     
     google.maps.event.addListener(infoWindow, 'domready', function() {
         $infoWindowEl.parent().css("overflow", "auto");
@@ -80,27 +136,13 @@ $(document).ready(function() {
     });
     
     function onMarkerClicked() {
-        loadInfoWindow(this.customData.index);
+        loadInfoWindow(this.customData.id);
     }
     
     function onInfoWindowClosed() {
         $selectEl.val("");
     }
     
-    function loadInfoWindow(id) {
-        map.getStreetView().setVisible(false);
-        infoWindow.close();
-        var markerData = markersData[id];
-        var marker = markers[id];
-        infoWindow.setOptions({
-            title: markerData.name
-        });
-        $infoWindowEl.find(".logo").attr("src", "").width(markerData.full_logo_w).height(markerData.full_logo_h).attr("src", logosBaseUrl+"full_scaled/"+markerData.logo_name);
-        $infoWindowEl.find(".start-time").html(markerData.live_time_txt);
-        $infoWindowEl.find(".participation-msg").html(markerData.participation_type === 0 ? "Participating LIVE!" : "Participating Via VT");
-        infoWindow.open(map, marker);
-        $selectEl.val(id);
-    }
     
     function resetMap() {
         map.getStreetView().setVisible(false);
@@ -108,5 +150,31 @@ $(document).ready(function() {
         onInfoWindowClosed();
         map.fitBounds(bounds);
     }
+	
+	initLogoBar();
 
 });
+
+// handle logo bar
+var initLogoBar = function() {
+	var $bar = $("#page-map .logo-row").first();
+	
+	$bar.find(".logo").each(function() {
+		$(this).click(function() {
+			var $el = $(this);
+			
+			if ($el.data("aniTimer") !== undefined && $el.data("aniTimer") !== false) {
+				// stop the timer that's already running
+				clearTimeout($el.data("aniTimer"));
+			}
+			$el.removeAttr("data-clickedstate").attr("data-clickedstate", "");
+			$(this).data("aniTimer", setTimeout(function() {
+				$el.removeAttr("data-clickedstate");
+			}, 200));
+			
+			loadMapInfoWindow(parseInt($el.attr("data-stationid"), 10));
+			
+			
+		});
+	});
+};
