@@ -57,6 +57,7 @@ $(document).ready(function() {
     var map = new google.maps.Map($canvas[0], {
         center: bounds.getCenter(),
         maxZoom: 15,
+		scrollwheel: false,
         mapTypeId: google.maps.MapTypeId.HYBRID
     });
     map.fitBounds(bounds);
@@ -160,8 +161,15 @@ var initLogoBar = function() {
 	var $bar = $("#page-map .logo-row").first();
 	
 	$bar.find(".logo").each(function() {
+		var $el = $(this);
+			
+		$(this).hover(function() {
+			$el.css("z-index", 1);
+		}, function() {
+			$el.css("z-index", "auto");
+		});
+	
 		$(this).click(function() {
-			var $el = $(this);
 			
 			if ($el.data("aniTimer") !== undefined && $el.data("aniTimer") !== false) {
 				// stop the timer that's already running

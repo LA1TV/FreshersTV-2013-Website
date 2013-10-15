@@ -11,12 +11,6 @@
 #page-map .map-canvas {
 	margin-top: 10px;
 	margin-bottom: 5px;
-	border-style: solid;
-	border-color: #CC0052;
-	border-width: 2px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
 }
 
 #page-map .logo-row {
@@ -24,19 +18,13 @@
 	margin-top: 5px;
 	margin-bottom: 5px;
 	padding: 5px;
-	border-style: solid;
-	border-color: #CC0052;
-	border-width: 2px;
-	background-color: #ECA3C1;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
 }
 
 #page-map .logo-row .logo {
 	display: inline-block;
-	margin: 2px;
+	margin: 5px;
 	cursor: pointer;
+	position: relative;
 	
 	transition: transform 0.2s;
 	-webkit-transition: -webkit-transform 0.2s;
@@ -44,11 +32,6 @@
 	-webkit-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
 	-moz-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
 	-o-transform: rotate(0deg) scale(1) skew(0deg) translate(0px);
-}
-
-#page-map .logo-row .logo .logo-img {
-	width: 50px;
-	height: 50px;
 }
 
 #page-map .logo-row .logo:hover {

@@ -1,7 +1,7 @@
 <?php
 $this->load->helper("security");
 ?>
-<h2>Map</h2>
+<h2>Stations Map</h2>
 <div class="map-container" data-markers="<?=htmlent($map_data_json);?>">
 	<p>Click on a pointer on the map to see information about that station.</p>
 	<p>You can also select a station from the list below and it will automatically be chosen on the map.</p>
@@ -13,7 +13,7 @@ $this->load->helper("security");
 	<div class="logo-row"><!--
 		<?php foreach($map_data as $a): ?>
 		--><div class="logo" data-stationid="<?=htmlent($a['id']);?>">
-			<img class="logo-img" src="<?=htmlent(base_url() . "assets/img/station_logos/50x50/" . $a['logo_name'])?>" alt="<?=htmlent($a['name']."'s Logo");?>">
+			<img class="logo-img" style="width: <?=htmlent($a['small_logo_w']);?>px; height: <?=htmlent($a['small_logo_h']);?>px;" src="<?=htmlent(base_url() . "assets/img/station_logos/small/" . $a['logo_name'])?>" alt="<?=htmlent($a['name']."'s Logo");?>">
 		</div><!--
 		<?php endforeach; ?>
 	--></div>

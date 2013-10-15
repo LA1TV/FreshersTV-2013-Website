@@ -251,6 +251,9 @@ class Applications extends CI_Model {
 			$image_details = getimagesize(FCPATH . $application_folder . 'assets/img/station_logos/full_scaled/' . $row->logo_name);
 			$logo_width = intval(strval($image_details[0]), 10);
 			$logo_height = intval(strval($image_details[1]), 10);
+			$image_details = getimagesize(FCPATH . $application_folder . 'assets/img/station_logos/small/' . $row->logo_name);
+			$s_logo_width = intval(strval($image_details[0]), 10);
+			$s_logo_height = intval(strval($image_details[1]), 10);
 			$timestamp = (int) $row->live_time;
 			
 			$data[] = array(
@@ -260,6 +263,8 @@ class Applications extends CI_Model {
 				"logo_name"=> $row->logo_name,
 				"full_logo_w"=> $logo_width,
 				"full_logo_h"=> $logo_height,
+				"small_logo_w"=> $s_logo_width,
+				"small_logo_h"=> $s_logo_height,
 				"live_time"=> $timestamp,
 				"live_time_txt"=> date("H:i", $timestamp),
 				"participation_type"=>(int) $row->participation_type,
