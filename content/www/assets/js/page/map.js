@@ -131,7 +131,7 @@ $(document).ready(function() {
             resetMap();
         }
         else {
-            loadInfoWindow($(this).val());
+            loadInfoWindow(parseInt($(this).val(), 10));
         }
     });
     
