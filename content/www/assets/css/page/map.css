@@ -48,6 +48,10 @@
 
 #page-map .info-window {
 	text-align: center;
-	font-size: 30px;
+	font-size: 20px;
 	padding: 0 5px;
+}
+
+#page-map .info-window  .info-logo-row {
+	margin-bottom: 10px;
 }

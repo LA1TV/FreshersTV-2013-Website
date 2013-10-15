@@ -93,7 +93,7 @@ $(document).ready(function() {
             title: markerData.name
         });
 		
-        $infoWindowEl.find(".logo").attr("src", "").width(markerData.full_logo_w).height(markerData.full_logo_h).attr("src", logosBaseUrl+"full_scaled/"+markerData.logo_name);
+        $infoWindowEl.find(".logo").attr("src", "").width(markerData.full_logo_w).height(markerData.full_logo_h).attr("src", logosBaseUrl+"medium/"+markerData.logo_name);
 	    if (!markerData.host) {
 			$infoWindowEl.find(".show-if-host").hide();
 			$infoWindowEl.find(".hide-if-host").show();

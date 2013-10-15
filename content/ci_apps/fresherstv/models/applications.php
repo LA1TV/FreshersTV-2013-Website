@@ -248,7 +248,7 @@ class Applications extends CI_Model {
 			if ($row->lat === NULL || $row->lng === NULL || $row->logo_name === NULL || $row->live_time === NULL) {
 				continue;
 			}
-			$image_details = getimagesize(FCPATH . $application_folder . 'assets/img/station_logos/full_scaled/' . $row->logo_name);
+			$image_details = getimagesize(FCPATH . $application_folder . 'assets/img/station_logos/medium/' . $row->logo_name);
 			$logo_width = intval(strval($image_details[0]), 10);
 			$logo_height = intval(strval($image_details[1]), 10);
 			$image_details = getimagesize(FCPATH . $application_folder . 'assets/img/station_logos/small/' . $row->logo_name);

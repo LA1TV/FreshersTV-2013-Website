@@ -20,7 +20,7 @@ $this->load->helper("security");
 	<button class="btn btn-default btn-block reset-map-btn" type="button">Reset Map</button>
 	<script type="text/template" class="info-window-template">
 		<div class="info-window">
-			<div>
+			<div class="info-logo-row">
 				<img class="logo" src="">
 			</div>
 			<div class="hide-if-host">
