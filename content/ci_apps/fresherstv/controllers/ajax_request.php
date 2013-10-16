@@ -8,6 +8,10 @@ class Ajax_request extends CI_Controller {
 		if ($this->input->get("action") === "get_show_login_captcha") {
 			$response['response'] = $this->authentication->get_show_captcha();
 		}
+		else if ($this->input->get("action") === "get_station_times") {
+			$this->load->model("applications");
+			$response['response'] = $this->applications->get_times_data();
+		}
 		else {
 			$response['success'] = FALSE;
 		}

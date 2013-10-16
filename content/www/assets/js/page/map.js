@@ -3,12 +3,22 @@
 var loadMapInfoWindow;
 
 $(document).ready(function() {
+	String.prototype.pad = function(padString, length) {
+		var str = this;
+		while (str.length < length)
+			str = padString + str;
+		return str;
+	}
+	
+	var eventDispatcher = _.clone(Backbone.Events);
 
+	var baseUrl = $("body").attr("data-baseurl");
 	var logosBaseUrl = $("body").attr("data-baseurl")+"assets/img/station_logos/";
 	
 	var $mapContainer = $("#page-map .map-container").first();
     var $canvas = $mapContainer.find(".map-canvas").first();
 	var $infoWindowEl = $($mapContainer.find(".info-window-template").html());
+	var currentInfoWindowStation = false;
     var $selectEl = $mapContainer.find(".choose-station-select").first();
     var markersData = jQuery.parseJSON($mapContainer.attr("data-markers"));
     
@@ -76,6 +86,12 @@ $(document).ready(function() {
         content: $infoWindowEl[0]
     });
 	
+	function setInfoWindowTime(time) {
+		if (currentInfoWindowStation.host === false) {
+			$infoWindowEl.find(".start-time").html(time.getHours().toString().pad("0", 2)+":"+time.getMinutes().toString().pad("0", 2));
+		}
+	}
+	
 	var loadInfoWindow = loadMapInfoWindow = function(id) {
         map.getStreetView().setVisible(false);
         infoWindow.close();
@@ -93,20 +109,35 @@ $(document).ready(function() {
             title: markerData.name
         });
 		
+		currentInfoWindowStation = markerData;
+		
         $infoWindowEl.find(".logo").attr("src", "").width(markerData.full_logo_w).height(markerData.full_logo_h).attr("src", logosBaseUrl+"medium/"+markerData.logo_name);
 	    if (!markerData.host) {
 			$infoWindowEl.find(".show-if-host").hide();
 			$infoWindowEl.find(".hide-if-host").show();
-			$infoWindowEl.find(".start-time").html(markerData.live_time_txt);
+			var time = new Date(markerData.live_time*1000);
+			setInfoWindowTime(time);
 			$infoWindowEl.find(".participation-msg").html(markerData.participation_type === 0 ? "Participating LIVE!" : "Participating Via VT");
 		}
 		else {
 			$infoWindowEl.find(".hide-if-host").hide();
 			$infoWindowEl.find(".show-if-host").show();
 		}
+		eventDispatcher.on("timeUpdate", function(eId) {
+			if (eId === id) {
+				var station = _.findWhere(markersData, {id: id});
+				setInfoWindowTime(new Date(station.live_time*1000));
+			}
+		}, this);
 		infoWindow.open(map, marker);
         $selectEl.val(id);
     };
+	
+	eventDispatcher.on("timeUpdate", function(eId) {
+		if (currentInfoWindowStation !== false && eId === currentInfoWindowStation.id) {
+			setInfoWindowTime(new Date(currentInfoWindowStation.live_time*1000))
+		}
+	}, this);
     
     google.maps.event.addListener(infoWindow, 'domready', function() {
         $infoWindowEl.parent().css("overflow", "auto");
@@ -151,6 +182,32 @@ $(document).ready(function() {
         onInfoWindowClosed();
         map.fitBounds(bounds);
     }
+	
+	// makes an ajax request and updates any times that have changed
+	function updateLiveTimes() {
+		jQuery.ajax(baseUrl+"ajax_request", {
+			success: function(data) {
+				_.each(data.response, function(a) {
+					var station = _.findWhere(markersData, {id: a.id});
+					if (station.live_time !== a.live_time) {
+						station.live_time = a.live_time;
+						console.log("INFO: Time updated.");
+						eventDispatcher.trigger("timeUpdate", a.id);
+					}
+				}, this);
+			},
+			error: function() {
+				console.log("ERROR: Error retrieving station times.");
+			},
+			timeout: 3000,
+			dataType: "json",
+			data: {
+				action: "get_station_times"
+			},
+			type: "GET"
+		});
+	}
+	setInterval(updateLiveTimes, 25000);
 	
 	initLogoBar();
 

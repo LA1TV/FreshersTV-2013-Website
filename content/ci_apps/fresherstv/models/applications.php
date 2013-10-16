@@ -235,6 +235,35 @@ class Applications extends CI_Model {
 		return $rows;
 	}
 	
+	// returns array of stations with start times sorted by time
+	function get_times_data() {
+		$this->db->from($this->table);
+		$this->db->where("application_accepted", TRUE);
+		$this->db->where("ready", TRUE);
+		$this->db->order_by("live_time", "asc");
+		$query = $this->db->get();
+		$rows = array();
+		$i = 0;
+		foreach ($query->result() as $row)
+		{
+			$rows[] = array(
+				"index"	=> $i,
+				"id"	=> (int) $row->id,
+				"name"	=> $row->name,
+				"live_time"	=> (int) $row->live_time,
+				"live_time_html"	=> Date("Y-m-d\TH:i:s", intVal($row->live_time, 10)),
+				"participation_type"	=> $row->participation_type,
+				"participation_type_str"	=> (int) $row->participation_type === 0 ? "Live" : "VT"
+			);
+			$i++;
+		}
+		return $rows;
+	}
+	
+	function update_time($id, $time) {
+		$this->db->update($this->table, array('live_time'=>$time), array("id"=>$id));
+	}
+	
 	// return the array (which can be converted to json) of all the data for the map
 	function get_map_data() {
 		$data = array();
@@ -266,7 +295,6 @@ class Applications extends CI_Model {
 				"small_logo_w"=> $s_logo_width,
 				"small_logo_h"=> $s_logo_height,
 				"live_time"=> $timestamp,
-				"live_time_txt"=> date("H:i", $timestamp),
 				"participation_type"=>(int) $row->participation_type,
 				"name"=> $row->name,
 				"host"=> $row->host == "1"
