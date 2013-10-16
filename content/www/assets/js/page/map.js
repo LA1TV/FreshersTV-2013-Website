@@ -189,10 +189,12 @@ $(document).ready(function() {
 			success: function(data) {
 				_.each(data.response, function(a) {
 					var station = _.findWhere(markersData, {id: a.id});
-					if (station.live_time !== a.live_time) {
-						station.live_time = a.live_time;
-						console.log("INFO: Time updated.");
-						eventDispatcher.trigger("timeUpdate", a.id);
+					if (station !== undefined) {
+						if (station.live_time !== a.live_time) {
+							station.live_time = a.live_time;
+							console.log("INFO: Time updated.");
+							eventDispatcher.trigger("timeUpdate", a.id);
+						}
 					}
 				}, this);
 			},

@@ -235,11 +235,12 @@ class Applications extends CI_Model {
 		return $rows;
 	}
 	
-	// returns array of stations with start times sorted by time
+	// returns array of stations with start times sorted by time ignoring the host station
 	function get_times_data() {
 		$this->db->from($this->table);
 		$this->db->where("application_accepted", TRUE);
 		$this->db->where("ready", TRUE);
+		$this->db->where("host", FALSE);
 		$this->db->order_by("live_time", "asc");
 		$query = $this->db->get();
 		$rows = array();
