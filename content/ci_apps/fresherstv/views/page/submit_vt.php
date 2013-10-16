@@ -24,6 +24,7 @@ function get_error_msg($form_errors, $element, $in_help_block=FALSE) {
 <h2>Submit VT</h2>
 <p>Please submit your VT even if you are streaming live to us so we have it as a backup. Here are the requirments:</p>
 <ul>
+	<li>Must be between 4:30 and 5 minutes.</li>
 	<li>Must use the h.264 codec.</li>
 	<li>Must have a resolution of either 1920x1080, 1080x720 or 1024x576.</li>
 	<li>Must have a frame rate of either 25fps or 50fps.</li>
