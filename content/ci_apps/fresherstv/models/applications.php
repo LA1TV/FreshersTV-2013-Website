@@ -317,4 +317,17 @@ class Applications extends CI_Model {
 		}
 		return $data;
 	}
+	
+	function get_comms_details($id) {
+		$query = $this->db->get_where($this->table, array('id'=>$id));
+		if ($query->num_rows() !== 1)
+		{
+			return FALSE;
+		}
+		$row = $query->row();
+		return array(
+			"username"	=> $row->username,
+			"password"	=> $row->sip_pass
+		);
+	}
 }
