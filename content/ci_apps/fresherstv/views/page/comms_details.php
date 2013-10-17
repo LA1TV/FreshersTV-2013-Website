@@ -45,7 +45,7 @@
 	<p><strong>The VOIP system was never designed for one account to be used on multiple devices and doing this will cause problems for you and might prevent you connecting.</strong></p>
 	<h3>Calling In!</h3>
 	<p>To call in simply <strong>dial 100</strong> on the voip phone. You should then hear a fanfare and an "access granted" message. If you don't hear this please send an e-mail to "<a href="mailto:development@la1tv.co.uk">development@la1tv.co.uk</a>" with as much information as possible as soon as possible.</p>
-	<h2>How It Will Work?</h2>
+	<h2>How Will It Work?</h2>
 	<p>On the day please call in as early as possible. You will be left on hold and should keep hearing occasional beeps. If you don't hear these something has gone wrong.</p>
 	<p>20 minutes before your slot if you are participating live, and at any other relevant times, you will be connected through to the comms ops in our studio.</p>
 	<p><strong>Please do not hang up until the end of your broadcast.</strong></p>
