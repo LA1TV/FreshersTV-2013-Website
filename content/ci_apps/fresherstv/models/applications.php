@@ -19,6 +19,9 @@ class Applications extends CI_Model {
 	{
 		// data should be validated in controller before it gets here. should technically check everything here as well but can't be bothered
 		$this->db->insert($this->table, $data);
+		$this->updateSha256Pass($id);
+		
+		
 	}
 	
 	function exists($id) {
@@ -211,6 +214,17 @@ class Applications extends CI_Model {
 	// pass in the unhashed password
 	function set_password($id, $new_pass) {
 		$this->db->update($this->table, array('password'=>$this->get_hash($new_pass)), array("id"=>$id));
+		$this->updateSha256Pass($id);
+	}
+	
+	function updateSha256Pass($id) {
+		$query = $this->db->get_where($this->table, array('id'=>$id));
+		if ($query->num_rows() !== 1)
+		{
+			return FALSE;
+		}
+		$row = $query->row();
+		$this->db->update($this->table, array('pass_sha256'=>hash('sha256', $row->password)), array("id"=>$id));
 	}
 	
 	function does_pass_meet_requirments($pass) {
