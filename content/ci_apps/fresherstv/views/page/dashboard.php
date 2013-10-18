@@ -8,3 +8,20 @@
 <?php else: ?>
 	<p>You are scheduled to go live at <?=htmlent($live_time);?>.</p>
 <?php endif; ?>
+<h2>Chat</h2>
+<p>To access the chat you will need to authenticate using the nickname and password below.</p>
+<table class="table table-striped table-bordered table-hover">
+	<tr>
+		<td><strong>Nickname:</strong></td>
+		<td><?=htmlent($chat_settings['username']);?></td>
+	</tr>
+	<tr>
+		<td><strong>Password:</strong></td>
+		<td><?=htmlent($chat_settings['password']);?></td>
+	</tr>
+	<tr>
+		<td><strong>Channel:</strong></td>
+		<td><?=htmlent($chat_settings['channel']);?></td>
+	</tr>
+</table>
+<a href="https://kiwiirc.com/client/148.88.67.138:3456/chat" class="btn btn-default btn-sm" target="_blank">Click Here To Launch Chat</a>
