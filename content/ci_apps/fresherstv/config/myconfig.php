@@ -12,3 +12,4 @@ $config['no_login_attempts_trigger']		= 5; // number of failed attempts that enf
 $config['no_login_attempts_remember_time']	= 5; // time in minutes before the system forgets a failed login
 
 $config['applications_open']	= FALSE;
+$config['map_enabled']	= TRUE;

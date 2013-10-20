@@ -292,6 +292,9 @@ class Applications extends CI_Model {
 			if ($row->lat === NULL || $row->lng === NULL || $row->logo_name === NULL || $row->live_time === NULL) {
 				continue;
 			}
+			$image_details = getimagesize(FCPATH . $application_folder . 'assets/img/station_logos/full_scaled/' . $row->logo_name);
+			$l_logo_width = intval(strval($image_details[0]), 10);
+			$l_logo_height = intval(strval($image_details[1]), 10);
 			$image_details = getimagesize(FCPATH . $application_folder . 'assets/img/station_logos/medium/' . $row->logo_name);
 			$logo_width = intval(strval($image_details[0]), 10);
 			$logo_height = intval(strval($image_details[1]), 10);
@@ -305,8 +308,10 @@ class Applications extends CI_Model {
 				"lat"=>(float) $row->lat,
 				"lng"=>(float) $row->lng,
 				"logo_name"=> $row->logo_name,
-				"full_logo_w"=> $logo_width,
-				"full_logo_h"=> $logo_height,
+				"full_logo_w"=> $l_logo_width,
+				"full_logo_h"=> $l_logo_height,
+				"medium_logo_w"=> $logo_width,
+				"medium_logo_h"=> $logo_height,
 				"small_logo_w"=> $s_logo_width,
 				"small_logo_h"=> $s_logo_height,
 				"live_time"=> $timestamp,

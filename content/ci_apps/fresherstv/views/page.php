@@ -6,13 +6,15 @@ if (!isset($no_index)) {
 
 $this->load->helper("security");
 
-$pages = array(
-	array("home", "Home"),
-	array("about", "About"),
-	array("http://blog.freshers.tv", "Blog", TRUE),
-	array("fresherstv2012", "FreshersTV 2012"),
-	array("contact", "Contact")
-);
+$pages = array();
+$pages [] = array("home", "Home");
+$pages [] = array("about", "About");
+if ($show_map_button) {
+	$pages [] = array("map", "Stations Map");
+}
+$pages [] = array("http://blog.freshers.tv", "Blog", TRUE);
+$pages [] = array("fresherstv2012", "FreshersTV 2012");
+$pages [] = array("contact", "Contact");
 
 // fix for ie
 if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== FALSE)) {
@@ -57,8 +59,6 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
 		<script src="<?=base_url();?>assets/js/backbone.js" type="text/javascript"></script>
 		<script src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js" type="text/javascript"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWG6Ez8FErHd12sZqc3wvTcauN7QDb56Y&amp;v=3&amp;sensor=false" type="text/javascript"></script>
-		<script src="<?=base_url();?>assets/js/backbone.js" type="text/javascript"></script>	
-        <script src="<?=base_url();?>assets/js/underscore.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/jquery.tjenkinson.recaptcha.js" type="text/javascript"></script>
         <script src="<?=base_url();?>assets/js/bootstrap.min.js" type="text/javascript"></script>
 		<script src="<?=base_url();?>assets/js/jwplayer/jwplayer.js" type="text/javascript"></script>
