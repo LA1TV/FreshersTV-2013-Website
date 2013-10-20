@@ -148,11 +148,10 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
                     <div class="span10 offset1 white-panel">
                         <ul class="social-buttons inline">
                             <li>
-                                <iframe src="http://platform.twitter.com/widgets/follow_button.1375828408.html#_=1377809470479&amp;id=twitter-widget-1&amp;lang=en&amp;screen_name=FreshersTV&amp;show_count=true&amp;show_screen_name=true&amp;size=m" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" frameBorder="0" style="width: 242px; height: 20px; background: transparent; border-style: none; overflow: hidden;"></iframe>
-                            </li>
+								<a href="https://twitter.com/FreshersTV" class="twitter-follow-button" data-show-count="true">Follow @FreshersTV</a>								</li>
                             <li>
-                                <iframe src="http://platform.twitter.com/widgets/tweet_button.1375828408.html#_=1377809470473&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Ffreshers.tv&amp;size=m&amp;text=LA1TV%20Presents%20FreshersTV%202013&amp;url=http%3A%2F%2Ffreshers.tv" class="twitter-share-button twitter-count-horizontal" title="Twitter Tweet Button" frameBorder="0" style="width: 110px; height: 20px; background: transparent; border-style: none; overflow: hidden;"></iframe>
-                            </li>
+								<a href="https://twitter.com/share" class="twitter-share-button" data-via="FreshersTV" data-url="<?=base_url();?>" data-lang="en">Tweet</a>
+							</li>
                             <li>
                                 <div class="fb-like" data-href="https://www.facebook.com/FreshersTV" data-layout="button_count" data-show-faces="false" data-send="true"></div>
                             </li>

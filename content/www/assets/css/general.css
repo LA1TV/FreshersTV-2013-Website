@@ -96,18 +96,18 @@ iframe[src="about:blank"] {
     line-height: 1;
 }
 
-.scaled-iframe-container {
+.scaled-el-container {
 	position: relative;
 }
 
-.scaled-iframe-container .ratio {
+.scaled-el-container .ratio {
 	display: block;
 	width: 100%;
 	height: auto;
 	visibility: hidden;
 }
 
-.scaled-iframe-container iframe {
+.scaled-el-container .el {
 	position: absolute;
 	top: 0;
 	left: 0;

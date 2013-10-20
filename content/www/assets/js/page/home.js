@@ -178,7 +178,7 @@
 	// countdown timer
 	$(document).ready(function() {
 		// ZERO INDEXING!
-		var startTime = new Date(2013, 09, 23, 18, 00);
+		var startTime = new Date(2013, 09, 24, 18, 00);
 		var $el = $("#page-home .countdown-timer").first();
 		var countdown = $el.FlipClock(getSecondsToStart(), {
 			countdown: true,

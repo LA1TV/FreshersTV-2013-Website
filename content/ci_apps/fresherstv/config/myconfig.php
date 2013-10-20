@@ -13,3 +13,8 @@ $config['no_login_attempts_remember_time']	= 5; // time in minutes before the sy
 
 $config['applications_open']	= FALSE;
 $config['map_enabled']	= TRUE;
+$config['broadcasting_live']	= FALSE;
+$config['load_balancer_url']	= "http://la1tv-wowza1.lancs.ac.uk:1935/loadbalancer?serverInfoXML";
+
+// unix timestamp of planned start time
+$config['broadcast_start_time']	= 1382634000;
