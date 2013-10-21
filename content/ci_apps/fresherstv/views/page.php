@@ -44,7 +44,7 @@ if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], '
         <!-- Load CSS  -->
         <link href="<?=base_url();?>assets/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="<?=base_url();?>assets/css/flipclock.css" rel="stylesheet" type="text/css">
-        <link href="<?=base_url();?>assets/css/general.css" rel="stylesheet" type="text/css">
+        <link href="<?=base_url();?>assets/css/general.css?v=2" rel="stylesheet" type="text/css">
 		
 		<!-- Load page specific CSS -->
 		<?php foreach($css as $a):	?>

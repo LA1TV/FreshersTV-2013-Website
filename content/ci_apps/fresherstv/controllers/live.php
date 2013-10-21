@@ -9,7 +9,7 @@ class Live extends CI_Controller {
 		$this->output->set_header("Cache-Control: post-check=0, pre-check=0", false);
 		$this->output->set_header("Pragma: no-cache");
 		
-		if (!$this->config->item("broadcasting_live") && $this->input->get("test") === FALSE) { // REMOVE TEST
+		if (!$this->config->item("broadcasting_live") && $this->input->get("override") === FALSE) {
 			$this->output_not_live_page();
 		}
 		else {
@@ -36,13 +36,34 @@ class Live extends CI_Controller {
 				return;
 			}
 			
-			$stream_url = $xmlInfo->LoadBalancerServer->redirect;
+			$stream_base_url = "rtmp://".$xmlInfo->LoadBalancerServer->redirect;
+			
+			$qualities = array(
+				// txt, url, chosen
+				"160p"	=> array("160p", ":1935/live-edge/FreshersTV_160p", FALSE),
+				"240p"	=> array("240p", ":1935/live-edge/FreshersTV_240p", FALSE),
+				"360p"	=> array("360p", ":1935/live-edge/FreshersTV_360p", FALSE),
+				"720p"	=> array("720p", ":1935/live-edge/FreshersTV_720p", FALSE)
+			);
+			
+						
+			$chosen_quality = $device == "mobile" ? "360p" : "720p"; // default quality
+			
+			if (array_key_exists($this->input->get("q"), $qualities)) {
+				$chosen_quality = $this->input->get("q");
+			}
+			
+			$qualities[$chosen_quality][2] = TRUE;
+			
 			
 			$data = array(
 				"live"	=> TRUE,
 				"device"	=> $device,
 				"map_enabled"	=>	$this->config->item('map_enabled'),
-				"stream_url"	=>	$stream_url
+				"stream_base_url"	=>	$stream_base_url,
+				"chosen_quality"	=>	$qualities[$chosen_quality],
+				"complete_stream_url"	=> $stream_base_url . $qualities[$chosen_quality][1],
+				"qualities"	=> $qualities
 			);
 			
 			output_page("live", array("live"), array(), $this->load->view('page/live', $data, TRUE), TRUE); // REMOVE LAST TRUE

@@ -15,6 +15,7 @@ $config['applications_open']	= FALSE;
 $config['map_enabled']	= TRUE;
 $config['broadcasting_live']	= FALSE;
 $config['load_balancer_url']	= "http://la1tv-wowza1.lancs.ac.uk:1935/loadbalancer?serverInfoXML";
+$config['low_latency_stream_url']	= "";
 
 // unix timestamp of planned start time
 $config['broadcast_start_time']	= 1382634000;

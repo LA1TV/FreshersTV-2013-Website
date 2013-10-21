@@ -13,19 +13,27 @@ $this->load->helper("security");
 	<div class="col-md-8">
 		<div class="scaled-el-container">
 			<img class="ratio" src="<?=base_url();?>assets/img/16x9.gif" alt=""/>
-			<!-- Using stream url: <?=htmlent($stream_url);?> -->
+			<!-- Using stream url: <?=htmlent($complete_stream_url);?> -->
 			<?php if ($device == "pc"): ?>
 			<object class="stream-player-container el">
 				<param name="movie" value="<?=base_url();?>assets/flash/StrobeMediaPlayback.swf"></param>
-				<param name="flashvars" value="src=<?=urlencode($stream_url)?>&amp;streamType=live&amp;autoPlay=true"></param>
+				<param name="flashvars" value="src=<?=urlencode($complete_stream_url)?>&amp;streamType=live&amp;autoPlay=true"></param>
 				<param name="allowFullScreen" value="true"></param>
 				<param name="allowscriptaccess" value="always"></param>
 				<param name="wmode" value="direct"></param>
-				<embed src="<?=base_url();?>assets/flash/StrobeMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="direct" flashvars="src=<?=urlencode($stream_url)?>&amp;streamType=live&amp;autoPlay=true"></embed>
+				<embed src="<?=base_url();?>assets/flash/StrobeMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="direct" flashvars="src=<?=urlencode($complete_stream_url)?>&amp;streamType=live&amp;autoPlay=true"></embed>
 			</object>
 			<?php elseif ($device == "mobile"): ?>
-			<video controls="" autoplay="" class="el" src="<?=base_url();?>assets/videos/promo/video-720p.mp4">
+			<video controls="" autoplay="" class="el" src="<?=htmlent($complete_stream_url)?>">
 			<?php endif; ?>
+		</div>
+		<div class="quality-selection">
+			<span class="selection-txt">Quality selection:</span>
+			<div class="btn-group">
+			<?php foreach($qualities as $b=>$a): ?>
+				<a href="<?=base_url();?>live?q=<?=htmlent($b)?>" class="btn <?= $a[2] ? "btn-success" : "btn-default" ?>"><?=htmlent($a[0])?></a>
+			<?php endforeach; ?>
+			</div>
 		</div>
 		<?php if ($map_enabled): ?>
 		<p class="view-map-button-container"><a href="<?=base_url();?>map" class="btn btn-info btn-block" target="_blank">Click Here To View The Stations Map</a></p>

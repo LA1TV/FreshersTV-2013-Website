@@ -267,7 +267,7 @@ class Applications extends CI_Model {
 				"name"	=> $row->name,
 				"live_time"	=> (int) $row->live_time,
 				"live_time_html"	=> Date("Y-m-d\TH:i:s", intVal($row->live_time, 10)),
-				"participation_type"	=> $row->participation_type,
+				"participation_type"	=> (int) $row->participation_type,
 				"participation_type_str"	=> (int) $row->participation_type === 0 ? "Live" : "VT"
 			);
 			$i++;

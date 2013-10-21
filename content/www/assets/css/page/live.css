@@ -1,3 +1,8 @@
-#page-live .view-map-button-container {
+#page-live .view-map-button-container, #page-live .quality-selection {
 	margin-top: 5px;
+}
+
+#page-live .quality-selection .selection-txt {
+	display: inline-block;
+	margin-right: 4px;
 }
