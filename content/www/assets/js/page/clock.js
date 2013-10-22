@@ -48,7 +48,15 @@ $(document).ready(function() {
 			cache: false,
 			success: function(data) {
 				offsetTime = new Date(data.response).getTime() - new Date().getTime();
-				setTimeout(updateTimeOffset, updateCount++ < 5 ? 3000 : 55000);
+				var delay;
+				if (updateCount <= 5) {
+					delay = 3000;
+					updateCount++;
+				}
+				else {
+					delay = 55000;
+				}
+				setTimeout(updateTimeOffset, delay);
 			}
 		});
 	}
