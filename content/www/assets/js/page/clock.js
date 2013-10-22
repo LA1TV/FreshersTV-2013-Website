@@ -12,6 +12,8 @@ $(document).ready(function() {
 	var offsetTime = 0; // no of milliseconds out compared with local time
 	var currentTime = false; // current time in milliseconds that is shown
 	var $el = $("#page-clock .txt").first();
+	var updateCount = 0;
+	
 	if ($el.length === 0) {
 		$el = $("#page-dashboard .txt").first();
 	}
@@ -46,7 +48,7 @@ $(document).ready(function() {
 			cache: false,
 			success: function(data) {
 				offsetTime = new Date(data.response).getTime() - new Date().getTime();
-				setTimeout(updateTimeOffset, 55000);
+				setTimeout(updateTimeOffset, updateCount++ < 5 ? 3000 : 55000);
 			}
 		});
 	}
