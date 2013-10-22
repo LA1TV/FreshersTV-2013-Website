@@ -13,7 +13,7 @@ $this->load->helper("security");
 			<tr>
 				<td><?= htmlent($a['index']+1) ?>)</td>
 				<td><?= htmlent($a['name']) ?></td>
-				<td><input type="datetime-local" name="station-<?= htmlent($a['index']) ?>-time" value="<?= htmlent($a['live_time_html']) ?>"></td>
+				<td><input type="datetime-local" step="1" name="station-<?= htmlent($a['index']) ?>-time" value="<?= htmlent($a['live_time_html']) ?>"></td>
 			</tr>
 <?php endforeach; ?>
 		</table>

@@ -2,13 +2,7 @@
 	$this->load->helper("security");
 ?>
 <h2>Your Station Dashboard</h2>
-<h3>Live Time</h3>
-<? if ($live_time === FALSE): ?>
-	<p><em>You do not have a time at the moment. Please send an e-mail to "<a href="mailto:development@la1tv.co.uk">development@la1tv.co.uk</a>" <strong>from the same e-mail address you put on the application form</strong> to get this fixed.</em></p> 
-<?php else: ?>
-	<p>You are scheduled to go live at <?=htmlent($live_time);?>.</p>
-<?php endif; ?>
-<h2>Live Schedule</h2>
+<h3>Live Schedule</h3>
 <p>This schedule will <strong>update automatically</strong> as any changes are made so please keep an eye on it during the broadcast!</p>
 <p>Your time has been highlighted.</p>
 <table class="table table-striped table-bordered table-hover schedule-table" data-stationid="<?=htmlent($station_id);?>">
@@ -22,7 +16,7 @@
 		</tr>
 	</tbody>
 </table>
-<h2>Low Latency Stream</h2>
+<h3>Low Latency Stream</h3>
 <p>This is a low quality low latency version of the stream. Please use <a href="<?=base_url()?>live" target="_blank"><?=base_url()?>live</a> to watch the normal stream.</p>
 <?php if (!$show_stream): ?>
 <p><em>This will become available when we are live.</em></p>
@@ -47,7 +41,7 @@
 	</div>
 </div>
 <?php endif; ?>
-<h2>Chat</h2>
+<h3>Chat</h3>
 <p>To access the chat you will need to authenticate using the nickname and password below.</p>
 <table class="table table-striped table-bordered table-hover">
 	<tr>
