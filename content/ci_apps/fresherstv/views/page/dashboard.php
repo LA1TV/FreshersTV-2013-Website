@@ -16,6 +16,12 @@
 		</tr>
 	</tbody>
 </table>
+<h3>Synchronised Clock</h3>
+<p>This clock should be synchronised with the clocks in our studio.</p>
+<div class="clock-container">
+	<span class="txt"></span>
+</div>
+<p><a class="btn btn-info btn-sm" target="_blank" href="<?=base_url()?>clock">Click Here To View The Clock On A Seperate Page</a></p>
 <h3>Low Latency Stream</h3>
 <p>This is a low quality low latency version of the stream. Please use <a href="<?=base_url()?>live" target="_blank"><?=base_url()?>live</a> to watch the normal stream.</p>
 <?php if (!$show_stream): ?>

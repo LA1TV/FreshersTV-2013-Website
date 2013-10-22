@@ -12,6 +12,9 @@ class Ajax_request extends CI_Controller {
 			$this->load->model("applications");
 			$response['response'] = $this->applications->get_times_data();
 		}
+		else if ($this->input->get("action") === "get_time") {
+			$response['response'] = floor(microtime(true)*1000);
+		}
 		else {
 			$response['success'] = FALSE;
 		}

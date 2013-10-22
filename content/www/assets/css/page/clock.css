@@ -1,0 +1,10 @@
+#page-clock .clock-container {
+	text-align: center;
+}
+
+#page-clock .clock-container  .txt {
+	font-family: monospace;
+	font-size: 150px;
+	font-weight: bold;
+	color: rgb(255, 0, 0);
+}

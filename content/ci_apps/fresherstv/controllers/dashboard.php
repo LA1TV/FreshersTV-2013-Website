@@ -39,7 +39,7 @@ class Dashboard extends CI_Controller {
 				"password"	=> $row->pass_sha256,
 				"channel"	=> "#chat"
 			);
-			output_page("dashboard", array("dashboard"), array("dashboard"), $this->load->view('page/dashboard', array("live_time"=>$live_time, "station_id"=>$this->authentication->get_id(), "device"=>$device, "stream_url"=>$stream_url, "show_stream"=>$show_stream, "chat_settings"=>$chat_settings), TRUE));
+			output_page("dashboard", array("dashboard"), array("dashboard", "clock"), $this->load->view('page/dashboard', array("live_time"=>$live_time, "station_id"=>$this->authentication->get_id(), "device"=>$device, "stream_url"=>$stream_url, "show_stream"=>$show_stream, "chat_settings"=>$chat_settings), TRUE));
 		}
 	}
 }
