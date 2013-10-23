@@ -27,25 +27,25 @@
 <?php if (!$show_stream): ?>
 <p><em>This will become available when we are live.</em></p>
 <?php else: ?>
+<?php if ($device == "pc"): ?>
 <div class="row">
 	<div class="col-md-5">
 		<div class="scaled-el-container">
 			<img class="ratio" src="<?=base_url();?>assets/img/16x9.gif" alt=""/>
-			<?php if ($device == "pc"): ?>
 			<object class="stream-player-container el">
 				<param name="movie" value="<?=base_url();?>assets/flash/StrobeMediaPlayback.swf"></param>
-				<param name="flashvars" value="src=<?=urlencode($stream_url)?>&amp;streamType=live&amp;autoPlay=true"></param>
+				<param name="flashvars" value="src=<?=urlencode($stream_url)?>&amp;streamType=live&amp;liveBufferTime=0&amp;autoPlay=true"></param>
 				<param name="allowFullScreen" value="true"></param>
 				<param name="allowscriptaccess" value="always"></param>
 				<param name="wmode" value="direct"></param>
-				<embed src="<?=base_url();?>assets/flash/StrobeMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="direct" flashvars="src=<?=urlencode($stream_url)?>&amp;streamType=live&amp;autoPlay=true"></embed>
+				<embed src="<?=base_url();?>assets/flash/StrobeMediaPlayback.swf" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="direct" flashvars="src=<?=urlencode($stream_url)?>&amp;streamType=live&amp;liveBufferTime=0&amp;autoPlay=true"></embed>
 			</object>
-			<?php elseif ($device == "mobile"): ?>
-			<video controls="" autoplay="" class="el" src="<?=htmlent($stream_url)?>">
-			<?php endif; ?>
 		</div>
 	</div>
 </div>
+<?php elseif ($device == "mobile"): ?>
+<p><em>The low latency stream is not available on mobile devices.</em></p>
+<?php endif; ?>
 <?php endif; ?>
 <h3>Chat</h3>
 <p>To access the chat you will need to authenticate using the nickname and password below.</p>
