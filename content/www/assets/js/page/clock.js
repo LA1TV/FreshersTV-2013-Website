@@ -48,6 +48,8 @@ $(document).ready(function() {
 			cache: false,
 			success: function(data) {
 				offsetTime = new Date(data.response).getTime() - new Date().getTime();
+			},
+			complete: function() {
 				var delay;
 				if (updateCount <= 5) {
 					delay = 3000;
