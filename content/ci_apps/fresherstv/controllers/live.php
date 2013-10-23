@@ -36,7 +36,7 @@ class Live extends CI_Controller {
 				return;
 			}
 			
-			$stream_base_url = "rtmp://".$xmlInfo->LoadBalancerServer->redirect;
+			$stream_base_url = "http://".$xmlInfo->LoadBalancerServer->redirect;
 			
 			$qualities = array(
 				// txt, url, chosen
@@ -46,8 +46,17 @@ class Live extends CI_Controller {
 				"720p"	=> array("720p", ":1935/live-edge/FreshersTV_720p", FALSE)
 			);
 			
+			foreach($qualities as $b=>$a) {
+				if ($device == "pc") {
+					$qualities[$b][1] = $a[1] . "/manifest.f4m";
+				}
+				else if ($device == "mobile") {
+					$qualities[$b][1] = $a[1] . "/playlist.m3u8";
+				}
+			}
+			
 						
-			$chosen_quality = $device == "mobile" ? "360p" : "720p"; // default quality
+			$chosen_quality = "720p"; // default quality
 			
 			if (array_key_exists($this->input->get("q"), $qualities)) {
 				$chosen_quality = $this->input->get("q");
