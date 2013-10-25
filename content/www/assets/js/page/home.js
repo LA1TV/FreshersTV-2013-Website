@@ -4,6 +4,9 @@
 	var runApplyAnimation;
 	var startCountdown;
 	var updateCountdownStartTime;
+	
+	// ZERO INDEXING!
+	var startTime = new Date(2013, 09, 24, 18, 00);
 
 	var setUpPlayer = function() {
 		
@@ -106,8 +109,10 @@
 			//disable animations if mobile
 			runAnimation = function(){};
 			runApplyAnimation = function(){};
-			$countdown.show();
-			startCountdown();
+			if (startTime.getTime() > new Date().getTime()) {
+				$countdown.show();
+				startCountdown();
+			}
 		}
 		else {
 			
@@ -127,34 +132,36 @@
 				}
 				animationRan = true;
 			
-				var countdownHeight = $countdown.outerHeight(true);
-				var containerHeight = $container.height();
-				 
-				$container.height($container.height()); // lock the height
+				if (startTime.getTime() > new Date().getTime()) {
+					var countdownHeight = $countdown.outerHeight(true);
+					var containerHeight = $container.height();
+					 
+					$container.height($container.height()); // lock the height
 
-				// animate video position down and scale height at same time, also animate scroll position
-				$container.animate({
-					height: containerHeight + countdownHeight
-				}, 1000);
-				$("body").animate({
-					scrollTop: $("body").scrollTop() + countdownHeight
-				}, 1000);
-				$video.animate({
-					top: "+"+countdownHeight+"px"
-				}, 1000, function() {
-				
-					//reset video css
-					$video.css("top", "auto");
+					// animate video position down and scale height at same time, also animate scroll position
+					$container.animate({
+						height: containerHeight + countdownHeight
+					}, 1000);
+					$("body").animate({
+						scrollTop: $("body").scrollTop() + countdownHeight
+					}, 1000);
+					$video.animate({
+						top: "+"+countdownHeight+"px"
+					}, 1000, function() {
 					
-					// animate countdown
-					updateCountdownStartTime(-1000); // set time 1 second less because animation takes 1 second
-					$countdown.show("drop", {direction: "up"}, 1000, function() {
-					
-					$container.height("auto"); // unlock the height
-						startCountdown();
+						//reset video css
+						$video.css("top", "auto");
 						
+						// animate countdown
+						updateCountdownStartTime(-1000); // set time 1 second less because animation takes 1 second
+						$countdown.show("drop", {direction: "up"}, 1000, function() {
+						
+						$container.height("auto"); // unlock the height
+							startCountdown();
+							
+						});
 					});
-				});
+				}
 			};
 			
 			runApplyAnimation = function() {
@@ -177,8 +184,6 @@
 
 	// countdown timer
 	$(document).ready(function() {
-		// ZERO INDEXING!
-		var startTime = new Date(2013, 09, 24, 18, 00);
 		var $el = $("#page-home .countdown-timer").first();
 		var countdown = $el.FlipClock(getSecondsToStart(), {
 			countdown: true,
